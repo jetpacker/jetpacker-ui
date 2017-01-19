@@ -1,5 +1,5 @@
 <template>
-  <div class="col-md-3" id="navigation">
+  <div id="configurations" class="col-md-3">
     <div class="panel-group" id="accordion">
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -19,7 +19,7 @@
             Development Kits
           </h4>
         </div>
-        <div id="developmentKits" class="panel-collapse collapse in">
+        <div id="developmentKits" class="panel-collapse collapse">
           <div class="panel-body">
             <p>OpenJDK</p>
             <p>Node.js</p>
@@ -33,7 +33,7 @@
             Database Servers
           </h4>
         </div>
-        <div id="databaseServers" class="panel-collapse collapse in">
+        <div id="databaseServers" class="panel-collapse collapse">
           <div class="panel-body">
             <p>PostgreSQL</p>
             <p>MySQL</p>
@@ -48,7 +48,7 @@
             Message Brokers
           </h4>
         </div>
-        <div id="messageBrokers" class="panel-collapse collapse in">
+        <div id="messageBrokers" class="panel-collapse collapse">
           <div class="panel-body">
             <p>RabbitMQ</p>
             <p>Eclipse Mosquitto</p>
@@ -61,7 +61,7 @@
             Search Engines
           </h4>
         </div>
-        <div id="searchEngines" class="panel-collapse collapse in">
+        <div id="searchEngines" class="panel-collapse collapse">
           <div class="panel-body">
             <p>Elasticsearch</p>
             <p>Solr</p>
@@ -71,3 +71,9 @@
     </div>
   </div>
 </template>
+
+<style>
+  #configurations {
+    padding-right: 0px;
+  }
+</style>

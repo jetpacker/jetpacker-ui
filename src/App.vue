@@ -2,91 +2,40 @@
   <div>
     <div id="app" class="container">
       <div class="row">
-        <div id="headerBox" class="col-md-10 col-md-offset-1">
-          <nav id="menubar" class="navbar navbar-default navbar-static-top">
-            <div class="container">
-              <div class="navbar-header">
-                <a class="navbar-brand" href="#">jetpacker.io</a>
-              </div>
-              <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                  <li class="active">
-                    <a href="#">Home</a>
-                  </li>
-                  <li>
-                    <a href="#about">About</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/jetpacker" target="_blank">GitHub</a>
-                  </li>
-                </ul>
-              </div><!--/.nav-collapse -->
-            </div>
-          </nav>
-
-          <div class="col-md-9" id="headerCaption">
-            <h3>Improve productivity in your team!</h3>
-            <p id="headerSubCaption">Use jetpacker to generate portable Java(Script)? development environments</p>
-          </div>
-          <div class="col-md-3">
-            <div class="navbar-collapse collapse">
-              <button id="generateProject" class="btn btn-primary btn-really-large pull-right">
-                Generate Project
-              </button>
-            </div>
-          </div>
-        </div>
+        <app-header></app-header>
       </div>
-
 
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
           <div class="col-md-9 pre-scrollable">
+            <app-kit></app-kit>
+            <app-machine></app-machine>
           </div>
-          <navigation></navigation>
+          <app-configurations></app-configurations>
         </div>
       </div>
 
-
-      <div class="row" id="footer">
-
-      </div>
+      <div class="row" id="footer"></div>
     </div>
   </div>
 </template>
 
 <script>
-  import Navigation from './components/Navigation';
+  import Header from './components/Header';
+  import Configurations from './components/Configurations';
+  import Machine from './components/configurations/Machine';
+  import Kit from './components/configurations/Kit';
 
   export default {
     name: 'app',
     components: {
-      navigation: Navigation,
+      appHeader: Header,
+      appConfigurations: Configurations,
+      appMachine: Machine,
+      appKit: Kit,
     },
   };
 </script>
 
-<style>
-  #menubar {
-    margin-left: 0px;
-    margin-right: 0px;;
-  }
-
-  #headerBox {
-    padding: 0px 0px 0px 0px;
-  }
-
-  #headerCaption {
-    margin-top: -20px;
-    margin-bottom: 20px;
-  }
-
-  #headerSubCaption {
-    color: grey;
-  }
-
-  #generateProject {
-    margin-top: 10px;
-    margin-right: 2.8em;
-  }
+<style scoped>
 </style>

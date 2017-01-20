@@ -29,8 +29,8 @@
         </p>
       </div>
       <div class="col-md-3">
-          <button id="generateProject" class="btn btn-primary btn-really-large pull-right">
-            Generate Project
+          <button id="buildJetpack" class="btn btn-primary btn-really-large pull-right">
+            Build Your Jetpack
           </button>
       </div>
     </div>
@@ -56,7 +56,7 @@
     color: grey;
   }
 
-  #generateProject {
+  #buildJetpack {
     margin-top: 10px;
     margin-right: 4em;
   }

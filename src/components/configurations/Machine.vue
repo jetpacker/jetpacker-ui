@@ -4,6 +4,7 @@
       <h3 class="panel-title">Ubuntu</h3>
     </div>
     <div class="panel-body">
+      <p>Ubuntu is an open source software platform that runs from the cloud, to the smartphone, to all your things.</p>
       <form>
         <div class="form-group col-xs-6">
           <label class="control-label" for="box">Box</label>

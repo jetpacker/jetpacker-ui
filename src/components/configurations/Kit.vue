@@ -4,8 +4,8 @@
       <h3 class="panel-title">OpenJDK</h3>
     </div>
     <div class="panel-body">
+      <p>OpenJDK (Open Java Development Kit) is a free and open source implementation of the Java Platform, Standard Edition.</p>
       <form class="form-horizontal">
-
         <div class="form-group col-xs-6">
           <label for="version" class="control-label col-sm-3">Version</label>
           <div class="col-sm-3">

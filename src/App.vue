@@ -8,8 +8,9 @@
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
           <div class="col-md-9 pre-scrollable">
-            <app-kit></app-kit>
             <app-machine></app-machine>
+            <app-kit></app-kit>
+            <app-container></app-container>
           </div>
           <app-configurations></app-configurations>
         </div>
@@ -25,6 +26,7 @@
   import Configurations from './components/Configurations';
   import Machine from './components/configurations/Machine';
   import Kit from './components/configurations/Kit';
+  import Container from './components/configurations/Container';
 
   export default {
     name: 'app',
@@ -33,9 +35,13 @@
       appConfigurations: Configurations,
       appMachine: Machine,
       appKit: Kit,
+      appContainer: Container,
     },
   };
 </script>
 
-<style scoped>
+<style>
+  legend {
+    font-size: 15px;
+  }
 </style>

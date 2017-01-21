@@ -4,10 +4,12 @@
       <h3 class="panel-title">OpenJDK</h3>
     </div>
     <div class="panel-body">
-      <p>OpenJDK (Open Java Development Kit) is a free and open source implementation of the Java Platform, Standard Edition.</p>
-      <form class="form-horizontal">
-        <div class="form-group col-xs-6">
-          <label for="version" class="control-label col-sm-3">Version</label>
+      <p class="text-muted">
+        OpenJDK (Open Java Development Kit) is a free and open source implementation of the Java Platform, Standard Edition.
+      </p>
+      <div class="form-horizontal">
+        <div class="form-group col-xs-9">
+          <label for="version" class="control-label col-sm-2">Version</label>
           <div class="col-sm-3">
             <select class="form-control" id="version">
               <option>8</option>
@@ -16,8 +18,8 @@
           </div>
         </div>
 
-        <div class="checkbox col-xs-6 pull-right">
-          <label class="pull-right">
+        <div class="checkbox col-xs-3 pull-right">
+          <label>
             <input id="install" type="checkbox"> <strong>Install</strong>
           </label>
         </div>
@@ -25,7 +27,7 @@
         <div class="clearfix"></div>
 
         <fieldset>
-          <legend>Extensions</legend>
+          <legend class="text-muted">Extensions</legend>
             <div class="form-group col-sm-6">
               <div class="checkbox col-sm-6">
                 <label>
@@ -82,14 +84,7 @@
               </div>
             </div>
         </fieldset>
-
-      </form>
+      </div>
     </div>
   </div>
 </template>
-
-<style scoped>
-  legend {
-    font-size: 15px;
-  }
-</style>

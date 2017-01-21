@@ -23,9 +23,9 @@
       </nav>
 
       <div class="col-md-9" id="headerCaption">
-        <h3>Improve productivity of your development team!</h3>
+        <h3>Become productive with Jetpacks!</h3>
         <p id="headerSubCaption">
-          jetpacker generates portable development environments for Java(Script)? developers.
+          Jetpacker generates portable development environments for Java developers.
         </p>
       </div>
       <div class="col-md-3">

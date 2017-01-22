@@ -7,10 +7,8 @@
 
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
-          <div class="col-md-9 pre-scrollable">
-            <app-machine></app-machine>
-            <app-kit></app-kit>
-            <app-container></app-container>
+          <div class="col-md-9">
+            <router-view></router-view>
           </div>
           <app-configurations></app-configurations>
         </div>
@@ -24,18 +22,12 @@
 <script>
   import Header from './components/Header';
   import Configurations from './components/Configurations';
-  import Machine from './components/configurations/Machine';
-  import Kit from './components/configurations/Kit';
-  import Container from './components/configurations/Container';
 
   export default {
     name: 'app',
     components: {
       appHeader: Header,
       appConfigurations: Configurations,
-      appMachine: Machine,
-      appKit: Kit,
-      appContainer: Container,
     },
   };
 </script>

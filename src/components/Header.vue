@@ -4,16 +4,16 @@
       <nav id="menubar" class="navbar navbar-default navbar-static-top">
         <div class="container">
           <div class="navbar-header">
-            <a class="navbar-brand" href="#">jetpacker.io</a>
+            <a class="navbar-brand" href="/">jetpacker.io</a>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li class="active">
-                <a href="#">Home</a>
-              </li>
-              <li>
-                <a href="#about">About</a>
-              </li>
+              <router-link to="/about" activeClass="active" tag="li">
+                <a>About</a>
+              </router-link>
+              <router-link to="/help" activeClass="active" tag="li">
+                <a>Help</a>
+              </router-link>
               <li>
                 <a href="https://github.com/jetpacker" target="_blank">GitHub</a>
               </li>
@@ -23,9 +23,9 @@
       </nav>
 
       <div class="col-md-9" id="headerCaption">
-        <h3>Become productive with Jetpacks!</h3>
+        <h3>Kickstart your Java project with a jetpack!</h3>
         <p id="headerSubCaption">
-          Jetpacker generates portable development environments for Java developers.
+          Jetpacker helps generate portable development environments for Java developers.
         </p>
       </div>
       <div class="col-md-3">
@@ -59,5 +59,9 @@
   #buildJetpack {
     margin-top: 10px;
     margin-right: 4em;
+  }
+
+  .nav.navbar-nav.navbar-right {
+    margin-right: 150px;
   }
 </style>

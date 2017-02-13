@@ -18,6 +18,10 @@
           </div>
         </div>
         <div class="form-group col-xs-6">
+          <label for="memory">Memory</label>
+          <input id="memory" type="number" class="form-control" placeholder="Memory">
+        </div>
+        <div class="form-group col-xs-12">
           <label class="control-label" for="timezone">Timezone</label>
           <div class="controls">
             <select class="form-control" id="timezone">
@@ -25,10 +29,6 @@
               <option>Asia/Thailand</option>
             </select>
           </div>
-        </div>
-        <div class="form-group col-xs-6">
-          <label for="memory">Memory</label>
-          <input id="memory" type="number" class="form-control" placeholder="Memory">
         </div>
       </div>
     </div>

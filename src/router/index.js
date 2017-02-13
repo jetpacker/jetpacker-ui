@@ -10,16 +10,20 @@ import Container from '../components/configurations/Container';
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   // scrollBehavior: () => ({ y: 0 }),
   routes: [
     { path: '/', component: Home },
     { path: '/about', component: About },
     { path: '/help', component: Help },
-    { path: '/configuration/machine/:machine', component: Machine },
-    { path: '/configuration/kit/:kit', component: Kit },
-    { path: '/configuration/container/:container', component: Container },
+
+    { path: '/configuration/machine', component: Machine },
+    { path: '/configuration/kits', component: Kit },
+    { path: '/configuration/containers/:containers', component: Container },
+
     { path: '*', redirect: '/' },
   ],
 });
+
+export default router;

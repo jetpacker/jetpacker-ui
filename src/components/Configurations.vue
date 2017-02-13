@@ -1,101 +1,31 @@
 <template>
   <div id="configurations" class="col-md-3">
-    <ul class="nav nav-pills nav-stacked nav-container">
-      <li>
-        <a class="nav-header"
-           @click="showPanel('virtualMachines')">
-          Virtual Machines
-          <span class="glyphicon pull-right"
-                :class="{
-                  'glyphicon-menu-right': !panels['virtualMachines'],
-                  'glyphicon-menu-down': panels['virtualMachines'],
-                }"
-                aria-hidden="true"></span>
-        </a>
-        <ul id="virtualMachines"
-            class="nav nav-stacked collapse"
-            :class="{ in: panels['virtualMachines'] }">
-          <router-link to="/configuration/machine/ubuntu" tag="li" class="nav-item">
-            <a>Ubuntu</a>
-          </router-link>
-        </ul>
-      </li>
-      <li>
-        <a class="nav-header"
-           @click="showPanel('developmentKits')">
-          Development Kits
-          <span class="glyphicon pull-right"
-                :class="{
-                  'glyphicon-menu-right': !panels['developmentKits'],
-                  'glyphicon-menu-down': panels['developmentKits'],
-                }"
-                aria-hidden="true"></span>
-        </a>
-        <ul id="developmentKits"
-            class="nav nav-stacked collapse"
-            :class="{ in: panels['developmentKits'] }">
-          <router-link to="/configuration/kit/openjdk" tag="li" class="nav-item">
-            <a>OpenJDK</a>
-          </router-link>
-        </ul>
-      </li>
-      <li>
-        <a class="nav-header"
-           @click="showPanel('databaseServers')">
-          Database Servers
-          <span class="glyphicon pull-right"
-                :class="{
-                  'glyphicon-menu-right': !panels['databaseServers'],
-                  'glyphicon-menu-down': panels['databaseServers'],
-                }"
-                aria-hidden="true"></span>
-        </a>
-        <ul id="databaseServers"
-            class="nav nav-stacked collapse"
-            :class="{ in: panels['databaseServers'] }">
-          <router-link to="/configuration/container/postgresql" tag="li" class="nav-item">
-            <a>PostgreSQL</a>
-          </router-link>
-        </ul>
-      </li>
-      <li>
-        <a class="nav-header"
-           @click="showPanel('messageBrokers')">
-          Message Brokers
-          <span class="glyphicon pull-right"
-                :class="{
-                  'glyphicon-menu-right': !panels['messageBrokers'],
-                  'glyphicon-menu-down': panels['messageBrokers'],
-                }"
-                aria-hidden="true"></span>
-        </a>
-        <ul id="messageBrokers"
-            class="nav nav-stacked collapse"
-            :class="{ in: panels['messageBrokers'] }">
-          <router-link to="/configuration/container/rabbitmq" tag="li" class="nav-item">
-            <a>RabbitMQ</a>
-          </router-link>
-        </ul>
-      </li>
-      <li>
-        <a class="nav-header"
-           @click="showPanel('searchEngines')">
-          Search Engines
-          <span class="glyphicon pull-right"
-                :class="{
-                  'glyphicon-menu-right': !panels['searchEngines'],
-                  'glyphicon-menu-down': panels['searchEngines'],
-                }"
-                aria-hidden="true"></span>
-        </a>
-        <ul id="searchEngines"
-            class="nav nav-stacked collapse"
-            :class="{ in: panels['searchEngines'] }">
-          <router-link to="/configuration/container/elasticsearch" tag="li" class="nav-item">
-            <a>Elasticsearch</a>
-          </router-link>
-        </ul>
-      </li>
+    <ul class="nav nav-pills nav-stacked nav-container2">
+      <router-link to="/configuration/machine" tag="li"
+                   @click.native="show('virtualMachine')"
+                   :class="{ 'active': configurations['virtualMachine'] }">
+        <a>Virtual Machine</a>
+      </router-link>
+      <router-link to="/configuration/kits" tag="li"
+                   @click.native="show('developmentKits')"
+                   :class="{ 'active': configurations['developmentKits'] }">
+        <a>Development Kits</a>
+      </router-link>
+      <router-link to="/configuration/containers/databaseServers" tag="li"
+                   @click.native="show('databaseServers')"
+                   :class="{ 'active': configurations['databaseServers'] }">
+        <a>Database Servers</a>
+      </router-link>
+      <router-link to="/configuration/containers/messageBrokers" tag="li"
+                   @click.native="show('messageBrokers')"
+                   :class="{ 'active': configurations['messageBrokers'] }">
+        <a>Message Brokers</a>
+      </router-link>
+      <router-link to="/configuration/containers/searchEngines" tag="li"
+                   @click.native="show('searchEngines')"
+                   :class="{ 'active': configurations['searchEngines'] }">
+        <a>Search Engines</a>
+      </router-link>
     </ul>
   </div>
 </template>
@@ -104,6 +34,14 @@
   export default {
     data() {
       return {
+        configurations: {
+          virtualMachine: false,
+          developmentKits: false,
+          databaseServers: false,
+          messageBrokers: false,
+          searchEngines: false,
+        },
+
         panels: {
           virtualMachines: false,
           developmentKits: false,
@@ -114,6 +52,17 @@
       };
     },
     methods: {
+      show(configuration) {
+        console.log('hello');
+        Object.keys(this.configurations).forEach((key) => {
+          if (key === configuration) {
+            this.configurations[key] = !this.configurations[key];
+          } else {
+            this.configurations[key] = false;
+          }
+        });
+      },
+
       showPanel(panel) {
         Object.keys(this.panels).forEach((key) => {
           if (key === panel) {
@@ -132,8 +81,22 @@
     color: #333;
   }
 
-  a:hover, a:active {
-    color: #333;
+  .active a, a:active, a:focus, a:hover {
+    color: #666fff !important;
+  }
+
+  .active a, a:active, a:focus {
+    background-color: #ffffff !important;
+  }
+
+  a:hover {
+    background-color: #f5f5f5 !important;
+    border-radius: 2px;
+  }
+
+  .nav-container2 {
+    border: #ddd solid 1px;
+    border-radius: 3px;
   }
 
   .nav-container {
@@ -159,6 +122,7 @@
     margin-top: 0px;
     margin-bottom: 0px;
   }
+
   #configurations {
     padding-right: 0px;
   }

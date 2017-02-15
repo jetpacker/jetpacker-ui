@@ -46,7 +46,6 @@
 
     methods: {
       show(configuration) {
-        console.log('hello');
         Object.keys(this.configurations).forEach((key) => {
           if (key === configuration) {
             this.configurations[key] = !this.configurations[key];

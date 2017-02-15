@@ -3,8 +3,10 @@
     <div class="panel-heading">
       <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="" @click.prevent="">MySQL</a></li>
+        <li><a data-toggle="tab" href="" @click.prevent="">MariaDB</a></li>
         <li><a data-toggle="tab" href="" @click.prevent="">PostgreSQL</a></li>
         <li><a data-toggle="tab" href="" @click.prevent="">MongoDB</a></li>
+        <li><a data-toggle="tab" href="" @click.prevent="">Redis</a></li>
       </ul>
     </div>
 
@@ -60,10 +62,15 @@
   .panel.with-nav-tabs .panel-heading{
     padding: 5px 5px 0 5px;
   }
+
   .panel.with-nav-tabs .nav-tabs{
     border-bottom: none;
+    margin-bottom: -1px;
   }
+
   .panel.with-nav-tabs .nav-justified{
     margin-bottom: -1px;
+    overflow-x: auto;
+    white-space: nowrap;
   }
 </style>

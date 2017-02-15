@@ -1,19 +1,14 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
+import profiles from './modules/profiles';
+
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
-  state: {
-    virtualMachines: {},
-    developmentKits: {},
-    databaseServers: [],
-    messageBrokers: [],
-    searchEngines: [],
+  modules: {
+    profiles,
   },
-  actions: {},
-  mutations: {},
-  getters: {},
 });
 
 export default store;

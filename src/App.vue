@@ -29,6 +29,10 @@
       appHeader: Header,
       appConfigurations: Configurations,
     },
+    created() {
+      console.log('store', this.$store);
+      this.$store.dispatch('INITIALIZE');
+    },
   };
 </script>
 

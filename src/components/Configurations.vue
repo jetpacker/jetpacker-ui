@@ -11,10 +11,10 @@
                    :class="{ 'active': configurations['developmentKits'] }">
         <a>Development Kits</a>
       </router-link>
-      <router-link to="/configuration/containers/databaseServers" tag="li"
-                   @click.native="show('databaseServers')"
-                   :class="{ 'active': configurations['databaseServers'] }">
-        <a>Database Servers</a>
+      <router-link to="/configuration/containers/dataStores" tag="li"
+                   @click.native="show('dataStores')"
+                   :class="{ 'active': configurations['dataStores'] }">
+        <a>Data Stores</a>
       </router-link>
       <router-link to="/configuration/containers/messageBrokers" tag="li"
                    @click.native="show('messageBrokers')"
@@ -37,20 +37,13 @@
         configurations: {
           virtualMachine: false,
           developmentKits: false,
-          databaseServers: false,
-          messageBrokers: false,
-          searchEngines: false,
-        },
-
-        panels: {
-          virtualMachines: false,
-          developmentKits: false,
-          databaseServers: false,
+          dataStores: false,
           messageBrokers: false,
           searchEngines: false,
         },
       };
     },
+
     methods: {
       show(configuration) {
         console.log('hello');
@@ -97,30 +90,6 @@
   .nav-container2 {
     border: #ddd solid 1px;
     border-radius: 3px;
-  }
-
-  .nav-container {
-    background-color: #f5f5f5;
-    border: #ddd solid 1px;
-    border-radius: 3px;
-  }
-
-  .nav-header {
-    color: #333;
-    font-weight: bold;
-    background-color: #f5f5f5;
-  }
-
-  .nav-header:hover, .nav-header:focus {
-    background-color: #f5f5f5;
-    cursor: pointer;
-  }
-
-  .nav-item {
-    color: #333;
-    background-color: #fff;
-    margin-top: 0px;
-    margin-bottom: 0px;
   }
 
   #configurations {

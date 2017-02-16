@@ -10,7 +10,7 @@
           <div class="col-md-9">
             <router-view></router-view>
           </div>
-          <app-configurations></app-configurations>
+          <app-side-nav></app-side-nav>
         </div>
       </div>
 
@@ -21,17 +21,17 @@
 
 <script>
   import Header from './components/Header';
-  import Configurations from './components/Configurations';
+  import SideNav from './components/SideNav';
 
   export default {
     name: 'app',
     components: {
       appHeader: Header,
-      appConfigurations: Configurations,
+      appSideNav: SideNav,
     },
     created() {
       console.log('store', this.$store);
-      this.$store.dispatch('INITIALIZE');
+      this.$store.dispatch('SET_DEFAULTS');
     },
   };
 </script>

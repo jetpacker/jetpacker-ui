@@ -1,13 +1,13 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-import panels from './modules/panels';
+import defaults from './modules/presets';
 
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
   modules: {
-    panels,
+    defaults,
   },
 });
 

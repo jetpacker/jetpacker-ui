@@ -2,8 +2,8 @@
   <div class="panel with-nav-tabs panel-default">
     <div class="panel-heading">
       <ul class="nav nav-tabs">
-        <li v-for="content in contents" :class="{ active: content.name == activeContent.name }">
-          <a data-toggle="tab" href="" @click.prevent="setActiveContent(content.name)">{{ content.label }}</a>
+        <li v-for="package in packages" :class="{ active: package.name == activePackage.name }">
+          <a data-toggle="tab" href="" @click.prevent="setActivePackage(package.name)">{{ package.label }}</a>
         </li>
       </ul>
     </div>
@@ -12,15 +12,15 @@
       <div class="tab-content">
         <div id="home" class="tab-pane fade in active">
           <p class="text-muted">
-            {{ activeContent.description }}
+            {{ activePackage.description }}
           </p>
           <div class="form-horizontal">
             <div class="form-group col-xs-9">
-              <template v-if="activeContent.version">
+              <template v-if="activePackage.version">
                 <label for="version" class="control-label col-sm-2">Version</label>
                 <div class="col-sm-3">
                   <select class="form-control" id="version">
-                    <option v-for="release in activeContent.version.releases">{{ release }}</option>
+                    <option v-for="release in activePackage.version.releases">{{ release }}</option>
                   </select>
                 </div>
               </template>
@@ -28,17 +28,17 @@
 
             <div class="checkbox col-xs-3 pull-right">
               <label>
-                <input id="install" type="checkbox" :checked="activeContent.install.value == 'true'">
-                <strong>{{ activeContent.install.label }}</strong>
+                <input id="install" type="checkbox" :checked="activePackage.install.value == 'true'">
+                <strong>{{ activePackage.install.label }}</strong>
               </label>
             </div>
 
-            <template v-if="activeContent.extensions">
+            <template v-if="activePackage.extensions">
               <div class="clearfix"></div>
 
               <fieldset>
                 <legend class="text-muted">Extensions</legend>
-                <div class="form-group col-sm-6" v-for="extension in activeContent.extensions">
+                <div class="form-group col-sm-6" v-for="extension in activePackage.extensions">
                   <div class="checkbox col-sm-6">
                     <label>
                       <input type="checkbox">
@@ -63,18 +63,18 @@
 <script>
   export default {
     computed: {
-      contents() {
-        return this.$store.getters.panels.kits.contents;
+      packages() {
+        return this.$store.getters.presets.kits.packages;
       },
-      activeContent() {
-        const activeContent = this.$store.getters.panels.kits.activeContent;
-        return this.$store.getters.panels.kits.contents[activeContent];
+      activePackage() {
+        const activePackage = this.$store.getters.presets.kits.activePackage;
+        return this.$store.getters.presets.kits.packages[activePackage];
       },
     },
 
     methods: {
-      setActiveContent(activeContent) {
-        this.$store.dispatch('SET_ACTIVE_CONTENT', activeContent);
+      setActivePackage(activePackage) {
+        this.$store.dispatch('SET_ACTIVE_PACKAGE_FOR_KITS', activePackage);
       },
     },
   };

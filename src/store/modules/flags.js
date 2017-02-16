@@ -1,22 +1,20 @@
 const state = {
-  flags: {
-    active: {
-      kit: '',
-      container: '',
-      dataStore: '',
-      messageBroker: '',
-      searchEngine: '',
-    },
+  active: {
+    kit: '',
+    container: '',
+    dataStore: '',
+    messageBroker: '',
+    searchEngine: '',
   },
 };
 
 const mutations = {
   SET_FLAGS: (state, presets) => {
-    state.flags.active.kit = Object.keys(presets.kits)[0];
+    state.active.kit = Object.keys(presets.kits)[0];
   },
 
   SET_ACTIVE_KIT: (state, kit) => {
-    state.flags.active.kit = kit;
+    state.active.kit = kit;
   },
 };
 
@@ -28,7 +26,7 @@ const actions = {
 
 const getters = {
   flags(state) {
-    return state.flags;
+    return state;
   },
 };
 

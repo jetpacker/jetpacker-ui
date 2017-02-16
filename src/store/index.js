@@ -20,7 +20,7 @@ const store = new Vuex.Store({
         .get('generator')
         .then((response) => {
           commit('SET_PRESETS', response.data);
-          commit('SET_FLAGS', state.presets.presets);
+          commit('SET_FLAGS', state.presets);
         })
         .catch((error) => {
           console.log(error);

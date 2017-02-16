@@ -1,39 +1,30 @@
 const state = {
-  presets: {
-    machine: {},
-    kits: {},
-    containers: {
-      dataStores: {},
-      messageBrokers: {},
-      searchEngines: {},
-    },
+  machine: {},
+  kits: {},
+  containers: {
+    dataStores: {},
+    messageBrokers: {},
+    searchEngines: {},
   },
 };
 
 const mutations = {
   SET_PRESETS: (state, data) => {
-    state.presets.machine = data.machine;
-    state.presets.kits = data.kits;
+    state.machine = data.machine;
+    state.kits = data.kits;
 
-    console.log('kits', state.presets.kits);
-  },
-};
-
-const actions = {
-  SET_ACTIVE_PACKAGE_FOR_KITS: ({ commit }, activePackage) => {
-    commit('SET_ACTIVE_PACKAGE_FOR_KITS', activePackage);
+    console.log('kits', state.kits);
   },
 };
 
 const getters = {
   presets(state) {
-    return state.presets;
+    return state;
   },
 };
 
 export default {
   state,
   mutations,
-  actions,
   getters,
 };

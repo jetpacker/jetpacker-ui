@@ -2,9 +2,9 @@
   <div class="panel with-nav-tabs panel-default">
     <div class="panel-heading">
       <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="" @click.prevent="">OpenJDK</a></li>
-        <li><a data-toggle="tab" href="" @click.prevent="">Node.js</a></li>
-        <li><a data-toggle="tab" href="" @click.prevent="">Guard</a></li>
+        <li v-for="content in contents" :class="{ active: content.name == activeContent.name }">
+          <a data-toggle="tab" href="" @click.prevent="setActiveContent(content.name)">{{ content.label }}</a>
+        </li>
       </ul>
     </div>
 
@@ -12,85 +12,47 @@
       <div class="tab-content">
         <div id="home" class="tab-pane fade in active">
           <p class="text-muted">
-            OpenJDK (Open Java Development Kit) is a free and open source implementation of the Java Platform, Standard Edition.
+            {{ activeContent.description }}
           </p>
           <div class="form-horizontal">
             <div class="form-group col-xs-9">
-              <label for="version" class="control-label col-sm-2">Version</label>
-              <div class="col-sm-3">
-                <select class="form-control" id="version">
-                  <option>8</option>
-                  <option>7</option>
-                </select>
-              </div>
+              <template v-if="activeContent.version">
+                <label for="version" class="control-label col-sm-2">Version</label>
+                <div class="col-sm-3">
+                  <select class="form-control" id="version">
+                    <option v-for="release in activeContent.version.releases">{{ release }}</option>
+                  </select>
+                </div>
+              </template>
             </div>
 
             <div class="checkbox col-xs-3 pull-right">
               <label>
-                <input id="install" type="checkbox"> <strong>Install</strong>
+                <input id="install" type="checkbox" :checked="activeContent.install.value == 'true'">
+                <strong>{{ activeContent.install.label }}</strong>
               </label>
             </div>
 
-            <div class="clearfix"></div>
+            <template v-if="activeContent.extensions">
+              <div class="clearfix"></div>
 
-            <fieldset>
-              <legend class="text-muted">Extensions</legend>
-              <div class="form-group col-sm-6">
-                <div class="checkbox col-sm-6">
-                  <label>
-                    <input id="grails" type="checkbox"> <strong>Grails</strong>
-                  </label>
+              <fieldset>
+                <legend class="text-muted">Extensions</legend>
+                <div class="form-group col-sm-6" v-for="extension in activeContent.extensions">
+                  <div class="checkbox col-sm-6">
+                    <label>
+                      <input type="checkbox">
+                      <strong>{{ extension.label }}</strong>
+                    </label>
+                  </div>
+                  <div class="col-sm-6">
+                    <select class="form-control">
+                      <option v-for="release in extension.version.releases">{{ release }}</option>
+                    </select>
+                  </div>
                 </div>
-                <div class="col-sm-6">
-                  <select class="form-control">
-                    <option>3.1.1</option>
-                    <option>2.5.0</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="form-group col-sm-6 pull-right">
-                <div class="checkbox col-sm-6">
-                  <label>
-                    <input id="springboot" type="checkbox"> <strong>Spring Boot</strong>
-                  </label>
-                </div>
-                <div class="col-sm-6">
-                  <select class="form-control">
-                    <option>2.0.1</option>
-                    <option>1.5.4</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="form-group col-sm-6">
-                <div class="checkbox col-sm-6">
-                  <label>
-                    <input id="activator" type="checkbox"> <strong>Activator</strong>
-                  </label>
-                </div>
-                <div class="col-sm-6">
-                  <select class="form-control">
-                    <option>2.0.1</option>
-                    <option>1.5.4</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="form-group col-sm-6 pull-right">
-                <div class="checkbox col-sm-6">
-                  <label>
-                    <input id="groovy" type="checkbox"> <strong>Groovy</strong>
-                  </label>
-                </div>
-                <div class="col-sm-6">
-                  <select class="form-control">
-                    <option>2.0.1</option>
-                    <option>1.5.4</option>
-                  </select>
-                </div>
-              </div>
-            </fieldset>
+              </fieldset>
+            </template>
           </div>
         </div>
       </div>
@@ -98,14 +60,31 @@
   </div>
 </template>
 
+<script>
+  export default {
+    computed: {
+      contents() {
+        return this.$store.getters.panels.kits.contents;
+      },
+      activeContent() {
+        const activeContent = this.$store.getters.panels.kits.activeContent;
+        return this.$store.getters.panels.kits.contents[activeContent];
+      },
+    },
+
+    methods: {
+      setActiveContent(activeContent) {
+        this.$store.dispatch('SET_ACTIVE_CONTENT', activeContent);
+      },
+    },
+  };
+</script>
+
 <style scoped>
   .panel.with-nav-tabs .panel-heading{
     padding: 5px 5px 0 5px;
   }
   .panel.with-nav-tabs .nav-tabs{
     border-bottom: none;
-  }
-  .panel.with-nav-tabs .nav-justified{
-    margin-bottom: -1px;
   }
 </style>

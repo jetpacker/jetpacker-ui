@@ -22,16 +22,6 @@ const state = {
       },
     },
   },
-
-  profiles: {
-    machine: {},
-    kits: {
-      openjdk: {},
-      node: {},
-      guard: {},
-    },
-    containers: [],
-  },
 };
 
 const mutations = {
@@ -44,6 +34,7 @@ const mutations = {
       kits.contents[key] = profiles.kits[key];
       kits.contents[key].active = false;
     });
+
     console.log('kits.contents', kits.contents);
 
     const key = Object.keys(kits.contents)[0];
@@ -52,8 +43,11 @@ const mutations = {
 
     console.log('kits.contents', kits.contents);
   },
-  SET_PROFILES: (state, profiles) => {
-    state.profiles = profiles;
+
+  SET_ACTIVE_CONTENT: (state, activeContent) => {
+    const kits = state.panels.kits;
+    kits.contents[activeContent].active = true;
+    kits.activeContent = activeContent;
   },
 };
 
@@ -62,18 +56,18 @@ const actions = {
     http
       .get('generator')
       .then((response) => {
-        commit('SET_PROFILES', response.data);
+        commit('SET_PANELS', response.data);
       })
       .catch((error) => {
         console.log(error);
       });
   },
+  SET_ACTIVE_CONTENT: ({ commit }, activeContent) => {
+    commit('SET_ACTIVE_CONTENT', activeContent);
+  },
 };
 
 const getters = {
-  profiles(state) {
-    return state.profiles;
-  },
   panels(state) {
     return state.panels;
   },

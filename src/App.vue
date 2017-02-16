@@ -31,7 +31,7 @@
     },
     created() {
       console.log('store', this.$store);
-      this.$store.dispatch('SET_DEFAULTS');
+      this.$store.dispatch('INITIALIZE');
     },
   };
 </script>

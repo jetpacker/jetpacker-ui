@@ -1,7 +1,7 @@
 import http from '../http';
 
 const state = {
-  defaults: {
+  presets: {
     machine: {},
     kits: {
       packages: {},
@@ -27,26 +27,23 @@ const state = {
 
 const mutations = {
   SET_DEFAULTS: (state, defaults) => {
-    state.defaults.machine = defaults.machine;
+    state.presets.machine = defaults.machine;
 
-    const kits = state.defaults.kits;
+    const kits = state.presets.kits;
 
     Object.keys(defaults.kits).forEach((key) => {
       kits.packages[key] = defaults.kits[key];
-      kits.packages[key].active = false;
     });
-
-    console.log('kits.packages', kits.packages);
 
     const key = Object.keys(kits.packages)[0];
     kits.packages[key].active = true;
     kits.activePackage = key;
 
-    console.log('kits.packages', kits.packages);
+    console.log('kits', kits);
   },
 
   SET_ACTIVE_PACKAGE_FOR_KITS: (state, activePackage) => {
-    const kits = state.defaults.kits;
+    const kits = state.presets.kits;
     kits.packages[activePackage].active = true;
     kits.activePackage = activePackage;
   },
@@ -69,8 +66,8 @@ const actions = {
 };
 
 const getters = {
-  panels(state) {
-    return state.defaults;
+  presets(state) {
+    return state.presets;
   },
 };
 

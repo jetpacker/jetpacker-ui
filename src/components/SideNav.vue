@@ -1,6 +1,6 @@
 <template>
   <div id="configurations" class="col-md-3">
-    <ul class="nav nav-pills nav-stacked nav-container2">
+    <ul class="nav nav-pills nav-stacked nav-container">
       <router-link to="/configuration/machine" tag="li"
                    @click.native="show('virtualMachine')"
                    :class="{ 'active': configurations['virtualMachine'] }">
@@ -26,6 +26,11 @@
                    :class="{ 'active': configurations['searchEngines'] }">
         <a>Search Engines</a>
       </router-link>
+    </ul>
+    <p />
+    <ul class="nav nav-pills nav-stacked nav-container">
+      <li><a href="" @click.prevent="">Build</a></li>
+      <li><a href="" @click.prevent="">Reset</a></li>
     </ul>
   </div>
 </template>
@@ -56,11 +61,11 @@
       },
 
       showPanel(panel) {
-        Object.keys(this.panels).forEach((key) => {
+        Object.keys(this.presets).forEach((key) => {
           if (key === panel) {
-            this.panels[key] = !this.panels[key];
+            this.presets[key] = !this.presets[key];
           } else {
-            this.panels[key] = false;
+            this.presets[key] = false;
           }
         });
       },
@@ -86,7 +91,7 @@
     border-radius: 2px;
   }
 
-  .nav-container2 {
+  .nav-container {
     border: #ddd solid 1px;
     border-radius: 3px;
   }

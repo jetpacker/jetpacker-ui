@@ -22,8 +22,11 @@
                   {{ activeKit.version.label }}
                 </label>
                 <div class="col-md-4">
-                  <select class="form-control" id="version">
-                    <option v-for="release in activeKit.version.releases">{{ release }}</option>
+                  <select class="form-control" id="version"
+                          :disabled="!install">
+                    <option v-for="release in activeKit.version.releases"
+                            :value="release"
+                            :selected="version == release">{{ release }}</option>
                   </select>
                 </div>
               </template>
@@ -31,7 +34,8 @@
 
             <div class="checkbox col-md-3 pull-right clear-right">
               <label>
-                <input id="install" type="checkbox" :checked="activeKit.install.value == 'true'">
+                <input id="install" type="checkbox"
+                       :checked="install">
                 <strong>{{ activeKit.install.label }}</strong>
               </label>
             </div>
@@ -51,10 +55,11 @@
                       </label>
                     </div>
                     <div class="col-md-6">
-                      <select class="form-control">
+                      <select class="form-control"
+                              :disabled="!extensions[extension.name].install">
                         <option v-for="release in extension.version.releases"
                                 :value="release"
-                                :selected="extensions[extension.name].value == release">
+                                :selected="extensions[extension.name].version == release">
                           {{ release }}
                         </option>
                       </select>
@@ -79,6 +84,14 @@
       activeKit() {
         const activeKit = this.$store.getters.flags.active.kit;
         return this.$store.getters.presets.kits[activeKit];
+      },
+      version() {
+        const activeKit = this.$store.getters.flags.active.kit;
+        return this.$store.getters.values.kits[activeKit].version;
+      },
+      install() {
+        const activeKit = this.$store.getters.flags.active.kit;
+        return this.$store.getters.values.kits[activeKit].install;
       },
       extensions() {
         const activeKit = this.$store.getters.flags.active.kit;

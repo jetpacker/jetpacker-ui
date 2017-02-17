@@ -6,40 +6,38 @@ const state = {
 
 const mutations = {
   SET_VALUES: (state, presets) => {
-    Object.values(presets.kits).forEach((kit) => {
-      const version = kit.version;
-      const install = kit.install;
-      const extensions = kit.extensions;
+    state.machine = {
+      box: Object.keys(presets.machine.box.releases)[0],
+      memory: presets.machine.memory.value,
+      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    };
 
+    Object.values(presets.kits).forEach((kit) => {
       state.kits[kit.name] = {
-        version: version != null ? version.value : null,
-        install: install.value,
+        version: kit.version ? kit.version.releases[0] : '',
+        install: kit.install.value ? Boolean(kit.install.value) : false,
       };
 
-      if (extensions) {
+      if (kit.extensions) {
         state.kits[kit.name].extensions = {};
-        extensions.forEach((extension) => {
-          state.kits[kit.name]
-               .extensions[extension.name] = { install: false, value: '' };
+        kit.extensions.forEach((extension) => {
+          state.kits[kit.name].extensions[extension.name] = {
+            install: false,
+            version: extension.version.releases[0],
+          };
         });
       }
     });
 
-    console.log('state.kits', state.kits);
-
     Object.values(presets.containers).forEach((container) => {
-      const version = container.version;
-      const install = container.install;
-      const parameters = container.parameters;
-
       state.containers[container.name] = {
-        version: version.value,
-        install: install.value,
+        install: false,
+        version: container.version.releases[0],
       };
 
-      if (parameters) {
+      if (container.parameters) {
         state.containers[container.name].parameters = {};
-        parameters.forEach((parameter) => {
+        container.parameters.forEach((parameter) => {
           state.containers[container.name]
                .parameters[parameter.name] = parameter.value;
         });

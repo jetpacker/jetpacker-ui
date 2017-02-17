@@ -30,6 +30,9 @@ module.exports = {
     'no-console': 0,
     'no-alert': 0,
     'no-shadow': 0,
-    'no-param-reassign': 0
+    'no-param-reassign': 0,
+    'new-cap': [ 0, {
+      "capIsNewExceptions": [ "Intl" ]
+    }],
   }
 }

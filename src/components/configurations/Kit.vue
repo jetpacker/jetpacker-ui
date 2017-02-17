@@ -17,7 +17,9 @@
           <div class="form-horizontal">
             <div class="form-group col-xs-9">
               <template v-if="activeKit.version">
-                <label for="version" class="control-label col-sm-2">Version</label>
+                <label for="version" class="control-label col-sm-2">
+                  {{ activeKit.version.label }}
+                </label>
                 <div class="col-sm-3">
                   <select class="form-control" id="version">
                     <option v-for="release in activeKit.version.releases">{{ release }}</option>

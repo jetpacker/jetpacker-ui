@@ -14,13 +14,14 @@
           <p class="text-muted">
             {{ activeKit.description }}
           </p>
+
           <div class="form-horizontal">
-            <div class="form-group col-xs-9">
+            <div class="form-group col-md-9 clear-left">
               <template v-if="activeKit.version">
-                <label for="version" class="control-label col-sm-2">
+                <label for="version" class="control-label col-md-2">
                   {{ activeKit.version.label }}
                 </label>
-                <div class="col-sm-3">
+                <div class="col-md-4">
                   <select class="form-control" id="version">
                     <option v-for="release in activeKit.version.releases">{{ release }}</option>
                   </select>
@@ -28,29 +29,31 @@
               </template>
             </div>
 
-            <div class="checkbox col-xs-3 pull-right">
+            <div class="checkbox col-md-3 pull-right clear-right">
               <label>
                 <input id="install" type="checkbox" :checked="activeKit.install.value == 'true'">
                 <strong>{{ activeKit.install.label }}</strong>
               </label>
             </div>
 
-            <template v-if="activeKit.extensions">
-              <div class="clearfix"></div>
+            <div class="clearfix"></div>
 
+            <template v-if="activeKit.extensions">
               <fieldset>
                 <legend class="text-muted">Extensions</legend>
-                <div class="form-group col-sm-6" v-for="extension in activeKit.extensions">
-                  <div class="checkbox col-sm-6">
-                    <label>
-                      <input type="checkbox">
-                      <strong>{{ extension.label }}</strong>
-                    </label>
-                  </div>
-                  <div class="col-sm-6">
-                    <select class="form-control">
-                      <option v-for="release in extension.version.releases">{{ release }}</option>
-                    </select>
+                <div class="form-group">
+                  <div class="col-md-6 extensions" v-for="extension in activeKit.extensions">
+                    <div class="checkbox col-md-6">
+                      <label>
+                        <input type="checkbox">
+                        <strong>{{ extension.label }}</strong>
+                      </label>
+                    </div>
+                    <div class="col-md-6">
+                      <select class="form-control">
+                        <option v-for="release in extension.version.releases">{{ release }}</option>
+                      </select>
+                    </div>
                   </div>
                 </div>
               </fieldset>
@@ -83,6 +86,10 @@
 </script>
 
 <style scoped>
+  .extensions {
+    padding: 0px 0px 12px 0px;
+  }
+
   .panel.with-nav-tabs .panel-heading{
     padding: 5px 5px 0 5px;
   }

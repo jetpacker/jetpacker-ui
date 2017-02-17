@@ -40,4 +40,12 @@
   legend {
     font-size: 15px;
   }
+
+  .clear-left {
+    padding-left: 0px;
+  }
+
+  .clear-right {
+    padding-right: 0px;
+  }
 </style>

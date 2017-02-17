@@ -42,15 +42,19 @@
                 {{ activeContainer.version.label }}
               </label>
               <div class="col-md-4">
-                <select class="form-control" id="version">
-                  <option v-for="release in activeContainer.version.releases">{{ release }}</option>
+                <select class="form-control" id="version"
+                        :disabled="!install">
+                  <option v-for="release in activeContainer.version.releases"
+                          :value="release"
+                          :selected="version == release">{{ release }}</option>
                 </select>
               </div>
             </div>
 
             <div class="col-md-3 checkbox pull-right clear-right">
               <label>
-                <input id="install" type="checkbox">
+                <input id="install" type="checkbox"
+                       :checked="install">
                 <strong>{{ activeContainer.install.label }}</strong>
               </label>
             </div>
@@ -95,6 +99,14 @@
       activeContainer() {
         const activeContainer = this.$store.getters.flags.active.container[this.$route.params.type];
         return this.$store.getters.presets.containers[activeContainer];
+      },
+      version() {
+        const activeContainer = this.$store.getters.flags.active.container[this.$route.params.type];
+        return this.$store.getters.values.containers[activeContainer].version;
+      },
+      install() {
+        const activeContainer = this.$store.getters.flags.active.container[this.$route.params.type];
+        return this.$store.getters.values.containers[activeContainer].install;
       },
       parameters() {
         const activeContainer = this.$store.getters.flags.active.container[this.$route.params.type];

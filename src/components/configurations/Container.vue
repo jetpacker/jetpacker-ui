@@ -2,6 +2,13 @@
   <div class="panel with-nav-tabs panel-default">
     <div class="panel-heading">
       <ul class="nav nav-tabs">
+        <li v-for="container in containers" :class="{ active: container.name == activeContainer.name }">
+          <a data-toggle="tab" href=""
+             @click.prevent="setActiveContainer(container.name)">{{ container.label }}</a>
+        </li>
+      </ul>
+      <!--
+      <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="" @click.prevent="">MySQL</a></li>
         <li><a data-toggle="tab" href="" @click.prevent="">MariaDB</a></li>
         <li><a data-toggle="tab" href="" @click.prevent="">PostgreSQL</a></li>
@@ -19,37 +26,47 @@
           </ul>
         </li>
       </ul>
+      -->
     </div>
 
     <div class="panel-body">
       <div class="tab-content">
         <div id="home" class="tab-pane fade in active">
           <p class="text-muted">
-            MySQL is the most popular Open Source SQL database management system.
+            {{ activeContainer.description }}
           </p>
           <div class="form-horizontal">
             <div class="form-group col-xs-9 required">
-              <label for="version" class="control-label col-sm-2">Version</label>
+              <label for="version" class="control-label col-sm-2">
+                {{ activeContainer.version.label }}
+              </label>
               <div class="col-sm-3">
                 <select class="form-control" id="version">
-                  <option>2.0.0</option>
-                  <option>1.9.0</option>
+                  <option v-for="release in activeContainer.version.releases">{{ release }}</option>
                 </select>
               </div>
             </div>
 
             <div class="col-xs-3 checkbox pull-right">
               <label>
-                <input id="install" type="checkbox"> <strong>Install</strong>
+                <input id="install" type="checkbox">
+                <strong>{{ activeContainer.install.label }}</strong>
               </label>
             </div>
 
             <div class="clearfix"></div>
           </div>
 
-          <div>
+          <div v-if="activeContainer.parameters">
             <fieldset>
               <legend class="text-muted">Properties</legend>
+              <div class="form-group col-xs-6" v-for="parameter in activeContainer.parameters">
+                <label for="rootPassword">{{ parameter.label }}</label>
+                <input id="rootPassword" class="form-control"
+                       :placeholder="parameter.label" :value="parameter.value">
+              </div>
+
+              <!--
               <div class="form-group col-xs-6">
                 <label for="rootPassword">Root Password</label>
                 <input id="rootPassword" type="password" class="form-control" placeholder="Root Password">
@@ -62,6 +79,7 @@
                 <label for="port">Port</label>
                 <input id="port" type="number" class="form-control" placeholder="Port">
               </div>
+              -->
             </fieldset>
           </div>
       </div>
@@ -76,10 +94,32 @@
         openOthers: false,
       };
     },
+
+
+    computed: {
+      containers() {
+        const containers = this.$store.getters.presets.containers;
+        return Object.values(containers)
+                     .filter(container => container.type === this.$route.params.type);
+      },
+      activeContainer() {
+        const activeContainer = this.$store.getters.flags.active.container[this.$route.params.type];
+        return this.$store.getters.presets.containers[activeContainer];
+      },
+    },
+
     methods: {
       toggleOthers() {
-        console.log(this.openOthers);
+        console.log('openOthers', this.openOthers);
         this.openOthers = !this.openOthers;
+      },
+      setActiveContainer(container) {
+        const payload = {
+          container,
+          type: this.$route.params.type,
+        };
+
+        this.$store.dispatch('SET_ACTIVE_CONTAINER', payload);
       },
     },
   };

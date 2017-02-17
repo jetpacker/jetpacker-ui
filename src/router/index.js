@@ -20,7 +20,7 @@ const router = new Router({
 
     { path: '/configuration/machine', component: Machine },
     { path: '/configuration/kits', component: Kit },
-    { path: '/configuration/containers/:containers', component: Container },
+    { path: '/configuration/containers/:type', component: Container },
 
     { path: '*', redirect: '/' },
   ],

@@ -11,17 +11,17 @@
                    :class="{ 'active': configurations['developmentKits'] }">
         <a>Development Kits</a>
       </router-link>
-      <router-link to="/configuration/containers/dataStores" tag="li"
+      <router-link to="/configuration/containers/DataStore" tag="li"
                    @click.native="show('dataStores')"
                    :class="{ 'active': configurations['dataStores'] }">
         <a>Data Stores</a>
       </router-link>
-      <router-link to="/configuration/containers/messageBrokers" tag="li"
+      <router-link to="/configuration/containers/MessageBroker" tag="li"
                    @click.native="show('messageBrokers')"
                    :class="{ 'active': configurations['messageBrokers'] }">
         <a>Message Brokers</a>
       </router-link>
-      <router-link to="/configuration/containers/searchEngines" tag="li"
+      <router-link to="/configuration/containers/SearchEngine" tag="li"
                    @click.native="show('searchEngines')"
                    :class="{ 'active': configurations['searchEngines'] }">
         <a>Search Engines</a>

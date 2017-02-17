@@ -26,8 +26,8 @@ const mutations = {
   SET_ACTIVE_KIT: (state, kit) => {
     state.active.kit = kit;
   },
-  SET_ACTIVE_CONTAINER: (state, container) => {
-    state.active.container = container;
+  SET_ACTIVE_CONTAINER: (state, payload) => {
+    state.active.container[payload.type] = payload.container;
   },
 };
 
@@ -35,8 +35,8 @@ const actions = {
   SET_ACTIVE_KIT: ({ commit }, kit) => {
     commit('SET_ACTIVE_KIT', kit);
   },
-  SET_ACTIVE_CONTAINER: ({ commit }, container) => {
-    commit('SET_ACTIVE_CONTAINER', container);
+  SET_ACTIVE_CONTAINER: ({ commit }, payload) => {
+    commit('SET_ACTIVE_CONTAINER', payload);
   },
 };
 

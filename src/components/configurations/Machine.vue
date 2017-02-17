@@ -7,8 +7,7 @@
       <p class="text-muted">
         Ubuntu is an open source software platform that runs from the cloud, to the smartphone, to all your things.
       </p>
-      <div>
-        <div class="form-group col-xs-6">
+        <div class="form-group col-md-6 clear-left">
           <label class="control-label" for="box">Box</label>
           <div class="controls">
             <select class="form-control" id="box">
@@ -17,11 +16,13 @@
             </select>
           </div>
         </div>
-        <div class="form-group col-xs-6">
+
+        <div class="form-group col-md-6 clear-right">
           <label for="memory">Memory</label>
           <input id="memory" type="number" class="form-control" placeholder="Memory">
         </div>
-        <div class="form-group col-xs-12">
+
+        <div class="form-group col-md-6 clear-left">
           <label class="control-label" for="timezone">Timezone</label>
           <div class="controls">
             <select class="form-control" id="timezone">
@@ -30,7 +31,6 @@
             </select>
           </div>
         </div>
-      </div>
     </div>
   </div>
 </template>

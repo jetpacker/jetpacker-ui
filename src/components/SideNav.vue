@@ -1,5 +1,5 @@
 <template>
-  <div id="configurations" class="col-md-3">
+  <div class="col-md-3 configurations">
     <ul class="nav nav-pills nav-stacked nav-container">
       <router-link to="/configuration/machine" tag="li"
                    @click.native="show('virtualMachine')"
@@ -96,7 +96,7 @@
     border-radius: 3px;
   }
 
-  #configurations {
+  .configurations {
     padding-right: 0px;
   }
 </style>

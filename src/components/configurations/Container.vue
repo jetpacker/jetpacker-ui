@@ -35,19 +35,20 @@
           <p class="text-muted">
             {{ activeContainer.description }}
           </p>
+
           <div class="form-horizontal">
-            <div class="form-group col-xs-9 required">
-              <label for="version" class="control-label col-sm-2">
+            <div class="form-group col-md-9 clear-left">
+              <label for="version" class="control-label col-md-2">
                 {{ activeContainer.version.label }}
               </label>
-              <div class="col-sm-3">
+              <div class="col-md-4">
                 <select class="form-control" id="version">
                   <option v-for="release in activeContainer.version.releases">{{ release }}</option>
                 </select>
               </div>
             </div>
 
-            <div class="col-xs-3 checkbox pull-right">
+            <div class="col-md-3 checkbox pull-right clear-right">
               <label>
                 <input id="install" type="checkbox">
                 <strong>{{ activeContainer.install.label }}</strong>
@@ -55,35 +56,22 @@
             </div>
 
             <div class="clearfix"></div>
-          </div>
 
-          <div v-if="activeContainer.parameters">
-            <fieldset>
-              <legend class="text-muted">Properties</legend>
-              <div class="form-group col-xs-6" v-for="parameter in activeContainer.parameters">
-                <label for="rootPassword">{{ parameter.label }}</label>
-                <input id="rootPassword" class="form-control"
-                       :placeholder="parameter.label"
-                       :name="parameter.name"
-                       :value="parameters[parameter.name]"
-                       @input="updateParameters">
-              </div>
-
-              <!--
-              <div class="form-group col-xs-6">
-                <label for="rootPassword">Root Password</label>
-                <input id="rootPassword" type="password" class="form-control" placeholder="Root Password">
-              </div>
-              <div class="form-group col-xs-6">
-                <label for="database">Database</label>
-                <input id="database" type="text" class="form-control" placeholder="Database">
-              </div>
-              <div class="form-group col-xs-6">
-                <label for="port">Port</label>
-                <input id="port" type="number" class="form-control" placeholder="Port">
-              </div>
-              -->
-            </fieldset>
+            <template v-if="activeContainer.parameters">
+              <fieldset>
+                <legend class="text-muted">Parameters</legend>
+                <div class="form-group">
+                  <div class="col-md-6 parameters" v-for="parameter in activeContainer.parameters">
+                    <label for="rootPassword">{{ parameter.label }}</label>
+                    <input id="rootPassword" class="form-control"
+                           :placeholder="parameter.label"
+                           :name="parameter.name"
+                           :value="parameters[parameter.name]"
+                           @input="updateParameters">
+                  </div>
+                </div>
+              </fieldset>
+            </template>
           </div>
       </div>
     </div>
@@ -136,6 +124,10 @@
 </script>
 
 <style scoped>
+  .parameters {
+    padding-bottom: 12px;
+  }
+
   .panel.with-nav-tabs .panel-heading{
     padding: 5px 5px 0 5px;
   }

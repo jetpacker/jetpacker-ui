@@ -63,7 +63,10 @@
               <div class="form-group col-xs-6" v-for="parameter in activeContainer.parameters">
                 <label for="rootPassword">{{ parameter.label }}</label>
                 <input id="rootPassword" class="form-control"
-                       :placeholder="parameter.label" :value="parameter.value">
+                       :placeholder="parameter.label"
+                       :name="parameter.name"
+                       :value="parameters[parameter.name]"
+                       @input="updateParameters">
               </div>
 
               <!--
@@ -95,7 +98,6 @@
       };
     },
 
-
     computed: {
       containers() {
         const containers = this.$store.getters.presets.containers;
@@ -105,6 +107,10 @@
       activeContainer() {
         const activeContainer = this.$store.getters.flags.active.container[this.$route.params.type];
         return this.$store.getters.presets.containers[activeContainer];
+      },
+      parameters() {
+        const activeContainer = this.$store.getters.flags.active.container[this.$route.params.type];
+        return this.$store.getters.values.containers[activeContainer].parameters;
       },
     },
 
@@ -120,6 +126,10 @@
         };
 
         this.$store.dispatch('SET_ACTIVE_CONTAINER', payload);
+      },
+      updateParameters(input) {
+        console.log('input name', input.target.name);
+        console.log('input name', input.target.value);
       },
     },
   };

@@ -45,13 +45,18 @@
                   <div class="col-md-6 extensions" v-for="extension in activeKit.extensions">
                     <div class="checkbox col-md-6">
                       <label>
-                        <input type="checkbox">
+                        <input type="checkbox"
+                               :checked="extensions[extension.name].install">
                         <strong>{{ extension.label }}</strong>
                       </label>
                     </div>
                     <div class="col-md-6">
                       <select class="form-control">
-                        <option v-for="release in extension.version.releases">{{ release }}</option>
+                        <option v-for="release in extension.version.releases"
+                                :value="release"
+                                :selected="extensions[extension.name].value == release">
+                          {{ release }}
+                        </option>
                       </select>
                     </div>
                   </div>
@@ -74,6 +79,10 @@
       activeKit() {
         const activeKit = this.$store.getters.flags.active.kit;
         return this.$store.getters.presets.kits[activeKit];
+      },
+      extensions() {
+        const activeKit = this.$store.getters.flags.active.kit;
+        return this.$store.getters.values.kits[activeKit].extensions;
       },
     },
 

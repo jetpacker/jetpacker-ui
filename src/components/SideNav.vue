@@ -1,36 +1,36 @@
 <template>
-  <div class="col-md-3 configurations">
+  <div class="col-md-3 settings">
     <ul class="nav nav-pills nav-stacked nav-container">
-      <router-link to="/configuration/machine" tag="li"
+      <router-link to="/setting/machine" tag="li"
                    @click.native="show('virtualMachine')"
-                   :class="{ 'active': configurations['virtualMachine'] }">
+                   :class="{ 'active': settings['virtualMachine'] }">
         <a>Virtual Machine</a>
       </router-link>
-      <router-link to="/configuration/kits" tag="li"
+      <router-link to="/setting/kits" tag="li"
                    @click.native="show('developmentKits')"
-                   :class="{ 'active': configurations['developmentKits'] }">
+                   :class="{ 'active': settings['developmentKits'] }">
         <a>Development Kits</a>
       </router-link>
-      <router-link to="/configuration/containers/DataStore" tag="li"
+      <router-link to="/setting/containers/DataStore" tag="li"
                    @click.native="show('dataStores')"
-                   :class="{ 'active': configurations['dataStores'] }">
+                   :class="{ 'active': settings['dataStores'] }">
         <a>Data Stores</a>
       </router-link>
-      <router-link to="/configuration/containers/MessageBroker" tag="li"
+      <router-link to="/setting/containers/MessageBroker" tag="li"
                    @click.native="show('messageBrokers')"
-                   :class="{ 'active': configurations['messageBrokers'] }">
+                   :class="{ 'active': settings['messageBrokers'] }">
         <a>Message Brokers</a>
       </router-link>
-      <router-link to="/configuration/containers/SearchEngine" tag="li"
+      <router-link to="/setting/containers/SearchEngine" tag="li"
                    @click.native="show('searchEngines')"
-                   :class="{ 'active': configurations['searchEngines'] }">
+                   :class="{ 'active': settings['searchEngines'] }">
         <a>Search Engines</a>
       </router-link>
     </ul>
     <p />
     <ul class="nav nav-pills nav-stacked nav-container">
-      <li><a href="" @click.prevent="">Build</a></li>
-      <li><a href="" @click.prevent="">Reset</a></li>
+      <li><a href="" @click.prevent="">Build Jetpack</a></li>
+      <li><a href="" @click.prevent="">Reset Settings</a></li>
     </ul>
   </div>
 </template>
@@ -39,7 +39,7 @@
   export default {
     data() {
       return {
-        configurations: {
+        settings: {
           virtualMachine: false,
           developmentKits: false,
           dataStores: false,
@@ -50,12 +50,12 @@
     },
 
     methods: {
-      show(configuration) {
-        Object.keys(this.configurations).forEach((key) => {
-          if (key === configuration) {
-            this.configurations[key] = !this.configurations[key];
+      show(setting) {
+        Object.keys(this.settings).forEach((key) => {
+          if (key === setting) {
+            this.settings[key] = !this.settings[key];
           } else {
-            this.configurations[key] = false;
+            this.settings[key] = false;
           }
         });
       },
@@ -96,7 +96,7 @@
     border-radius: 3px;
   }
 
-  .configurations {
+  .settings {
     padding-right: 0px;
   }
 </style>

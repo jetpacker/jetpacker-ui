@@ -82,23 +82,22 @@
         return this.$store.getters.presets.kits;
       },
       activeKit() {
-        const activeKit = this.$store.getters.flags.active.kit;
-        return this.$store.getters.presets.kits[activeKit];
+        const kit = this.$store.getters.tabs.kit;
+        return this.$store.getters.presets.kits[kit];
       },
       version() {
-        const activeKit = this.$store.getters.flags.active.kit;
-        return this.$store.getters.values.kits[activeKit].version;
+        const kit = this.$store.getters.tabs.kit;
+        return this.$store.getters.values.kits[kit].version;
       },
       install() {
-        const activeKit = this.$store.getters.flags.active.kit;
-        return this.$store.getters.values.kits[activeKit].install;
+        const kit = this.$store.getters.tabs.kit;
+        return this.$store.getters.values.kits[kit].install;
       },
       extensions() {
-        const activeKit = this.$store.getters.flags.active.kit;
-        return this.$store.getters.values.kits[activeKit].extensions;
+        const kit = this.$store.getters.tabs.kit;
+        return this.$store.getters.values.kits[kit].extensions;
       },
     },
-
     methods: {
       setActiveKit(kit) {
         this.$store.dispatch('SET_ACTIVE_KIT', kit);

@@ -2,7 +2,8 @@
   <div class="panel with-nav-tabs panel-default">
     <div class="panel-heading">
       <ul class="nav nav-tabs">
-        <li v-for="container in containers" :class="{ active: container.name == activeContainer.name }">
+        <li v-for="container in containers"
+            :class="{ active: container.name == activeContainer.name }">
           <a data-toggle="tab" href=""
              @click.prevent="setActiveContainer(container.name)">{{ container.label }}</a>
         </li>
@@ -89,7 +90,6 @@
         openOthers: false,
       };
     },
-
     computed: {
       containers() {
         const containers = this.$store.getters.presets.containers;
@@ -97,23 +97,26 @@
                      .filter(container => container.type === this.$route.params.type);
       },
       activeContainer() {
-        const activeContainer = this.$store.getters.flags.active.container[this.$route.params.type];
-        return this.$store.getters.presets.containers[activeContainer];
+        const tabs = this.$store.getters.tabs;
+        const container = tabs.container[this.$route.params.type];
+        return this.$store.getters.presets.containers[container];
       },
       version() {
-        const activeContainer = this.$store.getters.flags.active.container[this.$route.params.type];
-        return this.$store.getters.values.containers[activeContainer].version;
+        const tabs = this.$store.getters.tabs;
+        const container = tabs.container[this.$route.params.type];
+        return this.$store.getters.values.containers[container].version;
       },
       install() {
-        const activeContainer = this.$store.getters.flags.active.container[this.$route.params.type];
-        return this.$store.getters.values.containers[activeContainer].install;
+        const tabs = this.$store.getters.tabs;
+        const container = tabs.container[this.$route.params.type];
+        return this.$store.getters.values.containers[container].install;
       },
       parameters() {
-        const activeContainer = this.$store.getters.flags.active.container[this.$route.params.type];
-        return this.$store.getters.values.containers[activeContainer].parameters;
+        const tabs = this.$store.getters.tabs;
+        const container = tabs.container[this.$route.params.type];
+        return this.$store.getters.values.containers[container].parameters;
       },
     },
-
     methods: {
       toggleOthers() {
         console.log('openOthers', this.openOthers);

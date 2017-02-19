@@ -18,9 +18,9 @@ const router = new Router({
     { path: '/about', component: About },
     { path: '/help', component: Help },
 
-    { path: '/setting/machine', component: Machine },
-    { path: '/setting/kits', component: Kit },
-    { path: '/setting/containers/:type', component: Container },
+    { path: '/settings/machine', component: Machine },
+    { path: '/settings/kits', component: Kit },
+    { path: '/settings/containers/:type', component: Container },
 
     { path: '*', redirect: '/' },
   ],

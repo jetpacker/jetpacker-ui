@@ -44,7 +44,9 @@
               </label>
               <div class="col-md-4">
                 <select class="form-control" id="version"
-                        :disabled="!install">
+                        name="version"
+                        :disabled="!install"
+                        @input="updateVersion">
                   <option v-for="release in activeContainer.version.releases"
                           :value="release"
                           :selected="version == release">{{ release }}</option>
@@ -55,7 +57,10 @@
             <div class="col-md-3 checkbox pull-right clear-right">
               <label>
                 <input id="install" type="checkbox"
-                       :checked="install">
+                       name="install"
+                       :value="true"
+                       :checked="install"
+                       @change="updateInstall">
                 <strong>{{ activeContainer.install.label }}</strong>
               </label>
             </div>
@@ -72,6 +77,7 @@
                            :placeholder="parameter.label"
                            :name="parameter.name"
                            :value="parameters[parameter.name]"
+                           :disabled="!install"
                            @input="updateParameters">
                   </div>
                 </div>
@@ -130,9 +136,20 @@
 
         this.$store.dispatch('SET_ACTIVE_CONTAINER', payload);
       },
+      updateVersion(input) {
+        // TODO: Add binding logic
+        console.log('name', input.target.name);
+        console.log('version', input.target.value);
+      },
+      updateInstall(input) {
+        // TODO: Add binding logic
+        console.log('name', input.target.name);
+        console.log('install', input.target.checked);
+      },
       updateParameters(input) {
+        // TODO: Add binding logic
         console.log('input name', input.target.name);
-        console.log('input name', input.target.value);
+        console.log('input value', input.target.value);
       },
     },
   };

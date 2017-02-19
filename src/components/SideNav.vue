@@ -1,37 +1,16 @@
 <template>
   <div class="col-md-3 settings">
-    <ul class="nav nav-pills nav-stacked nav-container">
-      <router-link to="/setting/machine" tag="li"
-                   @click.native="show('virtualMachine')"
-                   :class="{ 'active': settings['virtualMachine'] }">
-        <a>Virtual Machine</a>
-      </router-link>
-      <router-link to="/setting/kits" tag="li"
-                   @click.native="show('developmentKits')"
-                   :class="{ 'active': settings['developmentKits'] }">
-        <a>Development Kits</a>
-      </router-link>
-      <router-link to="/setting/containers/DataStore" tag="li"
-                   @click.native="show('dataStores')"
-                   :class="{ 'active': settings['dataStores'] }">
-        <a>Data Stores</a>
-      </router-link>
-      <router-link to="/setting/containers/MessageBroker" tag="li"
-                   @click.native="show('messageBrokers')"
-                   :class="{ 'active': settings['messageBrokers'] }">
-        <a>Message Brokers</a>
-      </router-link>
-      <router-link to="/setting/containers/SearchEngine" tag="li"
-                   @click.native="show('searchEngines')"
-                   :class="{ 'active': settings['searchEngines'] }">
-        <a>Search Engines</a>
-      </router-link>
-    </ul>
-    <p />
-    <ul class="nav nav-pills nav-stacked nav-container">
-      <li><a href="" @click.prevent="">Build Jetpack</a></li>
-      <li><a href="" @click.prevent="">Reset Settings</a></li>
-    </ul>
+    <template v-for="(menu, index) in menus">
+      <ul class="nav nav-pills nav-stacked nav-container">
+        <router-link v-for="(value, key) in menu"
+                     :to="value.url" tag="li"
+                     @click.native="toggle(key)"
+                     :class="{ 'active': value.active }">
+          <a>{{ value.label }}</a>
+        </router-link>
+      </ul>
+      <p v-if="index < (menus.length - 1)"></p>
+    </template>
   </div>
 </template>
 
@@ -39,33 +18,64 @@
   export default {
     data() {
       return {
-        settings: {
-          virtualMachine: false,
-          developmentKits: false,
-          dataStores: false,
-          messageBrokers: false,
-          searchEngines: false,
-        },
+        menus: [
+          {
+            virtualMachine: {
+              active: false,
+              label: 'Virtual Machine',
+              url: '/settings/machine',
+            },
+            developmentKits: {
+              active: false,
+              label: 'Development Kits',
+              url: '/settings/kits',
+            },
+            dataStores: {
+              active: false,
+              label: 'Data Stores',
+              url: '/settings/containers/DataStore',
+            },
+            messageBrokers: {
+              active: false,
+              label: 'Message Brokers',
+              url: '/settings/containers/MessageBroker',
+            },
+            searchEngines: {
+              active: false,
+              label: 'Search Engines',
+              url: '/settings/containers/SearchEngine',
+            },
+          },
+          {
+            build: {
+              active: false,
+              label: 'Build Jetpack',
+              url: '/tools/build',
+            },
+            reset: {
+              active: false,
+              label: 'Reset Settings',
+              url: '/tools/reset',
+            },
+          },
+        ],
       };
     },
 
     methods: {
-      show(setting) {
-        Object.keys(this.settings).forEach((key) => {
-          if (key === setting) {
-            this.settings[key] = !this.settings[key];
-          } else {
-            this.settings[key] = false;
-          }
+      resetToggles() {
+        this.menus.forEach((menu) => {
+          Object.keys(menu).forEach((key) => {
+            menu[key].active = false;
+          });
         });
       },
+      toggle(key) {
+        this.resetToggles();
 
-      showPanel(panel) {
-        Object.keys(this.presets).forEach((key) => {
-          if (key === panel) {
-            this.presets[key] = !this.presets[key];
-          } else {
-            this.presets[key] = false;
+        this.menus.forEach((menu) => {
+          if (key in menu) {
+            menu[key].active = !menu[key].active;
           }
         });
       },

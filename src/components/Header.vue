@@ -60,8 +60,4 @@
     margin-top: 10px;
     margin-right: 4em;
   }
-
-  .nav.navbar-nav.navbar-right {
-    margin-right: 150px;
-  }
 </style>

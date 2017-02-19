@@ -2,8 +2,10 @@
   <div class="panel with-nav-tabs panel-default">
     <div class="panel-heading">
       <ul class="nav nav-tabs">
-        <li v-for="kit in kits" :class="{ active: kit.name == activeKit.name }">
-          <a data-toggle="tab" href="" @click.prevent="setActiveKit(kit.name)">{{ kit.label }}</a>
+        <li v-for="kit in kits"
+            :class="{ active: kit.name == activeKit.name }">
+          <a data-toggle="tab" href=""
+             @click.prevent="setActiveKit(kit.name)">{{ kit.label }}</a>
         </li>
       </ul>
     </div>
@@ -23,7 +25,9 @@
                 </label>
                 <div class="col-md-4">
                   <select class="form-control" id="version"
-                          :disabled="!install">
+                          name="version"
+                          :disabled="!install"
+                          @input="updateVersion">
                     <option v-for="release in activeKit.version.releases"
                             :value="release"
                             :selected="version == release">{{ release }}</option>
@@ -35,7 +39,10 @@
             <div class="checkbox col-md-3 pull-right clear-right">
               <label>
                 <input id="install" type="checkbox"
-                       :checked="install">
+                       name="install"
+                       :value="true"
+                       :checked="install"
+                       @change="updateInstall">
                 <strong>{{ activeKit.install.label }}</strong>
               </label>
             </div>
@@ -50,13 +57,19 @@
                     <div class="checkbox col-md-6">
                       <label>
                         <input type="checkbox"
-                               :checked="extensions[extension.name].install">
+                               :name="extension.name + '.install'"
+                               :value="true"
+                               :disabled="!install"
+                               :checked="extensions[extension.name].install"
+                               @change="updateExtensions">
                         <strong>{{ extension.label }}</strong>
                       </label>
                     </div>
                     <div class="col-md-6">
                       <select class="form-control"
-                              :disabled="!extensions[extension.name].install">
+                              :name="extension.name + '.version' "
+                              :disabled="!install || !extensions[extension.name].install"
+                              @input="updateExtensions">
                         <option v-for="release in extension.version.releases"
                                 :value="release"
                                 :selected="extensions[extension.name].version == release">
@@ -101,6 +114,29 @@
     methods: {
       setActiveKit(kit) {
         this.$store.dispatch('SET_ACTIVE_KIT', kit);
+      },
+      updateVersion(input) {
+        // TODO: Add binding logic
+        console.log('name', input.target.name);
+        console.log('version', input.target.value);
+      },
+      updateInstall(input) {
+        // TODO: Add binding logic
+        console.log('name', input.target.name);
+        console.log('install', input.target.checked);
+      },
+      updateExtensions(input) {
+        // TODO: Add binding logic
+        const [extension, attribute] = input.target.name.split('.');
+
+        console.log('extension', extension);
+        console.log('attribute', attribute);
+
+        if (attribute === 'install') {
+          console.log(attribute, input.target.checked);
+        } else {
+          console.log(attribute, input.target.value);
+        }
       },
     },
   };

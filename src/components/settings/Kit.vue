@@ -27,7 +27,7 @@
                   <select class="form-control" id="version"
                           name="version"
                           :disabled="!install"
-                          @input="updateVersion">
+                          @input="update">
                     <option v-for="release in activeKit.version.releases"
                             :value="release"
                             :selected="version == release">{{ release }}</option>
@@ -42,7 +42,7 @@
                        name="install"
                        :value="true"
                        :checked="install"
-                       @change="updateInstall">
+                       @change="update">
                 <strong>{{ activeKit.install.label }}</strong>
               </label>
             </div>
@@ -61,7 +61,7 @@
                                :value="true"
                                :disabled="!install"
                                :checked="extensions[extension.name].install"
-                               @change="updateExtensions">
+                               @change="updateExtension">
                         <strong>{{ extension.label }}</strong>
                       </label>
                     </div>
@@ -69,7 +69,7 @@
                       <select class="form-control"
                               :name="extension.name + '.version' "
                               :disabled="!install || !extensions[extension.name].install"
-                              @input="updateExtensions">
+                              @input="updateExtension">
                         <option v-for="release in extension.version.releases"
                                 :value="release"
                                 :selected="extensions[extension.name].version == release">
@@ -115,28 +115,40 @@
       setActiveKit(kit) {
         this.$store.dispatch('SET_ACTIVE_KIT', kit);
       },
-      updateVersion(input) {
+      update(input) {
         // TODO: Add binding logic
-        console.log('name', input.target.name);
-        console.log('version', input.target.value);
-      },
-      updateInstall(input) {
-        // TODO: Add binding logic
-        console.log('name', input.target.name);
-        console.log('install', input.target.checked);
-      },
-      updateExtensions(input) {
-        // TODO: Add binding logic
-        const [extension, attribute] = input.target.name.split('.');
+        const payload = {
+          name: this.activeKit.name,
+          attribute: input.target.name,
+        };
 
-        console.log('extension', extension);
-        console.log('attribute', attribute);
+        if (payload.attribute === 'install') {
+          payload.value = input.target.checked;
+        } else {
+          payload.value = input.target.value;
+        }
+
+        this.$store.dispatch('UPDATE_KIT', payload);
+      },
+      updateExtension(input) {
+        // TODO: Add binding logic
+        const [name, attribute] = input.target.name.split('.');
+
+        const payload = {
+          name: this.activeKit.name,
+          extension: {
+            name,
+            attribute,
+          },
+        };
 
         if (attribute === 'install') {
-          console.log(attribute, input.target.checked);
+          payload.extension.value = input.target.checked;
         } else {
-          console.log(attribute, input.target.value);
+          payload.extension.value = input.target.value;
         }
+
+        this.$store.dispatch('UPDATE_KIT_EXTENSION', payload);
       },
     },
   };

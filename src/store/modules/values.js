@@ -73,6 +73,7 @@ const actions = {
     commit('UPDATE_KIT_EXTENSION', payload);
   },
   UPDATE_CONTAINER: ({ commit }, payload) => {
+    console.log('hello');
     commit('UPDATE_CONTAINER', payload);
   },
   UPDATE_CONTAINER_PARAMETER: ({ commit }, payload) => {

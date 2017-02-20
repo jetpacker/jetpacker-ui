@@ -46,7 +46,7 @@
                 <select class="form-control" id="version"
                         name="version"
                         :disabled="!install"
-                        @input="updateVersion">
+                        @input="update">
                   <option v-for="release in activeContainer.version.releases"
                           :value="release"
                           :selected="version == release">{{ release }}</option>
@@ -60,7 +60,7 @@
                        name="install"
                        :value="true"
                        :checked="install"
-                       @change="updateInstall">
+                       @change="update">
                 <strong>{{ activeContainer.install.label }}</strong>
               </label>
             </div>
@@ -78,7 +78,7 @@
                            :name="parameter.name"
                            :value="parameters[parameter.name]"
                            :disabled="!install"
-                           @input="updateParameters">
+                           @input="updateParameter">
                   </div>
                 </div>
               </fieldset>
@@ -136,20 +136,32 @@
 
         this.$store.dispatch('SET_ACTIVE_CONTAINER', payload);
       },
-      updateVersion(input) {
+      update(input) {
         // TODO: Add binding logic
-        console.log('name', input.target.name);
-        console.log('version', input.target.value);
+        const payload = {
+          name: this.activeContainer.name,
+          attribute: input.target.name,
+        };
+
+        if (payload.attribute === 'install') {
+          payload.value = input.target.checked;
+        } else {
+          payload.value = input.target.value;
+        }
+
+        this.$store.dispatch('UPDATE_CONTAINER', payload);
       },
-      updateInstall(input) {
+      updateParameter(input) {
         // TODO: Add binding logic
-        console.log('name', input.target.name);
-        console.log('install', input.target.checked);
-      },
-      updateParameters(input) {
-        // TODO: Add binding logic
-        console.log('input name', input.target.name);
-        console.log('input value', input.target.value);
+        const payload = {
+          name: this.activeContainer.name,
+          parameter: {
+            name: input.target.name,
+            value: input.target.value,
+          },
+        };
+
+        this.$store.dispatch('UPDATE_CONTAINER_PARAMETER', payload);
       },
     },
   };

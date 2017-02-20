@@ -44,6 +44,40 @@ const mutations = {
       }
     });
   },
+  UPDATE_KIT: (state, payload) => {
+    console.log('payload', payload);
+    state.kits[payload.name][payload.attribute] = payload.value;
+    console.log('kits@values', state.kits);
+  },
+  UPDATE_KIT_EXTENSION: (state, payload) => {
+    const kit = state.kits[payload.name];
+    const extension = payload.extension;
+    kit.extensions[extension.name][extension.attribute] = extension.value;
+  },
+  UPDATE_CONTAINER: (state, payload) => {
+    console.log('payload', payload);
+    state.containers[payload.name][payload.attribute] = payload.value;
+  },
+  UPDATE_CONTAINER_PARAMETER: (state, payload) => {
+    const container = state.containers[payload.name];
+    const parameter = payload.parameter;
+    container.parameters[parameter.name] = parameter.value;
+  },
+};
+
+const actions = {
+  UPDATE_KIT: ({ commit }, payload) => {
+    commit('UPDATE_KIT', payload);
+  },
+  UPDATE_KIT_EXTENSION: ({ commit }, payload) => {
+    commit('UPDATE_KIT_EXTENSION', payload);
+  },
+  UPDATE_CONTAINER: ({ commit }, payload) => {
+    commit('UPDATE_CONTAINER', payload);
+  },
+  UPDATE_CONTAINER_PARAMETER: ({ commit }, payload) => {
+    commit('UPDATE_CONTAINER_PARAMETER', payload);
+  },
 };
 
 const getters = {
@@ -55,5 +89,6 @@ const getters = {
 export default {
   state,
   mutations,
+  actions,
   getters,
 };

@@ -1,57 +1,43 @@
 <template>
   <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">
-        Jetpack Preview
-        <div id="buttonBuildGroup" class="btn-group pull-right" role="group">
-          <button type="button" class="btn btn-default">
-            <i class="fa fa-undo fa-lg"></i>
-            Reset Settings
-          </button>
-          <button type="button" class="btn btn-default">
-            Build Jetpack
-            <i class="fa fa-rocket fa-lg"></i>
-          </button>
-        </div>
-      </h3>
-    </div>
     <div class="panel-body">
-      <div class="panel panel-default">
-        <div class="panel-heading accordion-header">
-          <h1 class="panel-title">
-            <a>
-              <i class="fa fa-desktop fa-lg"></i>
-              Virtual Machine
-            </a>
-          </h1>
-        </div>
-        <div class="panel-collapse collapse">
-          ...
-        </div>
-        <div class="panel-heading accordion-header">
-          <h1 class="panel-title">
-            <a>
-              <i class="fa fa-gears fa-lg"></i>
-              Development Kits
-            </a>
-          </h1>
-        </div>
-        <div class="panel-collapse collapse">
-          ...
-        </div>
+      <div class="col-md-12 jumbotron">
+        <h2 class="buildCaption">You are almost there!</h2>
+        <p>
+          Click
+          <span class="label label-success">
+            <i class="fa fa-cloud-download fa-lg"></i>
+            Build Jetpack</span>
+          to download your Jetpack or
+          <span class="label label-danger">
+            <i class="fa fa-undo fa-lg"></i>
+            Reset Settings</span>
+          to revert to default settings.
+        </p>
       </div>
-
-
+      <div class="col-md-6">
+        <button type="button" class="btn btn-danger btn-lg btn-block">
+          <i class="fa fa-undo fa-lg"></i>
+          Reset Settings
+        </button>
+      </div>
+      <div class="col-md-6">
+        <button type="button" class="btn btn-success btn-lg btn-block">
+          <i class="fa fa-cloud-download fa-lg"></i>
+          Build Jetpack
+        </button>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-  .accordion-header {
-    background-color: #ffffff;
+  .jumbotron {
+    background-color: inherit;
+    padding: 0 0 0 0;
+    margin-bottom: 5px;
   }
-  #buttonBuildGroup {
-    margin-top: -8px;
+  .buildCaption {
+    margin-top: 0px;
   }
 </style>

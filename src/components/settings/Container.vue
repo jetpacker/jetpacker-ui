@@ -69,7 +69,10 @@
 
             <template v-if="activeContainer.parameters">
               <fieldset>
-                <legend class="text-muted">Parameters</legend>
+                <legend class="text-muted">
+                  <i class="fa fa-keyboard-o fa-lg"></i>
+                  Parameters
+                </legend>
                 <div class="form-group">
                   <div class="col-md-6 parameters" v-for="parameter in activeContainer.parameters">
                     <label for="rootPassword">{{ parameter.label }}</label>

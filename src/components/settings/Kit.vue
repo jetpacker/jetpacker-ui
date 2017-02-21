@@ -26,11 +26,11 @@
                 <div class="col-md-4">
                   <select class="form-control" id="version"
                           name="version"
-                          :disabled="!values.install"
+                          :disabled="!install"
                           @input="update">
                     <option v-for="release in activeKit.version.releases"
                             :value="release"
-                            :selected="values.version == release">{{ release }}</option>
+                            :selected="version == release">{{ release }}</option>
                   </select>
                 </div>
               </template>
@@ -41,7 +41,7 @@
                 <input id="install" type="checkbox"
                        name="install"
                        :value="true"
-                       :checked="values.install"
+                       :checked="install"
                        @change="update">
                 <strong>{{ activeKit.install.label }}</strong>
               </label>
@@ -59,8 +59,8 @@
                         <input type="checkbox"
                                :name="extension.name + '.install'"
                                :value="true"
-                               :disabled="!values.install"
-                               :checked="values.extensions[extension.name].install"
+                               :disabled="!install"
+                               :checked="extensions[extension.name].install"
                                @change="updateExtension">
                         <strong>{{ extension.label }}</strong>
                       </label>
@@ -68,11 +68,11 @@
                     <div class="col-md-6">
                       <select class="form-control"
                               :name="extension.name + '.version' "
-                              :disabled="!values.install || !values.extensions[extension.name].install"
+                              :disabled="!install || !extensions[extension.name].install"
                               @input="updateExtension">
                         <option v-for="release in extension.version.releases"
                                 :value="release"
-                                :selected="values.extensions[extension.name].version == release">
+                                :selected="extensions[extension.name].version == release">
                           {{ release }}
                         </option>
                       </select>
@@ -102,6 +102,18 @@
         const kit = this.$store.getters.tabs.kit;
         return this.$store.getters.values.kits[kit];
       },
+      version() {
+        const kit = this.$store.getters.tabs.kit;
+        return this.$store.getters.values.kits[kit].version;
+      },
+      install() {
+        const kit = this.$store.getters.tabs.kit;
+        return this.$store.getters.values.kits[kit].install;
+      },
+      extensions() {
+        const kit = this.$store.getters.tabs.kit;
+        return this.$store.getters.values.kits[kit].extensions;
+      },
     },
     methods: {
       setActiveKit(kit) {
@@ -121,7 +133,6 @@
         }
 
         this.$store.dispatch('UPDATE_KIT', payload);
-        this.$forceUpdate();
       },
       updateExtension(input) {
         // TODO: Add binding logic
@@ -142,7 +153,6 @@
         }
 
         this.$store.dispatch('UPDATE_KIT_EXTENSION', payload);
-        this.$forceUpdate();
       },
     },
   };

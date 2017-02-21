@@ -45,11 +45,11 @@
               <div class="col-md-4">
                 <select class="form-control" id="version"
                         name="version"
-                        :disabled="!values.install"
+                        :disabled="!install"
                         @input="update">
                   <option v-for="release in activeContainer.version.releases"
                           :value="release"
-                          :selected="values.version == release">{{ release }}</option>
+                          :selected="version == release">{{ release }}</option>
                 </select>
               </div>
             </div>
@@ -59,7 +59,7 @@
                 <input id="install" type="checkbox"
                        name="install"
                        :value="true"
-                       :checked="values.install"
+                       :checked="install"
                        @change="update">
                 <strong>{{ activeContainer.install.label }}</strong>
               </label>
@@ -76,8 +76,8 @@
                     <input id="rootPassword" class="form-control"
                            :placeholder="parameter.label"
                            :name="parameter.name"
-                           :value="values.parameters[parameter.name]"
-                           :disabled="!values.install"
+                           :value="parameters[parameter.name]"
+                           :disabled="!install"
                            @input="updateParameter">
                   </div>
                 </div>
@@ -107,10 +107,20 @@
         const container = tabs.container[this.$route.params.type];
         return this.$store.getters.presets.containers[container];
       },
-      values() {
+      version() {
         const tabs = this.$store.getters.tabs;
         const container = tabs.container[this.$route.params.type];
-        return this.$store.getters.values.containers[container];
+        return this.$store.getters.values.containers[container].version;
+      },
+      install() {
+        const tabs = this.$store.getters.tabs;
+        const container = tabs.container[this.$route.params.type];
+        return this.$store.getters.values.containers[container].install;
+      },
+      parameters() {
+        const tabs = this.$store.getters.tabs;
+        const container = tabs.container[this.$route.params.type];
+        return this.$store.getters.values.containers[container].parameters;
       },
     },
     methods: {
@@ -140,7 +150,6 @@
         }
 
         this.$store.dispatch('UPDATE_CONTAINER', payload);
-        this.$forceUpdate();
       },
       updateParameter(input) {
         // TODO: Add binding logic

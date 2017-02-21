@@ -23,15 +23,10 @@
       </nav>
 
       <div class="col-md-9" id="headerCaption">
-        <h3>Kickstart your Java project with a jetpack!</h3>
+        <h3>Kickstart your Java project with a Jetpack!</h3>
         <p id="headerSubCaption">
           Jetpacker helps generate portable development environments for Java developers.
         </p>
-      </div>
-      <div class="col-md-3">
-          <button id="buildJetpack" class="btn btn-primary btn-really-large pull-right">
-            Build Your Jetpack
-          </button>
       </div>
     </div>
   </div>
@@ -54,10 +49,5 @@
 
   #headerSubCaption {
     color: grey;
-  }
-
-  #buildJetpack {
-    margin-top: 10px;
-    margin-right: 4em;
   }
 </style>

@@ -49,6 +49,9 @@ const mutations = {
       }
     });
   },
+  UPDATE_MACHINE: (state, payload) => {
+    state.machine[payload.attribute] = payload.value;
+  },
   UPDATE_KIT: (state, payload) => {
     state.kits[payload.name][payload.attribute] = payload.value;
   },
@@ -68,6 +71,9 @@ const mutations = {
 };
 
 const actions = {
+  UPDATE_MACHINE: ({ commit }, payload) => {
+    commit('UPDATE_MACHINE', payload);
+  },
   UPDATE_KIT: ({ commit }, payload) => {
     commit('UPDATE_KIT', payload);
   },

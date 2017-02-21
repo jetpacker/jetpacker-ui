@@ -52,7 +52,7 @@
             <template v-if="activeKit.extensions">
               <fieldset>
                 <legend class="text-muted">
-                  <i class="fa fa-plug fa-lg"></i>
+                  <i class="fa fa-puzzle-piece fa-lg"></i>
                   Extensions
                 </legend>
                 <div class="form-group">

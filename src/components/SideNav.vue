@@ -6,7 +6,11 @@
                      :to="value.url" tag="li"
                      @click.native="setActiveMenu(key)"
                      :class="{ 'active': value.active }">
-          <a>{{ value.label }}</a>
+          <a>
+            <i :class="[ 'fa', value.icon, 'fa-lg' ]"></i>
+            {{ value.label }}
+          </a>
+
         </router-link>
       </ul>
       <p v-if="index < (menus.length - 1)"></p>

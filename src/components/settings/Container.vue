@@ -137,7 +137,6 @@
         this.$store.dispatch('SET_ACTIVE_CONTAINER', payload);
       },
       update(input) {
-        // TODO: Add binding logic
         const payload = {
           name: this.activeContainer.name,
           attribute: input.target.name,

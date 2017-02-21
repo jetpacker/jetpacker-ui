@@ -135,7 +135,6 @@
         this.$store.dispatch('UPDATE_KIT', payload);
       },
       updateExtension(input) {
-        // TODO: Add binding logic
         const [name, attribute] = input.target.name.split('.');
 
         const payload = {

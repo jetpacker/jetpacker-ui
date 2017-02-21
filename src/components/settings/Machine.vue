@@ -70,7 +70,6 @@
           attribute: input.target.name,
           value: input.target.value,
         };
-
         this.$store.dispatch('UPDATE_MACHINE', payload);
       },
     },

@@ -12,7 +12,7 @@ const state = {
           active: false,
           label: 'Development Kits',
           url: '/settings/kits',
-          icon: 'fa-cogs',
+          icon: 'fa-code',
         },
         dataStores: {
           active: false,
@@ -30,19 +30,15 @@ const state = {
           active: false,
           label: 'Search Engines',
           url: '/settings/containers/SearchEngine',
-          icon: 'fa-globe',
+          icon: 'fa-search',
         },
       },
       {
         build: {
           active: false,
-          label: 'Build Jetpack',
+          label: 'Jetpack Builder',
           url: '/tools/build',
-        },
-        reset: {
-          active: false,
-          label: 'Reset Settings',
-          url: '/tools/reset',
+          icon: 'fa-gears',
         },
       },
     ],

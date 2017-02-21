@@ -1,7 +1,10 @@
 <template>
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title">{{ presets.label }}</h3>
+      <h3 class="panel-title">
+        <i class="fa fa-linux fa-lg"></i>
+        {{ presets.label }}
+      </h3>
     </div>
     <div class="panel-body">
       <p class="text-muted">

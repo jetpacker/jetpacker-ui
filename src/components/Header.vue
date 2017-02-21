@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div id="headerBox" class="col-md-10 col-md-offset-1">
-      <nav id="menubar" class="navbar navbar-default navbar-static-top">
+      <nav id="menuBar" class="navbar navbar-default navbar-static-top">
         <div class="container">
           <div class="navbar-header">
             <a class="navbar-brand" href="/">jetpacker.io</a>
@@ -38,7 +38,7 @@
 </template>
 
 <style scoped>
-  #menubar {
+  #menuBar {
     margin-left: 0px;
     margin-right: 0px;;
   }

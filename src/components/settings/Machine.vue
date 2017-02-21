@@ -12,10 +12,14 @@
             {{ presets.box.label }}
           </label>
           <div class="controls">
-            <select class="form-control" id="box">
+            <select class="form-control" id="box"
+                    :name="presets.box.name"
+                    @input="update">
               <option v-for="(value, key) in presets.box.releases"
                       :value="key"
-                      :selected="values.box == key">{{ value }}</option>
+                      :selected="values.box == key">
+                {{ value }}
+              </option>
             </select>
           </div>
         </div>
@@ -25,7 +29,9 @@
             {{ presets.memory.label }}
           </label>
           <input id="memory" type="number" class="form-control" placeholder="Memory"
-                 :value="values.memory">
+                 :name="presets.memory.name"
+                 :value="values.memory"
+                 @input="update">
         </div>
 
         <div class="form-group col-md-6 clear-left">
@@ -33,10 +39,14 @@
             {{ presets.timezone.label }}
           </label>
           <div class="controls">
-            <select class="form-control" id="timezone">
+            <select class="form-control" id="timezone"
+                    :name="presets.timezone.name"
+                    @input="update">
               <option v-for="id in presets.timezone.ids"
                       :value="id"
-                      :selected="values.timezone == id">{{ id }}</option>
+                      :selected="values.timezone == id">
+                {{ id }}
+              </option>
             </select>
           </div>
         </div>
@@ -52,6 +62,16 @@
       },
       values() {
         return this.$store.getters.values.machine;
+      },
+    },
+    methods: {
+      update(input) {
+        const payload = {
+          attribute: input.target.name,
+          value: input.target.value,
+        };
+
+        this.$store.dispatch('UPDATE_MACHINE', payload);
       },
     },
   };

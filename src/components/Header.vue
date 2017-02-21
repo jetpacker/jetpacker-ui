@@ -23,7 +23,10 @@
       </nav>
 
       <div class="col-md-9" id="headerCaption">
-        <h3>Kickstart your Java project with a Jetpack!</h3>
+        <h3>
+          <i class="fa fa-rocket fa-lg"></i>
+          Kickstart your Java project with a Jetpack!
+        </h3>
         <p id="headerSubCaption">
           Jetpacker helps generate portable development environments for Java developers.
         </p>
@@ -39,12 +42,12 @@
   }
 
   #headerBox {
-    padding: 0px 0px 0px 0px;
+    padding: 0 0 0 0;
   }
 
   #headerCaption {
-    margin-top: -20px;
-    margin-bottom: 20px;
+    margin-top: -15px;
+    margin-bottom: 25px;
   }
 
   #headerSubCaption {

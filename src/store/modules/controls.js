@@ -6,26 +6,31 @@ const state = {
           active: false,
           label: 'Virtual Machine',
           url: '/settings/machine',
+          icon: 'fa-desktop',
         },
         developmentKits: {
           active: false,
           label: 'Development Kits',
           url: '/settings/kits',
+          icon: 'fa-cogs',
         },
         dataStores: {
           active: false,
           label: 'Data Stores',
           url: '/settings/containers/DataStore',
+          icon: 'fa-database',
         },
         messageBrokers: {
           active: false,
           label: 'Message Brokers',
           url: '/settings/containers/MessageBroker',
+          icon: 'fa-exchange',
         },
         searchEngines: {
           active: false,
           label: 'Search Engines',
           url: '/settings/containers/SearchEngine',
+          icon: 'fa-globe',
         },
       },
       {

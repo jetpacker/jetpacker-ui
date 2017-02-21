@@ -51,7 +51,10 @@
 
             <template v-if="activeKit.extensions">
               <fieldset>
-                <legend class="text-muted">Extensions</legend>
+                <legend class="text-muted">
+                  <i class="fa fa-plug fa-lg"></i>
+                  Extensions
+                </legend>
                 <div class="form-group">
                   <div class="col-md-6 extensions" v-for="extension in activeKit.extensions">
                     <div class="checkbox col-md-6">

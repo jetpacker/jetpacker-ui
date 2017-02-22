@@ -7,8 +7,7 @@ import Help from '../components/Help';
 import Machine from '../components/settings/Machine';
 import Kit from '../components/settings/Kit';
 import Container from '../components/settings/Container';
-import Build from '../components/tools/Build';
-import Reset from '../components/tools/Reset';
+import Builder from '../components/tools/Builder';
 
 Vue.use(Router);
 
@@ -24,8 +23,7 @@ const router = new Router({
     { path: '/settings/kits', component: Kit },
     { path: '/settings/containers/:type', component: Container },
 
-    { path: '/tools/build', component: Build },
-    { path: '/tools/reset', component: Reset },
+    { path: '/tools/builder', component: Builder },
 
     { path: '*', redirect: '/' },
   ],

@@ -10,28 +10,12 @@
     </div>
     <div class="list-group-item-text summary-item-content">
       <form class="form-horizontal">
-        <p class="form-group">
+        <p class="form-group" v-for="(value, label) in summary">
           <span class="col-md-3 form-static-control">
-            {{ virtualMachine.box.label }}:
+            {{ label }}:
           </span>
           <span class="form-static-control">
-            {{ virtualMachine.box.value }}
-          </span>
-        </p>
-        <p class="form-group">
-          <span class="col-md-3 form-static-control">
-            {{ virtualMachine.memory.label }}:
-          </span>
-          <span class="form-static-control">
-            {{ virtualMachine.memory.value }}
-          </span>
-        </p>
-        <p class="form-group">
-          <span class="col-md-3 form-static-control">
-            {{ virtualMachine.timezone.label }}:
-          </span>
-          <span class="form-static-control">
-            {{ virtualMachine.timezone.value }}
+            {{ value }}
           </span>
         </p>
       </form>
@@ -42,26 +26,17 @@
 <script>
   export default {
     computed: {
-      virtualMachine() {
+      summary() {
         const presets = this.$store.getters.presets.machine;
         const values = this.$store.getters.values.machine;
 
-        const virtualMachine = {
-          box: {
-            label: presets.box.label,
-            value: presets.box.releases[values.box],
-          },
-          memory: {
-            label: presets.memory.label,
-            value: values.memory,
-          },
-          timezone: {
-            label: presets.timezone.label,
-            value: values.timezone,
-          },
+        const summary = {
+          [presets.box.label]: presets.box.releases[values.box],
+          [presets.memory.label]: values.memory,
+          [presets.timezone.label]: values.timezone,
         };
 
-        return virtualMachine;
+        return summary;
       },
     },
   };

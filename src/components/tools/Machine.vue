@@ -9,7 +9,7 @@
       </h4>
     </div>
     <div class="list-group-item-text summary-item-content">
-      <form class="form-horizontal">
+      <div class="form-horizontal">
         <p class="form-group" v-for="(value, label) in summary">
           <span class="col-md-3 form-static-control">
             {{ label }}:
@@ -18,7 +18,7 @@
             {{ value }}
           </span>
         </p>
-      </form>
+      </div>
     </div>
   </div>
 </template>

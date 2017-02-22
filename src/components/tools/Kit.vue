@@ -9,9 +9,25 @@
       </h4>
     </div>
     <div class="list-group-item-text summary-item-content">
-      <form class="form-horizontal">
-        {{ summary }}
-      </form>
+      <table class="table table-bordered" v-if="Object.keys(summary).length">
+        <thead>
+          <tr>
+            <th class="col-md-3">Name</th>
+            <th>Extensions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(extensions, kit) in summary">
+            <td>{{ kit }}</td>
+            <td>
+              {{ extensions }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p v-else>
+        None.
+      </p>
     </div>
   </div>
 </template>
@@ -20,25 +36,38 @@
   export default {
     computed: {
       summary() {
+        const summary = {};
         const presets = this.$store.getters.presets.kits;
         const values = this.$store.getters.values.kits;
-        const installs = Object.keys(this.$store.getters.values.kits)
-                               .filter(key => values[key].install === true);
 
-        const summary = {};
+        const chosenKits = Object.keys(values)
+                                 .filter(key => values[key].install === true);
 
-        installs.forEach((install)   => {
-          const value = values[install];
-          const preset = presets[install];
-          const extensions = values[install].extensions;
+        chosenKits.forEach((chosenKit) => {
+          const value = values[chosenKit];
+          const preset = presets[chosenKit];
 
-          summary[preset.label] = {
-            version: value.version,
-            extensions,
-          };
+          const key = `${preset.label} (${value.version ? value.version : 'Latest'})`;
+          summary[key] = 'None';
 
-          console.log(install, 'installed');
+          if (preset.extensions) {
+            const extensions = value.extensions;
+            const chosenExtensions = Object.keys(extensions)
+                                           .filter(key => extensions[key].install === true);
+
+            if (chosenExtensions.length > 0) {
+              const filterResults = function call(result) {
+                return `${result.label} (${extensions[result.name].version})`;
+              };
+
+              summary[key] = preset.extensions
+                                   .filter(extension => chosenExtensions.includes(extension.name))
+                                   .map(filterResults)
+                                   .join(', ');
+            }
+          }
         });
+
         return summary;
       },
     },

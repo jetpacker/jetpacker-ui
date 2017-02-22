@@ -37,7 +37,7 @@ const state = {
         build: {
           active: false,
           label: 'Jetpack Builder',
-          url: '/tools/build',
+          url: '/tools/builder',
           icon: 'fa-gears',
         },
       },

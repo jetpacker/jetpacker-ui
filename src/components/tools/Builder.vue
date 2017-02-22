@@ -39,6 +39,7 @@
 
         <div class="list-group">
           <app-machine></app-machine>
+          <app-kit></app-kit>
         </div>
       </div>
     </div>
@@ -47,10 +48,12 @@
 
 <script>
   import Machine from './Machine';
+  import Kit from './Kit';
 
   export default {
     components: {
       appMachine: Machine,
+      appKit: Kit,
     },
     computed: {
 //      developmentKits() {

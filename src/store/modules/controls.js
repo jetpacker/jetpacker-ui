@@ -2,31 +2,31 @@ const state = {
   menus: {
     side: [
       {
-        virtualMachine: {
+        VirtualMachine: {
           active: false,
           label: 'Virtual Machine',
           url: '/settings/machine',
           icon: 'fa-desktop',
         },
-        developmentKits: {
+        DevelopmentKit: {
           active: false,
           label: 'Development Kits',
           url: '/settings/kits',
           icon: 'fa-code',
         },
-        dataStores: {
+        DataStore: {
           active: false,
           label: 'Data Stores',
           url: '/settings/containers/DataStore',
           icon: 'fa-database',
         },
-        messageBrokers: {
+        MessageBroker: {
           active: false,
           label: 'Message Brokers',
           url: '/settings/containers/MessageBroker',
           icon: 'fa-exchange',
         },
-        searchEngines: {
+        SearchEngine: {
           active: false,
           label: 'Search Engines',
           url: '/settings/containers/SearchEngine',
@@ -34,7 +34,7 @@ const state = {
         },
       },
       {
-        build: {
+        Builder: {
           active: false,
           label: 'Jetpack Builder',
           url: '/tools/builder',

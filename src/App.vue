@@ -6,7 +6,7 @@
       </div>
 
       <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-10 col-md-offset-1 content">
           <div class="col-md-9">
             <router-view></router-view>
           </div>
@@ -37,15 +37,8 @@
 </script>
 
 <style>
-  legend {
-    font-size: 15px;
-  }
-
-  .clear-left {
+  .content {
     padding-left: 0px;
   }
-
-  .clear-right {
-    padding-right: 0px;
-  }
+  @import url('assets/styles.css');
 </style>

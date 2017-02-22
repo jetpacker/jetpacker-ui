@@ -70,7 +70,7 @@
             <template v-if="activeContainer.parameters">
               <fieldset>
                 <legend class="text-muted">
-                  <i class="fa fa-pencil-square-o fa-lg"></i>
+                  <i class="fa fa-keyboard-o fa-lg"></i>
                   Parameters
                 </legend>
                 <div class="form-group">

@@ -40,6 +40,12 @@
         <div class="list-group">
           <app-machine></app-machine>
           <app-kit></app-kit>
+          <app-container name="DataStore"
+                         description="Data Stores"></app-container>
+          <app-container name="MessageBroker"
+                         description="Message Brokers"></app-container>
+          <app-container name="SearchEngine"
+                         description="Search Engines"></app-container>
         </div>
       </div>
     </div>
@@ -49,32 +55,13 @@
 <script>
   import Machine from './Machine';
   import Kit from './Kit';
+  import Container from './Container';
 
   export default {
     components: {
       appMachine: Machine,
       appKit: Kit,
-    },
-    computed: {
-//      developmentKits() {
-//        const presets = this.$store.getters.presets.kits;
-//
-//      },
-//      dataStores() {
-//        const containers = this.$store.getters.presets.containers;
-//        const presets = Object.values(containers)
-//          .filter(container => container.type === 'DataStore');
-//      },
-//      messageBrokers() {
-//        const containers = this.$store.getters.presets.containers;
-//        const presets = Object.values(containers)
-//          .filter(container => container.type === 'MessageBroker');
-//      },
-//      searchEngines() {
-//        const containers = this.$store.getters.presets.containers;
-//        const presets Object.values(containers)
-//          .filter(container => container.type === 'SearchEngine');
-//      },
+      appContainer: Container,
     },
   };
 </script>

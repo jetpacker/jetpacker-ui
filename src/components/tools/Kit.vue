@@ -26,7 +26,7 @@
         </tbody>
       </table>
       <p v-else>
-        None.
+        None
       </p>
     </div>
   </div>
@@ -47,8 +47,8 @@
           const value = values[chosenKit];
           const preset = presets[chosenKit];
 
-          const key = `${preset.label} (${value.version ? value.version : 'Latest'})`;
-          summary[key] = 'None';
+          const label = `${preset.label} (${value.version ? value.version : 'Latest'})`;
+          summary[label] = 'None';
 
           if (preset.extensions) {
             const extensions = value.extensions;
@@ -60,10 +60,10 @@
                 return `${result.label} (${extensions[result.name].version})`;
               };
 
-              summary[key] = preset.extensions
-                                   .filter(extension => chosenExtensions.includes(extension.name))
-                                   .map(filterResults)
-                                   .join(', ');
+              summary[label] = preset.extensions
+                                     .filter(extension => chosenExtensions.includes(extension.name))
+                                     .map(filterResults)
+                                     .join(', ');
             }
           }
         });

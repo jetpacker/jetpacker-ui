@@ -4,7 +4,7 @@
       <h4 class="summary-item-header">
         Virtual Machine
         <router-link tag="a" class="pull-right" to="/settings/machine"
-                     @click.native="setActiveMenu(key)">
+                     @click.native="setActiveMenu(name)">
           <i class="fa fa-pencil-square-o fa-fw"></i><span class="summary-item-edit">Edit</span>
         </router-link>
       </h4>
@@ -27,6 +27,11 @@
   import controls from '../../mixins/controls';
 
   export default {
+    data() {
+      return {
+        name: 'VirtualMachine',
+      };
+    },
     mixins: [
       controls,
     ],

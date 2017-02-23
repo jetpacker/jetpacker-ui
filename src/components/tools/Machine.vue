@@ -1,15 +1,15 @@
 <template>
-  <div class="list-group-item">
-    <div class="list-group-item-heading">
+  <div class="panel panel-default">
+    <div class="panel-body">
       <h4 class="summary-item-header">
         Virtual Machine
-        <a class="pull-right">
+        <router-link tag="a" class="pull-right" to="/settings/machine"
+                     @click.native="setActiveMenu(key)">
           <i class="fa fa-pencil-square-o fa-fw"></i><span class="summary-item-edit">Edit</span>
-        </a>
+        </router-link>
       </h4>
-    </div>
-    <div class="list-group-item-text summary-item-content">
-      <div class="form-horizontal">
+
+      <div class="form-horizontal summary-item-content">
         <p class="form-group" v-for="(value, label) in summary">
           <span class="col-md-3 form-static-control">
             {{ label }}:
@@ -24,7 +24,12 @@
 </template>
 
 <script>
+  import controls from '../../mixins/controls';
+
   export default {
+    mixins: [
+      controls,
+    ],
     computed: {
       summary() {
         const presets = this.$store.getters.presets.machine;
@@ -42,16 +47,8 @@
   };
 </script>
 
-<style>
+<style scoped>
   .summary-item-header {
-    margin-top: 0px;
-    padding-top: 0px;
-  }
-  .summary-item-content {
-    padding-top: 10px;
-  }
-  .summary-item-edit {
-    font-size: 15px;
-    vertical-align: top;
+    padding-bottom: 0px;
   }
 </style>

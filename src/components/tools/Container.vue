@@ -1,15 +1,15 @@
 <template>
-  <div class="list-group-item">
-    <div class="list-group-item-heading">
+  <div class="panel panel-default">
+    <div class="panel-body">
       <h4 class="summary-item-header">
         {{ description }}
-        <a class="pull-right">
+        <router-link tag="a" class="pull-right"
+                     :to="'/settings/containers/' + this.name"
+                     @click.native="setActiveMenu(key)">
           <i class="fa fa-pencil-square-o fa-fw"></i><span class="summary-item-edit">Edit</span>
-        </a>
+        </router-link>
       </h4>
-    </div>
-    <div class="list-group-item-text summary-item-content">
-      <table class="table table-bordered" v-if="Object.keys(summary).length">
+      <table class="table table-bordered summary-item-content" v-if="Object.keys(summary).length">
         <thead>
           <tr>
             <th class="col-md-3">Name</th>
@@ -36,7 +36,12 @@
 </template>
 
 <script>
+  import controls from '../../mixins/controls';
+
   export default {
+    mixins: [
+      controls,
+    ],
     props: {
       name: String,
       description: String,
@@ -75,17 +80,3 @@
     },
   };
 </script>
-
-<style>
-  .summary-item-header {
-    margin-top: 0px;
-    padding-top: 0px;
-  }
-  .summary-item-content {
-    padding-top: 10px;
-  }
-  .summary-item-edit {
-    font-size: 15px;
-    vertical-align: top;
-  }
-</style>

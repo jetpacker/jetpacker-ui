@@ -2,6 +2,14 @@ const state = {
   menus: {
     side: [
       {
+        Builder: {
+          active: false,
+          label: 'Jetpack Builder',
+          url: '/tools/builder',
+          icon: 'fa-gears',
+        },
+      },
+      {
         VirtualMachine: {
           active: false,
           label: 'Virtual Machine',
@@ -31,14 +39,6 @@ const state = {
           label: 'Search Engines',
           url: '/settings/containers/SearchEngine',
           icon: 'fa-search',
-        },
-      },
-      {
-        Builder: {
-          active: false,
-          label: 'Jetpack Builder',
-          url: '/tools/builder',
-          icon: 'fa-gears',
         },
       },
     ],

@@ -21,19 +21,15 @@
 </template>
 
 <script>
+  import controls from '../mixins/controls';
+
   export default {
+    mixins: [
+      controls,
+    ],
     computed: {
       menus() {
         return this.$store.getters.menus.side;
-      },
-    },
-    methods: {
-      setActiveMenu(item) {
-        const payload = {
-          item,
-          location: 'side',
-        };
-        this.$store.dispatch('SET_ACTIVE_MENU', payload);
       },
     },
   };

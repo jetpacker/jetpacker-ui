@@ -9,9 +9,6 @@ const mutations = {
     state.machine = data.machine;
     state.kits = data.kits;
     state.containers = data.containers;
-
-    console.log('kits', state.kits);
-    console.log('containers', state.containers);
   },
 };
 

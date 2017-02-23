@@ -18,7 +18,8 @@
         </p>
       </div>
       <div class="col-md-6">
-        <button type="button" class="btn btn-danger btn-lg btn-block">
+        <button type="button" class="btn btn-danger btn-lg btn-block"
+                @click="resetSettings">
           <i class="fa fa-undo fa-lg"></i>
           Reset Settings
         </button>
@@ -43,6 +44,11 @@
   export default {
     components: {
       appSummary: Summary,
+    },
+    methods: {
+      resetSettings() {
+        this.$store.dispatch('RESET_SETTINGS');
+      },
     },
   };
 </script>

@@ -26,8 +26,11 @@ const store = new Vuex.Store({
           commit('SET_VALUES', state.presets);
         })
         .catch((error) => {
-          console.log(error);
+          console.log('Error', error);
         });
+    },
+    RESET_SETTINGS: ({ commit, state }) => {
+      commit('SET_VALUES', state.presets);
     },
   },
 });

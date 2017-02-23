@@ -58,7 +58,7 @@
                 <div class="form-group">
                   <div class="col-md-6 extensions" v-for="extension in activeKit.extensions">
                     <div class="checkbox col-md-6">
-                      <label>
+                      <label :title="extension.description">
                         <input type="checkbox"
                                :name="extension.name + '.install'"
                                :value="true"

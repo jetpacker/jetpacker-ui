@@ -4,8 +4,8 @@
       <h4 class="summary-item-header">
         {{ description }}
         <router-link tag="a" class="pull-right"
-                     :to="'/settings/containers/' + this.name"
-                     @click.native="setActiveMenu(key)">
+                     :to="'/settings/containers/' + name"
+                     @click.native="setActiveMenu(name)">
           <i class="fa fa-pencil-square-o fa-fw"></i><span class="summary-item-edit">Edit</span>
         </router-link>
       </h4>
@@ -70,10 +70,6 @@
             });
           }
         });
-
-        console.log(this.name, chosenContainers);
-        console.log(this.name, presets);
-        console.log('summary', summary);
 
         return summary;
       },

@@ -3,7 +3,7 @@
     <div class="panel-body">
       <div class="col-md-12 jumbotron">
         <h2 class="caption">
-          You are almost there!
+          Jetpack Builder
         </h2>
         <p>
             Click
@@ -29,39 +29,20 @@
           Build Jetpack
         </button>
       </div>
-      <div class="col-md-12 summary">
-        <h4 class="summary-caption">
-          <a>
-            <i class="fa fa-chevron-circle-down fa-lg"></i>
-            Hide Your Build Summary
-          </a>
-        </h4>
 
-        <div class="list-group">
-          <app-machine></app-machine>
-          <app-kit></app-kit>
-          <app-container name="DataStore"
-                         description="Data Stores"></app-container>
-          <app-container name="MessageBroker"
-                         description="Message Brokers"></app-container>
-          <app-container name="SearchEngine"
-                         description="Search Engines"></app-container>
-        </div>
-      </div>
+      <div class="col-md-12 panel-divider"></div>
+
+      <app-summary></app-summary>
     </div>
   </div>
 </template>
 
 <script>
-  import Machine from './Machine';
-  import Kit from './Kit';
-  import Container from './Container';
+  import Summary from './Summary';
 
   export default {
     components: {
-      appMachine: Machine,
-      appKit: Kit,
-      appContainer: Container,
+      appSummary: Summary,
     },
   };
 </script>
@@ -74,11 +55,5 @@
   }
   .caption {
     margin-top: 0px;
-  }
-  .summary {
-    padding: 20px 0 5px 0;
-  }
-  .summary-caption {
-    padding-bottom: 20px;
   }
 </style>

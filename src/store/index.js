@@ -17,20 +17,30 @@ const store = new Vuex.Store({
   },
 
   actions: {
-    INITIALIZE: ({ commit, state }) => {
+    INITIALIZE: ({ commit, getters }) => {
       http
         .get('generator')
         .then((response) => {
           commit('SET_PRESETS', response.data);
-          commit('SET_CONTROLS', state.presets);
-          commit('SET_VALUES', state.presets);
+          commit('SET_CONTROLS', getters.presets);
+          commit('SET_VALUES', getters.presets);
         })
         .catch((error) => {
           console.log('Error', error);
         });
     },
-    RESET_SETTINGS: ({ commit, state }) => {
-      commit('SET_VALUES', state.presets);
+    RESET_SETTINGS: ({ commit, getters }) => {
+      commit('SET_VALUES', getters.presets);
+    },
+    BUILD_JETPACK: ({ getters }) => {
+      http
+        .post('generator', getters.payload)
+        .then((response) => {
+          console.log('Response', response);
+        })
+        .catch((error) => {
+          console.log('Error', error);
+        });
     },
   },
 });

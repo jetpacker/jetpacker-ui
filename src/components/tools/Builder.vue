@@ -25,7 +25,8 @@
         </button>
       </div>
       <div class="col-md-6">
-        <button type="button" class="btn btn-success btn-lg btn-block">
+        <button type="button" class="btn btn-success btn-lg btn-block"
+                @click="buildJetpack">
           <i class="fa fa-cloud-download fa-lg"></i>
           Build Jetpack
         </button>
@@ -46,6 +47,9 @@
       appSummary: Summary,
     },
     methods: {
+      buildJetpack() {
+        this.$store.dispatch('BUILD_JETPACK');
+      },
       resetSettings() {
         this.$store.dispatch('RESET_SETTINGS');
       },

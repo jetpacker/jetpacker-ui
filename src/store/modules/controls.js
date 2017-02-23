@@ -63,8 +63,6 @@ const mutations = {
       MessageBroker: containers.filter(container => container.type === 'MessageBroker')[0].name,
       SearchEngine: containers.filter(container => container.type === 'SearchEngine')[0].name,
     };
-
-    console.log('state.active.container', state.tabs.container);
   },
   SET_ACTIVE_KIT: (state, kit) => {
     state.tabs.kit = kit;

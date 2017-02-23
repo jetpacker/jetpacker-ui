@@ -92,6 +92,60 @@ const getters = {
   values(state) {
     return state;
   },
+  payload(state) {
+    const kits = state.kits;
+    const containers = state.containers;
+
+    const body = {
+      machine: state.machine,
+      kits: {},
+      containers: {},
+    };
+
+    const chosenKits = Object.keys(kits)
+                             .filter(key => kits[key].install === true);
+
+    const chosenContainers = Object.keys(containers)
+                                   .filter(key => containers[key].install === true);
+
+    chosenKits.forEach((chosenKit) => {
+      body.kits[chosenKit] = {
+        version: kits[chosenKit].version ? kits[chosenKit].version : null,
+        extensions: null,
+      };
+
+      const extensions = kits[chosenKit].extensions;
+
+      if (extensions) {
+        body.kits[chosenKit].extensions = {};
+        const chosenExtensions = Object.keys(extensions)
+                                       .filter(key => extensions[key].install === true);
+
+        chosenExtensions.forEach((chosenExtension) => {
+          body.kits[chosenKit].extensions[chosenExtension] = extensions[chosenExtension].version;
+        });
+      }
+    });
+
+    chosenContainers.forEach((chosenContainer) => {
+      body.containers[chosenContainer] = {
+        version: containers[chosenContainer].version ? containers[chosenContainer].version : null,
+        parameters: null,
+      };
+
+      const parameters = containers[chosenContainer].parameters;
+
+      if (parameters) {
+        body.containers[chosenContainer].parameters = {};
+
+        Object.keys(parameters).forEach((key) => {
+          body.containers[chosenContainer].parameters[key] = parameters[key];
+        });
+      }
+    });
+
+    return body;
+  },
 };
 
 export default {

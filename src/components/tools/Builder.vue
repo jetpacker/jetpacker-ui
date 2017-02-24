@@ -40,6 +40,7 @@
 </template>
 
 <script>
+  import { mapActions } from 'vuex';
   import Summary from './Summary';
 
   export default {
@@ -47,12 +48,10 @@
       appSummary: Summary,
     },
     methods: {
-      buildJetpack() {
-        this.$store.dispatch('BUILD_JETPACK');
-      },
-      resetSettings() {
-        this.$store.dispatch('RESET_SETTINGS');
-      },
+      ...mapActions([
+        'resetSettings',
+        'buildJetpack',
+      ]),
     },
   };
 </script>

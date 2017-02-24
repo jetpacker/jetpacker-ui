@@ -4,7 +4,7 @@
       <h4 class="summary-item-header">
         Development Kits
         <router-link tag="a" class="pull-right" to="/settings/kits"
-                     @click.native="setActiveMenu(name)">
+                     @click.native="setActive(name)">
           <i class="fa fa-pencil-square-o fa-fw"></i><span class="summary-item-edit">Edit</span>
         </router-link>
       </h4>
@@ -35,6 +35,7 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex';
   import controls from '../../mixins/controls';
 
   export default {
@@ -47,10 +48,14 @@
       controls,
     ],
     computed: {
+      ...mapGetters([
+        'chosenKits',
+        'presets',
+      ]),
       summary() {
         const summary = {};
-        const kits = this.$store.getters.chosenKits;
-        const presets = this.$store.getters.presets.kits;
+        const kits = this.chosenKits;
+        const presets = this.presets.kits;
 
         Object.keys(kits).forEach((key) => {
           const kit = kits[key];

@@ -17,7 +17,7 @@ const store = new Vuex.Store({
   },
 
   actions: {
-    INITIALIZE: ({ commit, getters }) => {
+    initialize: ({ commit, getters }) => {
       http
         .get('generator')
         .then((response) => {
@@ -29,10 +29,10 @@ const store = new Vuex.Store({
           console.log('Error', error);
         });
     },
-    RESET_SETTINGS: ({ commit, getters }) => {
+    resetSettings: ({ commit, getters }) => {
       commit('SET_VALUES', getters.presets);
     },
-    BUILD_JETPACK: ({ getters }) => {
+    buildJetpack: ({ getters }) => {
       http
         .post('generator', getters.payload)
         .then((response) => {

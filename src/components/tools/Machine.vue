@@ -4,7 +4,7 @@
       <h4 class="summary-item-header">
         Virtual Machine
         <router-link tag="a" class="pull-right" to="/settings/machine"
-                     @click.native="setActiveMenu(name)">
+                     @click.native="setActive(name)">
           <i class="fa fa-pencil-square-o fa-fw"></i><span class="summary-item-edit">Edit</span>
         </router-link>
       </h4>
@@ -24,6 +24,7 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex';
   import controls from '../../mixins/controls';
 
   export default {
@@ -36,9 +37,13 @@
       controls,
     ],
     computed: {
+      ...mapGetters([
+        'presets',
+        'values',
+      ]),
       summary() {
-        const presets = this.$store.getters.presets.machine;
-        const values = this.$store.getters.values.machine;
+        const presets = this.presets.machine;
+        const values = this.values.machine;
 
         const summary = {
           [presets.box.label]: presets.box.releases[values.box],

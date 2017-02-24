@@ -20,6 +20,7 @@
 </template>
 
 <script>
+  import { mapActions } from 'vuex';
   import Header from './components/Header';
   import SideNav from './components/SideNav';
 
@@ -29,9 +30,14 @@
       appHeader: Header,
       appSideNav: SideNav,
     },
+    methods: {
+      ...mapActions([
+        'initialize',
+      ]),
+    },
     created() {
       console.log('store', this.$store);
-      this.$store.dispatch('INITIALIZE');
+      this.initialize();
     },
   };
 </script>

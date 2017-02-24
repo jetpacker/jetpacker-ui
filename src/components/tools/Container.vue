@@ -49,18 +49,14 @@
     computed: {
       summary() {
         const summary = {};
-
-        const values = this.$store.getters.values.containers;
-        const chosenContainers = Object.keys(values)
-                                       .filter(key => values[key].install === true);
-
+        const containers = this.$store.getters.chosenContainers;
         const presets = Object.values(this.$store.getters.presets.containers)
                               .filter(container => container.type === this.name
-                                      && chosenContainers.includes(container.name));
+                                      && container.name in containers);
 
         presets.forEach((preset) => {
-          const label = `${preset.label} (${values[preset.name].version})`;
-          const parameters = values[preset.name].parameters;
+          const label = `${preset.label} (${containers[preset.name].version})`;
+          const parameters = containers[preset.name].parameters;
 
           summary[label] = {};
 

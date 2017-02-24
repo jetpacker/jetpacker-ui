@@ -18,8 +18,11 @@
         <tbody>
           <tr v-for="(extensions, kit) in summary">
             <td>{{ kit }}</td>
-            <td>
+            <td v-if="extensions">
               {{ extensions }}
+            </td>
+            <td v-else>
+              None
             </td>
           </tr>
         </tbody>
@@ -46,34 +49,25 @@
     computed: {
       summary() {
         const summary = {};
+        const kits = this.$store.getters.chosenKits;
         const presets = this.$store.getters.presets.kits;
-        const values = this.$store.getters.values.kits;
 
-        const chosenKits = Object.keys(values)
-                                 .filter(key => values[key].install === true);
+        Object.keys(kits).forEach((key) => {
+          const kit = kits[key];
+          const preset = presets[key];
 
-        chosenKits.forEach((chosenKit) => {
-          const value = values[chosenKit];
-          const preset = presets[chosenKit];
-
-          const label = `${preset.label} (${value.version ? value.version : 'Latest'})`;
+          const label = `${preset.label} (${kit.version ? kit.version : 'Latest'})`;
           summary[label] = 'None';
 
-          if (preset.extensions) {
-            const extensions = value.extensions;
-            const chosenExtensions = Object.keys(extensions)
-                                           .filter(key => extensions[key].install === true);
+          if (kit.extensions) {
+            const convertResultToLabel = function call(result) {
+              return `${result.label} (${kit.extensions[result.name]})`;
+            };
 
-            if (chosenExtensions.length > 0) {
-              const convertResultToLabel = function call(result) {
-                return `${result.label} (${extensions[result.name].version})`;
-              };
-
-              summary[label] = preset.extensions
-                                     .filter(extension => chosenExtensions.includes(extension.name))
-                                     .map(convertResultToLabel)
-                                     .join(', ');
-            }
+            summary[label] = preset.extensions
+                                   .filter(extension => extension.name in kit.extensions)
+                                   .map(convertResultToLabel)
+                                   .join(', ');
           }
         });
 

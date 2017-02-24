@@ -12,7 +12,7 @@ const mutations = {
     const kits = state.kits;
     const containers = state.containers;
 
-    // Use Vue.set will make nested maps reactive
+    // Use Vue.set(map, key, value) will make nested maps reactive
     Vue.set(machine, 'box', Object.keys(presets.machine.box.releases)[0]);
     Vue.set(machine, 'memory', presets.machine.memory.value);
     Vue.set(machine, 'timezone', Intl.DateTimeFormat().resolvedOptions().timeZone);
@@ -92,9 +92,58 @@ const getters = {
   values(state) {
     return state;
   },
-  payload(state) {
+  chosenKits(state) {
+    const results = {};
     const kits = state.kits;
+    const chosenKits = Object.keys(kits)
+                             .filter(key => kits[key].install === true);
+
+    chosenKits.forEach((chosenKit) => {
+      const kit = kits[chosenKit];
+
+      results[chosenKit] = {
+        version: kit.version,
+        extensions: null,
+      };
+
+      if (kit.extensions) {
+        results[chosenKit].extensions = {};
+
+        const chosenExtensions = Object.keys(kit.extensions)
+                                       .filter(key => kit.extensions[key].install === true);
+
+        chosenExtensions.forEach((chosenExtension) => {
+          results[chosenKit].extensions[chosenExtension] = kit.extensions[chosenExtension].version;
+        });
+      }
+    });
+
+    return results;
+  },
+  chosenContainers(state) {
+    const results = {};
     const containers = state.containers;
+    const chosenContainers = Object.keys(containers)
+                                   .filter(key => containers[key].install === true);
+
+    chosenContainers.forEach((chosenContainer) => {
+      const container = containers[chosenContainer];
+
+      results[chosenContainer] = {
+        version: container.version,
+        parameters: null,
+      };
+
+      if (container.parameters) {
+        results[chosenContainer].parameters = container.parameters;
+      }
+    });
+
+    return results;
+  },
+  payload(state, getters) {
+    const kits = getters.chosenKits;
+    const containers = getters.chosenContainers;
 
     const body = {
       machine: state.machine,
@@ -102,46 +151,22 @@ const getters = {
       containers: {},
     };
 
-    const chosenKits = Object.keys(kits)
-                             .filter(key => kits[key].install === true);
+    Object.keys(kits).forEach((key) => {
+      const kit = kits[key];
 
-    const chosenContainers = Object.keys(containers)
-                                   .filter(key => containers[key].install === true);
-
-    chosenKits.forEach((chosenKit) => {
-      body.kits[chosenKit] = {
-        version: kits[chosenKit].version ? kits[chosenKit].version : null,
-        extensions: null,
+      body.kits[key] = {
+        version: kit.version ? kit.version : null,
+        extensions: kit.extensions ? kit.extensions : null,
       };
-
-      const extensions = kits[chosenKit].extensions;
-
-      if (extensions) {
-        body.kits[chosenKit].extensions = {};
-        const chosenExtensions = Object.keys(extensions)
-                                       .filter(key => extensions[key].install === true);
-
-        chosenExtensions.forEach((chosenExtension) => {
-          body.kits[chosenKit].extensions[chosenExtension] = extensions[chosenExtension].version;
-        });
-      }
     });
 
-    chosenContainers.forEach((chosenContainer) => {
-      body.containers[chosenContainer] = {
-        version: containers[chosenContainer].version ? containers[chosenContainer].version : null,
-        parameters: null,
+    Object.keys(containers).forEach((key) => {
+      const container = containers[key];
+
+      body.containers[key] = {
+        version: container.version ? container.version : null,
+        parameters: container.parameters ? container.parameters : null,
       };
-
-      const parameters = containers[chosenContainer].parameters;
-
-      if (parameters) {
-        body.containers[chosenContainer].parameters = {};
-
-        Object.keys(parameters).forEach((key) => {
-          body.containers[chosenContainer].parameters[key] = parameters[key];
-        });
-      }
     });
 
     return body;

@@ -1,5 +1,5 @@
 <template>
-  <div class="col-md-3 nav-side">
+  <div class="main-wrapper">
     <template v-for="(menu, index) in menus.side">
       <ul class="nav nav-pills nav-stacked nav-container">
         <router-link v-for="(value, key) in menu"

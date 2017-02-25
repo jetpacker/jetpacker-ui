@@ -1,8 +1,8 @@
 <template>
   <div class="main-container">
-    <div class="main-wrapper">
+    <div class="row main-wrapper">
       <div class="page-info">
-        <h2>Welcome to <span class="color-theme">Jetpack</span> Builder</h2>
+        <h1>Welcome to <span class="color-theme">Jetpack</span> Builder</h1>
         <h4>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit,
           sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.

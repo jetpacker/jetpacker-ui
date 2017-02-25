@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:200');
+
+body {
+  /*background: #61b7c6;*/
+  color: white;
+  font-family: 'Work Sans', sans-serif;
+}
+
+/*PANEL*/
+.panel {
+  box-shadow: none;
+}
+.panel-primary {
+  border-color: #61b7c6;
+}
+
+.panel-primary>.panel-heading {
+  background-color:#61b7c6;
+  border-color: #61b7c6;
+}
+
+.color-theme {
+  color: #61b7c6;
+}
+
+/* MAIN_CONTAINER */
+.main-container {
+  padding: 0px 50px;
+  color: #555;
+}
+
+hr {
+  max-width: 100px;
+  margin: 25px auto 0;
+  border-width: 1px;
+  border-color: rgba(34,34,34,.1);
+}
+
+.main-wrapper {
+  margin-top: 100px;
+  padding-bottom: 50px;
+  height: auto;
+  font-size: 15px;
+}
+
+.bg-default {
+  background-color: #eee;
+  color: #555;
+}
+
+/*todo: temporary content height fix*/
+.full-height {
+  height: 100vh;
+}
+
+.page-info {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.page-info h4{
+  color: #aaa;
+  line-height: 25px;
+}
+
+.banner {
+  background-color: #61b7c6;
+  height: 150px;
+}
+
+section {
+  padding: 50px 0px;
+}
+
+/* BUTTON */
+.bg-light-gray {
+  background-color: #eeeeee;
+}
+.bg-darkest-gray {
+  background-color: #222222;
+}
+.btn-primary {
+  color: white;
+  background-color: #fed136;
+  border-color: #fed136;
+  /*font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+  color: white;
+  background-color: #fec503;
+  border-color: #f6bf01;
+}
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+  background-image: none;
+}
+.btn-primary.disabled,
+.btn-primary[disabled],
+fieldset[disabled] .btn-primary,
+.btn-primary.disabled:hover,
+.btn-primary[disabled]:hover,
+fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled:focus,
+.btn-primary[disabled]:focus,
+fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled:active,
+.btn-primary[disabled]:active,
+fieldset[disabled] .btn-primary:active,
+.btn-primary.disabled.active,
+.btn-primary[disabled].active,
+fieldset[disabled] .btn-primary.active {
+  background-color: #fed136;
+  border-color: #fed136;
+}
+.btn-primary .badge {
+  color: #fed136;
+  background-color: white;
+  cursor: pointer;
+}
+.btn-xl {
+  color: white;
+  background-color: #fec503;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: 3px;
+  font-size: 18px;
+  padding: 10px 40px;
+  transition: background-color 0.4s ease;
+}
+.btn-xl:hover,
+.btn-xl:focus,
+.btn-xl:active,
+.btn-xl.active,
+.open .dropdown-toggle.btn-xl {
+  background-color:#ECB806;
+  color: white;
+}
+.btn-xl:active,
+.btn-xl.active,
+.open .dropdown-toggle.btn-xl {
+  background-image: none;
+}
+.btn-xl.disabled,
+.btn-xl[disabled],
+fieldset[disabled] .btn-xl,
+.btn-xl.disabled:hover,
+.btn-xl[disabled]:hover,
+fieldset[disabled] .btn-xl:hover,
+.btn-xl.disabled:focus,
+.btn-xl[disabled]:focus,
+fieldset[disabled] .btn-xl:focus,
+.btn-xl.disabled:active,
+.btn-xl[disabled]:active,
+fieldset[disabled] .btn-xl:active,
+.btn-xl.disabled.active,
+.btn-xl[disabled].active,
+fieldset[disabled] .btn-xl.active {
+  background-color: #fed136;
+  border-color: #fed136;
+}
+.btn-xl .badge {
+  color: #fed136;
+  background-color: white;
+}
+
+.text-primary {
+  color: #61b7c6;
+}

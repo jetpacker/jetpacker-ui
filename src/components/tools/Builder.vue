@@ -14,7 +14,7 @@
             </button>
           </div>
           <div class="col-sm-6">
-            <button type="button" class="btn btn-primary btn-lg btn-block"
+            <button type="button" class="btn btn-xl btn-lg btn-block"
                     @click="buildJetpack">
               <i class="fa fa-cloud-download fa-lg"></i>
               Build Jetpack

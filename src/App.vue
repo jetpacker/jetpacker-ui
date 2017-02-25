@@ -34,6 +34,8 @@
 </script>
 
 <style scoped>
+  @import url("/static/styles/app.css");
+
   .content {
     padding-left: 0px;
   }

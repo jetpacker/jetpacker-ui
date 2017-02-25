@@ -11,6 +11,7 @@
 </template>
 
 <script>
+  import { mapActions } from 'vuex';
   import Header from './components/Header';
   import Footer from './components/Footer';
 
@@ -20,16 +21,20 @@
       appHeader: Header,
       appFooter: Footer,
     },
+    methods: {
+      ...mapActions([
+        'initialize',
+      ]),
+    },
     created() {
       console.log('store', this.$store);
-      this.$store.dispatch('INITIALIZE');
+      this.initialize();
     },
   };
 </script>
 
-<style>
+<style scoped>
   .content {
     padding-left: 0px;
   }
-  @import url('assets/styles.css');
 </style>

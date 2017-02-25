@@ -71,19 +71,19 @@ const mutations = {
 };
 
 const actions = {
-  UPDATE_MACHINE: ({ commit }, payload) => {
+  updateMachine: ({ commit }, payload) => {
     commit('UPDATE_MACHINE', payload);
   },
-  UPDATE_KIT: ({ commit }, payload) => {
+  updateKit: ({ commit }, payload) => {
     commit('UPDATE_KIT', payload);
   },
-  UPDATE_KIT_EXTENSION: ({ commit }, payload) => {
+  updateKitExtension: ({ commit }, payload) => {
     commit('UPDATE_KIT_EXTENSION', payload);
   },
-  UPDATE_CONTAINER: ({ commit }, payload) => {
+  updateContainer: ({ commit }, payload) => {
     commit('UPDATE_CONTAINER', payload);
   },
-  UPDATE_CONTAINER_PARAMETER: ({ commit }, payload) => {
+  updateContainerParameter: ({ commit }, payload) => {
     commit('UPDATE_CONTAINER_PARAMETER', payload);
   },
 };
@@ -138,7 +138,6 @@ const getters = {
         results[chosenContainer].parameters = container.parameters;
       }
     });
-
     return results;
   },
   payload(state, getters) {

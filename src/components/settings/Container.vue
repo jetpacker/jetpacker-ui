@@ -6,7 +6,7 @@
           <li v-for="container in containers"
               :class="{ active: container.name == activeContainer.name }">
             <a data-toggle="tab" href=""
-               @click.prevent="setActiveContainer(container.name)">{{ container.label }}</a>
+               @click.prevent="setActive(container.name)">{{ container.label }}</a>
           </li>
         </ul>
         <!--
@@ -16,7 +16,6 @@
           <li><a data-toggle="tab" href="" @click.prevent="">PostgreSQL</a></li>
           <li><a data-toggle="tab" href="" @click.prevent="">MongoDB</a></li>
           <li><a data-toggle="tab" href="" @click.prevent="">Redis</a></li>
-
           <li class="dropdown active"
               :class="{ open: openOthers }">
             <a href="" class="dropdown-toggle"
@@ -95,6 +94,8 @@
 </template>
 
 <script>
+  import { mapActions, mapGetters } from 'vuex';
+
   export default {
     data() {
       return {
@@ -102,44 +103,50 @@
       };
     },
     computed: {
+      ...mapGetters([
+        'presets',
+        'values',
+        'tabs',
+      ]),
       containers() {
-        const containers = this.$store.getters.presets.containers;
+        const containers = this.presets.containers;
         return Object.values(containers)
                      .filter(container => container.type === this.$route.params.type);
       },
       activeContainer() {
-        const tabs = this.$store.getters.tabs;
-        const container = tabs.container[this.$route.params.type];
-        return this.$store.getters.presets.containers[container];
+        const container = this.tabs.container[this.$route.params.type];
+        return this.presets.containers[container];
       },
       version() {
-        const tabs = this.$store.getters.tabs;
-        const container = tabs.container[this.$route.params.type];
-        return this.$store.getters.values.containers[container].version;
+        const container = this.tabs.container[this.$route.params.type];
+        return this.values.containers[container].version;
       },
       install() {
-        const tabs = this.$store.getters.tabs;
-        const container = tabs.container[this.$route.params.type];
-        return this.$store.getters.values.containers[container].install;
+        const container = this.tabs.container[this.$route.params.type];
+        return this.values.containers[container].install;
       },
       parameters() {
-        const tabs = this.$store.getters.tabs;
-        const container = tabs.container[this.$route.params.type];
-        return this.$store.getters.values.containers[container].parameters;
+        const container = this.tabs.container[this.$route.params.type];
+        return this.values.containers[container].parameters;
       },
     },
     methods: {
+      ...mapActions([
+        'setActiveContainer',
+        'updateContainer',
+        'updateContainerParameter',
+      ]),
       toggleOthers() {
         console.log('openOthers', this.openOthers);
         this.openOthers = !this.openOthers;
       },
-      setActiveContainer(container) {
+      setActive(container) {
         const payload = {
           container,
           type: this.$route.params.type,
         };
 
-        this.$store.dispatch('SET_ACTIVE_CONTAINER', payload);
+        this.setActiveContainer(payload);
       },
       update(input) {
         const payload = {
@@ -153,7 +160,7 @@
           payload.value = input.target.value;
         }
 
-        this.$store.dispatch('UPDATE_CONTAINER', payload);
+        this.updateContainer(payload);
       },
       updateParameter(input) {
         // TODO: Add binding logic
@@ -165,14 +172,13 @@
           },
         };
 
-        this.$store.dispatch('UPDATE_CONTAINER_PARAMETER', payload);
+        this.updateContainerParameter(payload);
       },
     },
   };
 </script>
 
 <style scoped>
-  .parameters {
-    padding-bottom: 12px;
-  }
+  @import url("/static/styles/tabbedPanel.css");
+  @import url("/static/styles/setting.css");
 </style>

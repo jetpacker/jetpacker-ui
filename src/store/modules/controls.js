@@ -92,13 +92,13 @@ const mutations = {
 };
 
 const actions = {
-  SET_ACTIVE_KIT: ({ commit }, kit) => {
+  setActiveKit: ({ commit }, kit) => {
     commit('SET_ACTIVE_KIT', kit);
   },
-  SET_ACTIVE_CONTAINER: ({ commit }, payload) => {
+  setActiveContainer: ({ commit }, payload) => {
     commit('SET_ACTIVE_CONTAINER', payload);
   },
-  SET_ACTIVE_MENU: ({ commit }, payload) => {
+  setActiveMenu: ({ commit }, payload) => {
     commit('RESET_MENUS');
     commit('SET_ACTIVE_MENU', payload);
   },

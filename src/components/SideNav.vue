@@ -1,10 +1,10 @@
 <template>
   <div class="main-wrapper">
-    <template v-for="(menu, index) in menus">
+    <template v-for="(menu, index) in menus.side">
       <ul class="nav nav-pills nav-stacked nav-container">
         <router-link v-for="(value, key) in menu"
                      :to="value.url" tag="li"
-                     @click.native="setActiveMenu(key)"
+                     @click.native="setActive(key)"
                      :class="{ 'active': value.active }">
           <a class="nav-label">
             <span class="fa-stack fa-fw">
@@ -15,12 +15,13 @@
           </a>
         </router-link>
       </ul>
-      <p v-if="index < (menus.length - 1)"></p>
+      <p v-if="index < (menus.side.length - 1)"></p>
     </template>
   </div>
 </template>
 
 <script>
+  import { mapGetters } from 'vuex';
   import controls from '../mixins/controls';
 
   export default {
@@ -28,41 +29,13 @@
       controls,
     ],
     computed: {
-      menus() {
-        return this.$store.getters.menus.side;
-      },
+      ...mapGetters([
+        'menus',
+      ]),
     },
   };
 </script>
 
 <style scoped>
-  a:link, a:visited {
-    color: #333;
-  }
-
-  .active a, a:active, a:focus, a:hover {
-    color: #666fff !important;
-  }
-
-  .active a, a:active, a:focus {
-    background-color: #ffffff !important;
-  }
-
-  a:hover {
-    background-color: #f5f5f5 !important;
-    border-radius: 2px;
-  }
-
-  .nav-container {
-    border: #ddd solid 1px;
-    border-radius: 3px;
-  }
-
-  .nav-side {
-    padding-right: 0px;
-  }
-
-  .nav-label {
-    padding-left: 5px;
-  }
+  @import url("/static/styles/sideNav.css");
 </style>

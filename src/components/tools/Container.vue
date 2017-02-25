@@ -5,7 +5,7 @@
         {{ description }}
         <router-link tag="a" class="pull-right"
                      :to="'/settings/containers/' + name"
-                     @click.native="setActiveMenu(name)">
+                     @click.native="setActive(name)">
           <i class="fa fa-pencil-square-o fa-fw"></i><span class="summary-item-edit">Edit</span>
         </router-link>
       </h4>
@@ -36,6 +36,7 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex';
   import controls from '../../mixins/controls';
 
   export default {
@@ -47,10 +48,14 @@
       description: String,
     },
     computed: {
+      ...mapGetters([
+        'chosenContainers',
+        'presets',
+      ]),
       summary() {
         const summary = {};
-        const containers = this.$store.getters.chosenContainers;
-        const presets = Object.values(this.$store.getters.presets.containers)
+        const containers = this.chosenContainers;
+        const presets = Object.values(this.presets.containers)
                               .filter(container => container.type === this.name
                                       && container.name in containers);
 
@@ -72,3 +77,7 @@
     },
   };
 </script>
+
+<style scoped>
+  @import url("/static/styles/summaryItem.css");
+</style>

@@ -1,0 +1,22 @@
+.builder-header {
+  background-color: inherit;
+  padding: 0 0 0 0;
+  margin-bottom: 5px;
+}
+
+.builder-title {
+  margin-top: 0px;
+}
+
+.builder-info {
+  font-size: 19px;
+}
+
+.panel-divider {
+  height: 1px;
+  width:100%;
+  display:block; /* for use on default inline elements like span */
+  margin: 30px 0 0 0;
+  overflow: hidden;
+  background-color: #e5e5e5;
+}

@@ -1,0 +1,14 @@
+.summary-item-header {
+  margin-top: 0px;
+  padding-top: 0px;
+  padding-bottom: 15px;
+}
+
+.summary-item-content {
+  padding-top: 10px;
+}
+
+.summary-item-edit {
+  font-size: 15px;
+  vertical-align: top;
+}

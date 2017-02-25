@@ -178,7 +178,6 @@
 </script>
 
 <style scoped>
-  .parameters {
-    padding-bottom: 12px;
-  }
+  @import url("/static/styles/tabbedPanel.css");
+  @import url("/static/styles/setting.css");
 </style>

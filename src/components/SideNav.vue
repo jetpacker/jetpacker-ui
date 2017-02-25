@@ -37,33 +37,5 @@
 </script>
 
 <style scoped>
-  a:link, a:visited {
-    color: #333;
-  }
-
-  .active a, a:active, a:focus, a:hover {
-    color: #666fff !important;
-  }
-
-  .active a, a:active, a:focus {
-    background-color: #ffffff !important;
-  }
-
-  a:hover {
-    background-color: #f5f5f5 !important;
-    border-radius: 2px;
-  }
-
-  .nav-container {
-    border: #ddd solid 1px;
-    border-radius: 3px;
-  }
-
-  .nav-side {
-    padding-right: 0px;
-  }
-
-  .nav-label {
-    padding-left: 5px;
-  }
+  @import url("/static/styles/sideNav.css");
 </style>

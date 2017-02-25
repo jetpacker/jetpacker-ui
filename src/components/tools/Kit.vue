@@ -81,3 +81,7 @@
     },
   };
 </script>
+
+<style scoped>
+  @import url("/static/styles/summaryItem.css");
+</style>

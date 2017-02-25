@@ -1,11 +1,11 @@
 <template>
   <div class="panel panel-default">
     <div class="panel-body">
-      <div class="col-md-12 jumbotron">
-        <h2 class="caption">
+      <div class="col-md-12 builder-header">
+        <h2 class="builder-title">
           Jetpack Builder
         </h2>
-        <p>
+        <p class="builder-info">
             Click
             <span class="label label-success">
                 <i class="fa fa-cloud-download fa-lg"></i>
@@ -57,12 +57,5 @@
 </script>
 
 <style scoped>
-  .jumbotron {
-    background-color: inherit;
-    padding: 0 0 0 0;
-    margin-bottom: 5px;
-  }
-  .caption {
-    margin-top: 0px;
-  }
+  @import url("/static/styles/builder.css");
 </style>

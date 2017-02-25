@@ -86,3 +86,7 @@
     },
   };
 </script>
+
+<style scoped>
+  @import url("/static/styles/setting.css");
+</style>

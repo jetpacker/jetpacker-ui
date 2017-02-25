@@ -28,3 +28,7 @@
     },
   };
 </script>
+
+<style scoped>
+  @import url("/static/styles/summary.css");
+</style>

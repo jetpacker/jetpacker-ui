@@ -1,7 +1,7 @@
 <template>
   <div class="row">
-    <div id="headerBox" class="col-md-10 col-md-offset-1">
-      <nav id="menuBar" class="navbar navbar-default navbar-static-top">
+    <div class="col-md-10 col-md-offset-1 header-box">
+      <nav class="navbar navbar-default navbar-static-top menubar">
         <div class="container">
           <div class="navbar-header">
             <a class="navbar-brand" href="/">jetpacker.io</a>
@@ -22,12 +22,12 @@
         </div>
       </nav>
 
-      <div class="col-md-9" id="headerCaption">
+      <div class="col-md-9 header-caption">
         <h3>
           <i class="fa fa-rocket fa-lg"></i>
           Kickstart your Java project with a Jetpack!
         </h3>
-        <p id="headerSubCaption">
+        <p class="header-sub-caption">
           Jetpacker helps generate portable development environments for Java developers.
         </p>
       </div>
@@ -36,21 +36,5 @@
 </template>
 
 <style scoped>
-  #menuBar {
-    margin-left: 0px;
-    margin-right: 0px;;
-  }
-
-  #headerBox {
-    padding: 0 0 0 0;
-  }
-
-  #headerCaption {
-    margin-top: -15px;
-    margin-bottom: 25px;
-  }
-
-  #headerSubCaption {
-    color: grey;
-  }
+  @import url("/static/styles/header.css");
 </style>

@@ -94,36 +94,37 @@
 </template>
 
 <script>
+  import { mapActions, mapGetters } from 'vuex';
+
   export default {
     computed: {
+      ...mapGetters([
+        'presets',
+        'values',
+        'tabs',
+      ]),
       kits() {
-        return this.$store.getters.presets.kits;
+        return this.presets.kits;
       },
       activeKit() {
-        const kit = this.$store.getters.tabs.kit;
-        return this.$store.getters.presets.kits[kit];
-      },
-      values() {
-        const kit = this.$store.getters.tabs.kit;
-        return this.$store.getters.values.kits[kit];
+        return this.presets.kits[this.tabs.kit];
       },
       version() {
-        const kit = this.$store.getters.tabs.kit;
-        return this.$store.getters.values.kits[kit].version;
+        return this.values.kits[this.tabs.kit].version;
       },
       install() {
-        const kit = this.$store.getters.tabs.kit;
-        return this.$store.getters.values.kits[kit].install;
+        return this.values.kits[this.tabs.kit].install;
       },
       extensions() {
-        const kit = this.$store.getters.tabs.kit;
-        return this.$store.getters.values.kits[kit].extensions;
+        return this.values.kits[this.tabs.kit].extensions;
       },
     },
     methods: {
-      setActiveKit(kit) {
-        this.$store.dispatch('SET_ACTIVE_KIT', kit);
-      },
+      ...mapActions([
+        'setActiveKit',
+        'updateKit',
+        'updateKitExtension',
+      ]),
       update(input) {
         // TODO: Add binding logic
         const payload = {
@@ -137,7 +138,7 @@
           payload.value = input.target.value;
         }
 
-        this.$store.dispatch('UPDATE_KIT', payload);
+        this.updateKit(payload);
       },
       updateExtension(input) {
         const [name, attribute] = input.target.name.split('.');
@@ -156,14 +157,13 @@
           payload.extension.value = input.target.value;
         }
 
-        this.$store.dispatch('UPDATE_KIT_EXTENSION', payload);
+        this.updateKitExtension(payload);
       },
     },
   };
 </script>
 
 <style scoped>
-  .extensions {
-    padding: 0px 0px 12px 0px;
-  }
+  @import url("/static/styles/tabbedPanel.css");
+  @import url("/static/styles/setting.css");
 </style>

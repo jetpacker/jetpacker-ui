@@ -1,11 +1,17 @@
+import { mapActions } from 'vuex';
+
 export default {
   methods: {
-    setActiveMenu(item) {
+    ...mapActions([
+      'setActiveMenu',
+    ]),
+    setActive(item) {
       const payload = {
         item,
         location: 'side',
       };
-      this.$store.dispatch('SET_ACTIVE_MENU', payload);
+
+      this.setActiveMenu(payload);
     },
   },
 };

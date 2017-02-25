@@ -1,0 +1,17 @@
+.menubar {
+  margin-left: 0px;
+  margin-right: 0px;;
+}
+
+.header-box {
+  padding: 0 0 0 0;
+}
+
+.header-caption {
+  margin-top: -15px;
+  margin-bottom: 25px;
+}
+
+.header-sub-caption {
+  color: grey;
+}

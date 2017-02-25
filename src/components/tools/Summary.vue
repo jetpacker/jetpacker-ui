@@ -1,9 +1,5 @@
 <template>
   <div class="col-md-12 summary">
-    <h3 class="summary-caption">
-        Build Summary
-    </h3>
-
     <app-machine></app-machine>
     <app-kit></app-kit>
     <app-container name="DataStore"

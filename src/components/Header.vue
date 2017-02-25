@@ -1,5 +1,32 @@
 <template>
-  <div class="row">
+  <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                  <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+              </button>
+              <a class="navbar-brand" href="/">jetpacker.io</a>
+          </div>
+
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav navbar-right">
+                <router-link to="/tools/builder" activeClass="active" tag="li">
+                  <a>Builder</a>
+                </router-link>
+                <router-link to="/about" activeClass="active" tag="li">
+                  <a>About</a>
+                </router-link>
+                  <router-link to="/help" activeClass="active" tag="li">
+                    <a>Help</a>
+                  </router-link>
+                  <li>
+                      <a href="https://github.com/jetpacker" target="_blank">GitHub</a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </nav>
+  <!-- <div class="row">
     <div id="headerBox" class="col-md-10 col-md-offset-1">
       <nav id="menuBar" class="navbar navbar-default navbar-static-top">
         <div class="container">
@@ -18,7 +45,7 @@
                 <a href="https://github.com/jetpacker" target="_blank">GitHub</a>
               </li>
             </ul>
-          </div><!--/.nav-collapse -->
+          </div>
         </div>
       </nav>
 
@@ -32,7 +59,7 @@
         </p>
       </div>
     </div>
-  </div>
+  </div> -->
 </template>
 
 <style scoped>

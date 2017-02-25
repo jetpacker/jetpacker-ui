@@ -1,33 +1,24 @@
 <template>
   <div>
-    <div id="app" class="container">
-      <div class="row">
-        <app-header></app-header>
+    <div id="app">
+      <app-header></app-header>
+      <div>
+        <router-view></router-view>
       </div>
-
-      <div class="row">
-        <div class="col-md-10 col-md-offset-1 content">
-          <div class="col-md-9">
-            <router-view></router-view>
-          </div>
-          <app-side-nav></app-side-nav>
-        </div>
-      </div>
-
-      <div class="row" id="footer"></div>
+      <app-footer></app-footer>
     </div>
   </div>
 </template>
 
 <script>
   import Header from './components/Header';
-  import SideNav from './components/SideNav';
+  import Footer from './components/Footer';
 
   export default {
     name: 'app',
     components: {
       appHeader: Header,
-      appSideNav: SideNav,
+      appFooter: Footer,
     },
     created() {
       console.log('store', this.$store);

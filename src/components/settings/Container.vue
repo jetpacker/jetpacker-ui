@@ -1,92 +1,94 @@
 <template>
-  <div class="panel with-nav-tabs panel-default">
-    <div class="panel-heading">
-      <ul class="nav nav-tabs">
-        <li v-for="container in containers"
-            :class="{ active: container.name == activeContainer.name }">
-          <a data-toggle="tab" href=""
-             @click.prevent="setActiveContainer(container.name)">{{ container.label }}</a>
-        </li>
-      </ul>
-      <!--
-      <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="" @click.prevent="">MySQL</a></li>
-        <li><a data-toggle="tab" href="" @click.prevent="">MariaDB</a></li>
-        <li><a data-toggle="tab" href="" @click.prevent="">PostgreSQL</a></li>
-        <li><a data-toggle="tab" href="" @click.prevent="">MongoDB</a></li>
-        <li><a data-toggle="tab" href="" @click.prevent="">Redis</a></li>
+  <div class="main-wrapper">
+    <div class="panel with-nav-tabs panel-default">
+      <div class="panel-heading">
+        <ul class="nav nav-tabs">
+          <li v-for="container in containers"
+              :class="{ active: container.name == activeContainer.name }">
+            <a data-toggle="tab" href=""
+               @click.prevent="setActiveContainer(container.name)">{{ container.label }}</a>
+          </li>
+        </ul>
+        <!--
+        <ul class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab" href="" @click.prevent="">MySQL</a></li>
+          <li><a data-toggle="tab" href="" @click.prevent="">MariaDB</a></li>
+          <li><a data-toggle="tab" href="" @click.prevent="">PostgreSQL</a></li>
+          <li><a data-toggle="tab" href="" @click.prevent="">MongoDB</a></li>
+          <li><a data-toggle="tab" href="" @click.prevent="">Redis</a></li>
 
-        <li class="dropdown active"
-            :class="{ open: openOthers }">
-          <a href="" class="dropdown-toggle"
-             data-toggle="dropdown"
-             @click.prevent="toggleOthers()">Others <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li class="active"><a href="" data-toggle="tab" @click.prevent="">Cassandra</a></li>
-            <li><a href="" data-toggle="tab" @click.prevent="">InFluxDB</a></li>
-          </ul>
-        </li>
-      </ul>
-      -->
-    </div>
+          <li class="dropdown active"
+              :class="{ open: openOthers }">
+            <a href="" class="dropdown-toggle"
+               data-toggle="dropdown"
+               @click.prevent="toggleOthers()">Others <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li class="active"><a href="" data-toggle="tab" @click.prevent="">Cassandra</a></li>
+              <li><a href="" data-toggle="tab" @click.prevent="">InFluxDB</a></li>
+            </ul>
+          </li>
+        </ul>
+        -->
+      </div>
 
-    <div class="panel-body">
-      <div class="tab-content">
-        <div id="home" class="tab-pane fade in active">
-          <p class="text-muted">
-            {{ activeContainer.description }}
-          </p>
+      <div class="panel-body">
+        <div class="tab-content">
+          <div id="home" class="tab-pane fade in active">
+            <p class="text-muted">
+              {{ activeContainer.description }}
+            </p>
 
-          <div class="form-horizontal">
-            <div class="form-group col-md-9 clear-left">
-              <label for="version" class="control-label col-md-2">
-                {{ activeContainer.version.label }}
-              </label>
-              <div class="col-md-4">
-                <select class="form-control" id="version"
-                        name="version"
-                        :disabled="!install"
-                        @input="update">
-                  <option v-for="release in activeContainer.version.releases"
-                          :value="release"
-                          :selected="version == release">{{ release }}</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="col-md-3 checkbox pull-right clear-right">
-              <label>
-                <input id="install" type="checkbox"
-                       name="install"
-                       :value="true"
-                       :checked="install"
-                       @change="update">
-                <strong>{{ activeContainer.install.label }}</strong>
-              </label>
-            </div>
-
-            <div class="clearfix"></div>
-
-            <template v-if="activeContainer.parameters">
-              <fieldset>
-                <legend class="text-muted">
-                  <i class="fa fa-keyboard-o fa-lg"></i>
-                  Parameters
-                </legend>
-                <div class="form-group">
-                  <div class="col-md-6 parameters" v-for="parameter in activeContainer.parameters">
-                    <label for="rootPassword">{{ parameter.label }}</label>
-                    <input id="rootPassword" class="form-control"
-                           :placeholder="parameter.label"
-                           :name="parameter.name"
-                           :value="parameters[parameter.name]"
-                           :disabled="!install"
-                           @input="updateParameter">
-                  </div>
+            <div class="form-horizontal">
+              <div class="form-group col-md-9 clear-left">
+                <label for="version" class="control-label col-md-2">
+                  {{ activeContainer.version.label }}
+                </label>
+                <div class="col-md-4">
+                  <select class="form-control" id="version"
+                          name="version"
+                          :disabled="!install"
+                          @input="update">
+                    <option v-for="release in activeContainer.version.releases"
+                            :value="release"
+                            :selected="version == release">{{ release }}</option>
+                  </select>
                 </div>
-              </fieldset>
-            </template>
-          </div>
+              </div>
+
+              <div class="col-md-3 checkbox pull-right clear-right">
+                <label>
+                  <input id="install" type="checkbox"
+                         name="install"
+                         :value="true"
+                         :checked="install"
+                         @change="update">
+                  <strong>{{ activeContainer.install.label }}</strong>
+                </label>
+              </div>
+
+              <div class="clearfix"></div>
+
+              <template v-if="activeContainer.parameters">
+                <fieldset>
+                  <legend class="text-muted">
+                    <i class="fa fa-keyboard-o fa-lg"></i>
+                    Parameters
+                  </legend>
+                  <div class="form-group">
+                    <div class="col-md-6 parameters" v-for="parameter in activeContainer.parameters">
+                      <label for="rootPassword">{{ parameter.label }}</label>
+                      <input id="rootPassword" class="form-control"
+                             :placeholder="parameter.label"
+                             :name="parameter.name"
+                             :value="parameters[parameter.name]"
+                             :disabled="!install"
+                             @input="updateParameter">
+                    </div>
+                  </div>
+                </fieldset>
+              </template>
+            </div>
+        </div>
       </div>
     </div>
   </div>

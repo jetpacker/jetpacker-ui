@@ -162,7 +162,6 @@
 </script>
 
 <style scoped>
-  .extensions {
-    padding: 0px 0px 12px 0px;
-  }
+  @import url("/static/styles/tabbedPanel.css");
+  @import url("/static/styles/setting.css");
 </style>

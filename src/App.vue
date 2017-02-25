@@ -42,9 +42,8 @@
   };
 </script>
 
-<style>
+<style scoped>
   .content {
     padding-left: 0px;
   }
-  @import url('assets/styles.css');
 </style>

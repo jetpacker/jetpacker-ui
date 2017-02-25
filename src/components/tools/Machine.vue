@@ -58,6 +58,8 @@
 </script>
 
 <style scoped>
+  @import url("/static/styles/summaryItem.css");
+
   .summary-item-header {
     padding-bottom: 0px;
   }

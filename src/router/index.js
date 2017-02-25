@@ -8,6 +8,7 @@ import Machine from '../components/settings/Machine';
 import Kit from '../components/settings/Kit';
 import Container from '../components/settings/Container';
 import Builder from '../components/tools/Builder';
+import Main from '../components/Builder';
 
 Vue.use(Router);
 
@@ -17,13 +18,17 @@ const router = new Router({
   routes: [
     { path: '/', component: Home },
     { path: '/about', component: About },
+    {
+      path: '/tools/builder',
+      component: Main,
+      children: [
+        { path: '/settings/machine', component: Machine },
+        { path: '/settings/kits', component: Kit },
+        { path: '/settings/containers/:type', component: Container },
+        { path: '/tools/builder', component: Builder },
+      ],
+    },
     { path: '/help', component: Help },
-
-    { path: '/settings/machine', component: Machine },
-    { path: '/settings/kits', component: Kit },
-    { path: '/settings/containers/:type', component: Container },
-
-    { path: '/tools/builder', component: Builder },
 
     { path: '*', redirect: '/' },
   ],

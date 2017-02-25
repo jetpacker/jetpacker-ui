@@ -1,89 +1,91 @@
 <template>
-  <div class="panel with-nav-tabs panel-default">
-    <div class="panel-heading">
-      <ul class="nav nav-tabs">
-        <li v-for="kit in kits"
-            :class="{ active: kit.name == activeKit.name }">
-          <a data-toggle="tab" href=""
-             @click.prevent="setActiveKit(kit.name)">{{ kit.label }}</a>
-        </li>
-      </ul>
-    </div>
+  <div class="main-wrapper">
+    <div class="panel with-nav-tabs panel-default">
+      <div class="panel-heading">
+        <ul class="nav nav-tabs">
+          <li v-for="kit in kits"
+              :class="{ active: kit.name == activeKit.name }">
+            <a data-toggle="tab" href=""
+               @click.prevent="setActiveKit(kit.name)">{{ kit.label }}</a>
+          </li>
+        </ul>
+      </div>
 
-    <div class="panel-body">
-      <div class="tab-content">
-        <div id="home" class="tab-pane fade in active">
-          <p class="text-muted">
-            {{ activeKit.description }}
-          </p>
+      <div class="panel-body">
+        <div class="tab-content">
+          <div id="home" class="tab-pane fade in active">
+            <p class="text-muted">
+              {{ activeKit.description }}
+            </p>
 
-          <div class="form-horizontal">
-            <div class="form-group col-md-9 clear-left">
-              <template v-if="activeKit.version">
-                <label for="version" class="control-label col-md-2">
-                  {{ activeKit.version.label }}
+            <div class="form-horizontal">
+              <div class="form-group col-md-9 clear-left">
+                <template v-if="activeKit.version">
+                  <label for="version" class="control-label col-md-2">
+                    {{ activeKit.version.label }}
+                  </label>
+                  <div class="col-md-4">
+                    <select class="form-control" id="version"
+                            name="version"
+                            :disabled="!install"
+                            @input="update">
+                      <option v-for="release in activeKit.version.releases"
+                              :value="release"
+                              :selected="version == release">{{ release }}</option>
+                    </select>
+                  </div>
+                </template>
+              </div>
+
+              <div class="checkbox col-md-3 pull-right clear-right">
+                <label>
+                  <input id="install" type="checkbox"
+                         name="install"
+                         :value="true"
+                         :checked="install"
+                         @change="update">
+                  <strong>{{ activeKit.install.label }}</strong>
                 </label>
-                <div class="col-md-4">
-                  <select class="form-control" id="version"
-                          name="version"
-                          :disabled="!install"
-                          @input="update">
-                    <option v-for="release in activeKit.version.releases"
-                            :value="release"
-                            :selected="version == release">{{ release }}</option>
-                  </select>
-                </div>
-              </template>
-            </div>
+              </div>
 
-            <div class="checkbox col-md-3 pull-right clear-right">
-              <label>
-                <input id="install" type="checkbox"
-                       name="install"
-                       :value="true"
-                       :checked="install"
-                       @change="update">
-                <strong>{{ activeKit.install.label }}</strong>
-              </label>
-            </div>
+              <div class="clearfix"></div>
 
-            <div class="clearfix"></div>
-
-            <template v-if="activeKit.extensions">
-              <fieldset>
-                <legend class="text-muted">
-                  <i class="fa fa-puzzle-piece fa-lg"></i>
-                  Extensions
-                </legend>
-                <div class="form-group">
-                  <div class="col-md-6 extensions" v-for="extension in activeKit.extensions">
-                    <div class="checkbox col-md-6">
-                      <label :title="extension.description">
-                        <input type="checkbox"
-                               :name="extension.name + '.install'"
-                               :value="true"
-                               :disabled="!install"
-                               :checked="extensions[extension.name].install"
-                               @change="updateExtension">
-                        <strong>{{ extension.label }}</strong>
-                      </label>
-                    </div>
-                    <div class="col-md-6">
-                      <select class="form-control"
-                              :name="extension.name + '.version' "
-                              :disabled="!install || !extensions[extension.name].install"
-                              @input="updateExtension">
-                        <option v-for="release in extension.version.releases"
-                                :value="release"
-                                :selected="extensions[extension.name].version == release">
-                          {{ release }}
-                        </option>
-                      </select>
+              <template v-if="activeKit.extensions">
+                <fieldset>
+                  <legend class="text-muted">
+                    <i class="fa fa-puzzle-piece fa-lg"></i>
+                    Extensions
+                  </legend>
+                  <div class="form-group">
+                    <div class="col-md-6 extensions" v-for="extension in activeKit.extensions">
+                      <div class="checkbox col-md-6">
+                        <label :title="extension.description">
+                          <input type="checkbox"
+                                 :name="extension.name + '.install'"
+                                 :value="true"
+                                 :disabled="!install"
+                                 :checked="extensions[extension.name].install"
+                                 @change="updateExtension">
+                          <strong>{{ extension.label }}</strong>
+                        </label>
+                      </div>
+                      <div class="col-md-6">
+                        <select class="form-control"
+                                :name="extension.name + '.version' "
+                                :disabled="!install || !extensions[extension.name].install"
+                                @input="updateExtension">
+                          <option v-for="release in extension.version.releases"
+                                  :value="release"
+                                  :selected="extensions[extension.name].version == release">
+                            {{ release }}
+                          </option>
+                        </select>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </fieldset>
-            </template>
+                </fieldset>
+              </template>
+            </div>
           </div>
         </div>
       </div>

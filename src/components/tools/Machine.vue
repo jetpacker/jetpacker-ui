@@ -45,8 +45,10 @@
         const presets = this.presets.machine;
         const values = this.values.machine;
 
+        const option = presets.box.options.find(option => option.value === values.box);
+
         const summary = {
-          [presets.box.label]: presets.box.options[values.box],
+          [presets.box.label]: option.label,
           [presets.memory.label]: values.memory,
           [presets.timezone.label]: values.timezone,
         };

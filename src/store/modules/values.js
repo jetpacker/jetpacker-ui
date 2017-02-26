@@ -13,13 +13,13 @@ const mutations = {
     const containers = state.containers;
 
     // Use Vue.set(map, key, value) will make nested maps reactive
-    Vue.set(machine, 'box', Object.keys(presets.machine.box.options)[0]);
+    Vue.set(machine, 'box', presets.machine.box.options[0].value);
     Vue.set(machine, 'memory', presets.machine.memory.value);
     Vue.set(machine, 'timezone', Intl.DateTimeFormat().resolvedOptions().timeZone);
 
     Object.values(presets.kits).forEach((kit) => {
       Vue.set(kits, kit.name, {});
-      Vue.set(kits[kit.name], 'version', kit.version ? Object.keys(kit.version.options)[0] : '');
+      Vue.set(kits[kit.name], 'version', kit.version ? kit.version.options[0].value : '');
       Vue.set(kits[kit.name], 'install', kit.install.value ? Boolean(kit.install.value) : false);
 
       if (kit.extensions) {
@@ -29,7 +29,7 @@ const mutations = {
         kit.extensions.forEach((extension) => {
           Vue.set(extensions, extension.name, {});
           Vue.set(extensions[extension.name], 'install', false);
-          Vue.set(extensions[extension.name], 'version', Object.keys(extension.version.options)[0]);
+          Vue.set(extensions[extension.name], 'version', extension.version.options[0].value);
         });
       }
     });
@@ -37,7 +37,7 @@ const mutations = {
     Object.values(presets.containers).forEach((container) => {
       Vue.set(containers, container.name, {});
       Vue.set(containers[container.name], 'install', false);
-      Vue.set(containers[container.name], 'version', Object.keys(container.version.options)[0]);
+      Vue.set(containers[container.name], 'version', container.version.options[0].value);
 
       if (container.parameters) {
         Vue.set(containers[container.name], 'parameters', {});

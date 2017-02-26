@@ -29,9 +29,11 @@
                             name="version"
                             :disabled="!install"
                             @input="update">
-                      <option v-for="(value, key) in activeKit.version.options"
-                              :value="key"
-                              :selected="version == key">{{ value }}</option>
+                      <option v-for="option in activeKit.version.options"
+                              :value="option.value"
+                              :selected="version == option.value">
+                        {{ option.label ? option.label : option.value }}
+                      </option>
                     </select>
                   </div>
                 </template>
@@ -74,10 +76,10 @@
                                 :name="extension.name + '.version' "
                                 :disabled="!install || !extensions[extension.name].install"
                                 @input="updateExtension">
-                          <option v-for="(value, key) in extension.version.options"
-                                  :value="value"
-                                  :selected="extensions[extension.name].version == key">
-                            {{ value }}
+                          <option v-for="option in extension.version.options"
+                                  :value="option.value"
+                                  :selected="extensions[extension.name].version == option.value">
+                            {{ option.label ? option.label : option.value }}
                           </option>
                         </select>
                       </div>

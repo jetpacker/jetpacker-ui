@@ -25,7 +25,6 @@
 <script>
   import SideNav from './SideNav';
 
-  console.log('builder', SideNav);
   export default {
     components: {
       appSideNav: SideNav,

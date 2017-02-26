@@ -27,7 +27,6 @@
       ]),
     },
     created() {
-      console.log('store', this.$store);
       this.initialize();
     },
   };

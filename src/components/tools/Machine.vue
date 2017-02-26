@@ -46,7 +46,7 @@
         const values = this.values.machine;
 
         const summary = {
-          [presets.box.label]: presets.box.releases[values.box],
+          [presets.box.label]: presets.box.options[values.box],
           [presets.memory.label]: values.memory,
           [presets.timezone.label]: values.timezone,
         };

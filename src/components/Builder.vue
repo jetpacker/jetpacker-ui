@@ -1,5 +1,5 @@
 <template>
-  <div class="main-container">
+  <div class="main-container" v-if="initialized">
     <div class="main-wrapper">
       <div class="page-info">
         <h2>Welcome to <span class="color-theme">Jetpack</span> Builder</h2>
@@ -23,9 +23,15 @@
 
 
 <script>
+  import { mapGetters } from 'vuex';
   import SideNav from './SideNav';
 
   export default {
+    computed: {
+      ...mapGetters([
+        'initialized',
+      ]),
+    },
     components: {
       appSideNav: SideNav,
     },

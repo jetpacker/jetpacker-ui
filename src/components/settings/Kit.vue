@@ -6,7 +6,7 @@
           <li v-for="kit in kits"
               :class="{ active: kit.name == activeKit.name }">
             <a data-toggle="tab" href=""
-               @click.prevent="setActiveKit(kit.name)">{{ kit.label }}</a>
+               @click.prevent="setActive(kit.name)">{{ kit.label }}</a>
           </li>
         </ul>
       </div>
@@ -122,8 +122,10 @@
       },
     },
     methods: {
+      ...mapActions({
+        setActive: 'setActiveKit',
+      }),
       ...mapActions([
-        'setActiveKit',
         'updateKit',
         'updateKitExtension',
       ]),

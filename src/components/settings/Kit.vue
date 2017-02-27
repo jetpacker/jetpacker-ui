@@ -1,5 +1,5 @@
 <template>
-  <div class="main-wrapper" v-if="initialized">
+  <div class="main-wrapper">
     <div class="panel with-nav-tabs panel-default">
       <div class="panel-heading">
         <ul class="nav nav-tabs">
@@ -101,7 +101,6 @@
   export default {
     computed: {
       ...mapGetters([
-        'initialized',
         'presets',
         'values',
         'tabs',

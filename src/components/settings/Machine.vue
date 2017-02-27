@@ -1,5 +1,5 @@
 <template>
-  <div class="main-wrapper" v-if="initialized">
+  <div class="main-wrapper">
     <div class="panel panel-default">
       <div class="panel-heading">
         <i class="fa fa-linux fa-lg"></i>
@@ -63,7 +63,6 @@
   export default {
     computed: {
       ...mapGetters([
-        'initialized',
         'presets',
         'values',
       ]),

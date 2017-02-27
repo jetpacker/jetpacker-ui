@@ -1,5 +1,5 @@
 <template>
-  <div class="panel panel-default">
+  <div class="panel panel-default" v-if="initialized">
     <div class="panel-body">
       <h4 class="summary-item-header">
         Development Kits
@@ -10,21 +10,21 @@
       </h4>
       <table class="table table-bordered summary-item-content" v-if="Object.keys(summary).length">
         <thead>
-        <tr>
-          <th class="col-md-3">Name</th>
-          <th>Extensions</th>
-        </tr>
+          <tr>
+            <th class="col-md-3">Name</th>
+            <th>Extensions</th>
+          </tr>
         </thead>
         <tbody>
-        <tr v-for="(extensions, kit) in summary">
-          <td>{{ kit }}</td>
-          <td v-if="extensions">
-            {{ extensions }}
-          </td>
-          <td v-else>
-            None
-          </td>
-        </tr>
+          <tr v-for="(extensions, kit) in summary">
+            <td>{{ kit }}</td>
+            <td v-if="extensions">
+              {{ extensions }}
+            </td>
+            <td v-else>
+              None
+            </td>
+          </tr>
         </tbody>
       </table>
       <p v-else>
@@ -49,6 +49,7 @@
     ],
     computed: {
       ...mapGetters([
+        'initialized',
         'chosenKits',
         'presets',
       ]),
@@ -76,9 +77,9 @@
             };
 
             summary[label] = preset.extensions
-              .filter(extension => extension.name in kit.extensions)
-              .map(convertResultToLabel)
-              .join(', ');
+                                   .filter(extension => extension.name in kit.extensions)
+                                   .map(convertResultToLabel)
+                                   .join(', ');
           }
         });
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="panel panel-default">
+  <div class="panel panel-default" v-if="initialized">
     <div class="panel-body">
       <h4 class="summary-item-header">
         Virtual Machine
@@ -38,6 +38,7 @@
     ],
     computed: {
       ...mapGetters([
+        'initialized',
         'presets',
         'values',
       ]),

@@ -15,19 +15,30 @@ const store = new Vuex.Store({
     controls,
     values,
   },
-
+  state: {
+    // TODO: If not initialized, show progress bar.
+    initialized: false,
+  },
+  mutations: {
+    SET_INITIALIZE: (state) => {
+      state.initialized = true;
+    },
+  },
   actions: {
     initialize: ({ commit, getters }) => {
-      http
-        .get('generator')
-        .then((response) => {
-          commit('SET_PRESETS', response.data);
-          commit('SET_CONTROLS', getters.presets);
-          commit('SET_VALUES', getters.presets);
-        })
-        .catch((error) => {
-          console.log('Error', error);
-        });
+      if (!getters.initialized) {
+        http
+          .get('generator')
+          .then((response) => {
+            commit('SET_PRESETS', response.data);
+            commit('SET_CONTROLS', getters.presets);
+            commit('SET_VALUES', getters.presets);
+            commit('SET_INITIALIZE');
+          })
+          .catch((error) => {
+            console.log('Error', error);
+          });
+      }
     },
     resetSettings: ({ commit, getters }) => {
       commit('SET_VALUES', getters.presets);
@@ -41,6 +52,11 @@ const store = new Vuex.Store({
         .catch((error) => {
           console.log('Error', error);
         });
+    },
+  },
+  getters: {
+    initialized(state) {
+      return state.initialized;
     },
   },
 });

@@ -23,9 +23,9 @@ const router = new Router({
       component: Builder,
       children: [
         { path: '', component: Summary },
-        { path: '/settings/machine', component: Machine },
-        { path: '/settings/kits', component: Kit },
-        { path: '/settings/containers/:type', component: Container },
+        { path: '/builder/settings/machine', component: Machine },
+        { path: '/builder/settings/kits', component: Kit },
+        { path: '/builder/settings/containers/:type', component: Container },
       ],
     },
     { path: '/help', component: Help },

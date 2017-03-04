@@ -1,22 +1,57 @@
 @import url('https://fonts.googleapis.com/css?family=Work+Sans:200');
 
 body {
-  /*background: #61b7c6;*/
+  background: #f1f1f1;
   color: white;
   font-family: 'Work Sans', sans-serif;
 }
 
 /*PANEL*/
-.panel {
+.custom-panel {
+  border-bottom:1px solid #eee;
+  margin-bottom:20px;
+}
+
+.panel-container {
+  border-radius: 0px;
   box-shadow: none;
+  border: none;
+  /*border-bottom: 1px solid #eee;*/
+}
+
+.panel-container .summary-item-header {
+    border-bottom: 1px solid #eee;
+    color: #61b7c6;
+}
+
+.panel-container i {
+    color: #61b7c6;
+}
+
+.panel-container i:hover {
+  transition: color 0.4s ease;
+  color: #4492a0;
+}
+
+.form-group .form-value {
+  color: #999;
+}
+
+.panel {
+  /*box-shadow: none;*/
 }
 .panel-primary {
-  border-color: #61b7c6;
+  border: transparent;
 }
 
 .panel-primary>.panel-heading {
   background-color:#61b7c6;
   border-color: #61b7c6;
+}
+
+.static-label {
+  min-width:150px;
+  display:inline-block
 }
 
 .color-theme {
@@ -44,7 +79,7 @@ hr {
 }
 
 .bg-default {
-  background-color: #eee;
+  background-color: #e5e5e5;
   color: #555;
 }
 
@@ -74,12 +109,26 @@ section {
 }
 
 /* BUTTON */
+.btn {
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+
 .bg-light-gray {
   background-color: #eeeeee;
 }
+
 .bg-darkest-gray {
   background-color: #222222;
 }
+
+.btn-default {
+  color: #555;
+  background-color: #eee;
+  border:none;
+  cursor: pointer;
+}
+
 .btn-primary {
   color: white;
   background-color: #fed136;
@@ -125,6 +174,7 @@ fieldset[disabled] .btn-primary.active {
   background-color: white;
   cursor: pointer;
 }
+
 .btn-xl {
   color: white;
   background-color: #fec503;
@@ -173,4 +223,49 @@ fieldset[disabled] .btn-xl.active {
 
 .text-primary {
   color: #61b7c6;
+}
+
+/*TABLE*/
+.table>thead>tr>th {
+  background-color: #f8f8f8;
+  border-bottom: none;
+}
+
+.table>tbody>tr>td,
+.table>tbody>tr>th,
+.table>tfoot>tr>td,
+.table>tfoot>tr>th,
+.table>thead>tr>td,
+.table>thead>tr>th {
+  border-top: none;
+  border-bottom: 1px solid #f6f6f6;
+}
+
+/*TAB*/
+.nav-tabs>li>a {
+    color: white;
+    border: none;
+    margin-top: 2px;
+    transition: background-color 0.4s ease;
+}
+
+.nav-tabs>li>a:hover {
+    color: white;
+    background-color: #5dafbd;
+}
+
+.nav-tabs>li.active>a,
+.nav-tabs>li.active>a:focus,
+.nav-tabs>li.active>a:hover {
+  color: #61b7c6;
+  border: none;
+}
+
+.form-control {
+  border: 1px solid #eaeaea;
+  box-shadow: none;
+}
+
+.form-control:focus {
+  border-color: #61b7c6;
 }

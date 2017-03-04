@@ -1,6 +1,6 @@
 <template>
   <div class="main-wrapper">
-    <div class="panel panel-default">
+    <div class="panel panel-primary">
       <div class="panel-heading">
         <i class="fa fa-linux fa-lg"></i>
         {{ machine.label }}
@@ -10,9 +10,11 @@
           {{ machine.description }}
         </p>
           <div class="form-group col-md-6 clear-left">
-            <label class="control-label" for="box">
-              {{ machine.box.label }}
-            </label>
+            <h4>
+              <label class="control-label" for="box">
+                {{ machine.box.label }}
+              </label>
+            </h4>
             <div class="controls">
               <select class="form-control" id="box"
                       :name="machine.box.name"
@@ -27,9 +29,11 @@
           </div>
 
           <div class="form-group col-md-6 clear-right">
-            <label for="memory">
-              {{ machine.memory.label }}
-            </label>
+            <h4>
+              <label for="memory">
+                {{ machine.memory.label }}
+              </label>
+            </h4>
             <input id="memory" type="number" class="form-control" placeholder="Memory"
                    :name="machine.memory.name"
                    :value="properties.memory"
@@ -37,9 +41,11 @@
           </div>
 
           <div class="form-group col-md-6 clear-left">
-            <label class="control-label" for="timezone">
-              {{ machine.timezone.label }}
-            </label>
+            <h4>
+              <label class="control-label" for="timezone">
+                {{ machine.timezone.label }}
+              </label>
+            </h4>
             <div class="controls">
               <select class="form-control" id="timezone"
                       :name="machine.timezone.name"

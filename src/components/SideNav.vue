@@ -7,7 +7,7 @@
                        :to="value.url" tag="li"
                        @click.native="setActive(key)"
                        :class="{ 'active': value.active }">
-            <a class="nav-label">
+            <a class="nav-label" v-bind:class="{ 'builder-btn': index == 0 }">
               <span class="fa-stack fa-fw">
                 <i :class="[ 'fa', value.icon ]"></i>
               </span>

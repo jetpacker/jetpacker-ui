@@ -5,8 +5,8 @@
             <div class="intro-text">
                 <div class="intro-heading">Kickstart your Java project with a Jetpack!</div>
                 <div class="intro-lead-in">Jetpacker helps generate portable development environments <br/> for Java developers.</div>
-                <router-link to="/tools/builder" tag="a">
-                  <a class="page-scroll btn btn-xl">Try it now</a>
+                <router-link to="/builder" tag="a">
+                  <a class="page-scroll btn btn-xl">Show Me</a>
                 </router-link>
             </div>
         </div>

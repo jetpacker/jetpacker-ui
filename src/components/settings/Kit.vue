@@ -6,7 +6,7 @@
           <li v-for="kit in kits"
               :class="{ active: kit.name == activeKit.name }">
             <a data-toggle="tab" href=""
-               @click.prevent="setActiveKit(kit.name)">{{ kit.label }}</a>
+               @click.prevent="setActive(kit.name)">{{ kit.label }}</a>
           </li>
         </ul>
       </div>
@@ -31,9 +31,11 @@
                             name="version"
                             :disabled="!install"
                             @input="update">
-                      <option v-for="release in activeKit.version.releases"
-                              :value="release"
-                              :selected="version == release">{{ release }}</option>
+                      <option v-for="option in activeKit.version.options"
+                              :value="option.value"
+                              :selected="version == option.value">
+                        {{ option.label ? option.label : option.value }}
+                      </option>
                     </select>
                   </div>
                 </template>
@@ -78,10 +80,10 @@
                                 :name="extension.name + '.version' "
                                 :disabled="!install || !extensions[extension.name].install"
                                 @input="updateExtension">
-                          <option v-for="release in extension.version.releases"
-                                  :value="release"
-                                  :selected="extensions[extension.name].version == release">
-                            {{ release }}
+                          <option v-for="option in extension.version.options"
+                                  :value="option.value"
+                                  :selected="extensions[extension.name].version == option.value">
+                            {{ option.label ? option.label : option.value }}
                           </option>
                         </select>
                       </div>
@@ -124,8 +126,10 @@
       },
     },
     methods: {
+      ...mapActions({
+        setActive: 'setActiveKit',
+      }),
       ...mapActions([
-        'setActiveKit',
         'updateKit',
         'updateKitExtension',
       ]),

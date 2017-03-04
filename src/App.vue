@@ -2,8 +2,11 @@
   <div>
     <div id="app">
       <app-header></app-header>
-      <div>
+      <div v-if="initialized">
         <router-view></router-view>
+      </div>
+      <div v-else>
+        <app-unavailable></app-unavailable>
       </div>
       <app-footer></app-footer>
     </div>
@@ -11,15 +14,22 @@
 </template>
 
 <script>
-  import { mapActions } from 'vuex';
+  import { mapActions, mapGetters } from 'vuex';
   import Header from './components/Header';
   import Footer from './components/Footer';
+  import Unavailable from './components/Unavailable';
 
   export default {
     name: 'app',
     components: {
       appHeader: Header,
       appFooter: Footer,
+      appUnavailable: Unavailable,
+    },
+    computed: {
+      ...mapGetters([
+        'initialized',
+      ]),
     },
     methods: {
       ...mapActions([
@@ -27,7 +37,6 @@
       ]),
     },
     created() {
-      console.log('store', this.$store);
       this.initialize();
     },
   };

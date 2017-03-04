@@ -49,9 +49,11 @@
                           name="version"
                           :disabled="!install"
                           @input="update">
-                    <option v-for="release in activeContainer.version.releases"
-                            :value="release"
-                            :selected="version == release">{{ release }}</option>
+                    <option v-for="option in activeContainer.version.options"
+                            :value="option.value"
+                            :selected="version == option.value">
+                      {{ option.label ? option.label : option.value }}
+                    </option>
                   </select>
                 </div>
               </div>

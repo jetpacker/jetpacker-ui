@@ -2,43 +2,43 @@ const state = {
   menus: {
     side: [
       {
-        Builder: {
-          active: false,
-          label: 'Jetpack Builder',
-          url: '/tools/builder',
-          icon: 'fa-gears',
-        },
-      },
-      {
         VirtualMachine: {
           active: false,
           label: 'Virtual Machine',
-          url: '/settings/machine',
+          url: '/builder/settings/machine',
           icon: 'fa-desktop',
         },
         DevelopmentKit: {
           active: false,
           label: 'Development Kits',
-          url: '/settings/kits',
+          url: '/builder/settings/kits',
           icon: 'fa-code',
         },
         DataStore: {
           active: false,
           label: 'Data Stores',
-          url: '/settings/containers/DataStore',
+          url: '/builder/settings/containers/DataStore',
           icon: 'fa-database',
         },
         MessageBroker: {
           active: false,
           label: 'Message Brokers',
-          url: '/settings/containers/MessageBroker',
+          url: '/builder/settings/containers/MessageBroker',
           icon: 'fa-exchange',
         },
         SearchEngine: {
           active: false,
           label: 'Search Engines',
-          url: '/settings/containers/SearchEngine',
+          url: '/builder/settings/containers/SearchEngine',
           icon: 'fa-search',
+        },
+      },
+      {
+        BuildSummary: {
+          active: false,
+          label: 'Build Summary',
+          url: '/builder',
+          icon: 'fa-book',
         },
       },
     ],

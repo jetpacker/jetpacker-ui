@@ -60,8 +60,14 @@
         Object.keys(kits).forEach((key) => {
           const kit = kits[key];
           const preset = presets[key];
+          let version = 'Latest';
 
-          const label = `${preset.label} (${kit.version ? kit.version : 'Latest'})`;
+          if (preset.version) {
+            const option = preset.version.options.find(option => option.value === kit.version);
+            version = option.label ? option.label : option.value;
+          }
+
+          const label = `${preset.label} (${version})`;
           summary[label] = 'None';
 
           if (kit.extensions) {

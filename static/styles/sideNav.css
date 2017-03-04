@@ -42,3 +42,13 @@
 .nav-label {
   padding-left: 5px;
 }
+
+.menu-divider {
+  height: 0px;
+  width: 100%;
+  display: block; /* for use on default inline elements like span */
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+  overflow: hidden;
+  background-color: #e5e5e5;
+}

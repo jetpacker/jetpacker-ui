@@ -19,10 +19,10 @@
               <select class="form-control" id="box"
                       :name="machine.box.name"
                       @input="update">
-                <option v-for="(value, key) in machine.box.releases"
-                        :value="key"
-                        :selected="properties.box == key">
-                  {{ value }}
+                <option v-for="option in machine.box.options"
+                        :value="option.value"
+                        :selected="properties.box == option.value">
+                  {{ option.label ? option.label : option.value }}
                 </option>
               </select>
             </div>
@@ -50,10 +50,10 @@
               <select class="form-control" id="timezone"
                       :name="machine.timezone.name"
                       @input="update">
-                <option v-for="id in machine.timezone.ids"
-                        :value="id"
-                        :selected="properties.timezone == id">
-                  {{ id }}
+                <option v-for="option in machine.timezone.options"
+                        :value="option.value"
+                        :selected="properties.timezone == option.value">
+                  {{ option.label ? option.label : option.value }}
                 </option>
               </select>
             </div>

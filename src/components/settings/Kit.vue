@@ -1,6 +1,6 @@
 <template>
   <div class="main-wrapper">
-    <div class="panel with-nav-tabs panel-default">
+    <div class="panel with-nav-tabs panel-primary">
       <div class="panel-heading">
         <ul class="nav nav-tabs">
           <li v-for="kit in kits"
@@ -21,9 +21,11 @@
             <div class="form-horizontal">
               <div class="form-group col-md-9 clear-left">
                 <template v-if="activeKit.version">
-                  <label for="version" class="control-label col-md-2">
-                    {{ activeKit.version.label }}
-                  </label>
+                  <h4>
+                    <label for="version" class="control-label col-md-2">
+                      {{ activeKit.version.label }}
+                    </label>
+                  </h4>
                   <div class="col-md-4">
                     <select class="form-control" id="version"
                             name="version"
@@ -40,14 +42,16 @@
               </div>
 
               <div class="checkbox col-md-3 pull-right clear-right">
-                <label>
-                  <input id="install" type="checkbox"
-                         name="install"
-                         :value="true"
-                         :checked="install"
-                         @change="update">
-                  <strong>{{ activeKit.install.label }}</strong>
-                </label>
+                <h4>
+                  <label>
+                    <input id="install" type="checkbox"
+                           name="install"
+                           :value="true"
+                           :checked="install"
+                           @change="update">
+                    <strong>{{ activeKit.install.label }}</strong>
+                  </label>
+                </h4>
               </div>
 
               <div class="clearfix"></div>

@@ -1,0 +1,63 @@
+/* HEADER */
+header {
+  background: #61b7c6;
+  background-image: url('../../static/img/bg.png');
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  text-align: left;
+  color: white;
+  height: 100vh;
+}
+header .intro-text {
+  padding-top: 150px;
+  padding-bottom: 50px;
+  padding-left: 100px;
+}
+
+@media only screen and (max-width: 768px) {
+  header .intro-text {
+    padding-left: 0px;
+  }
+}
+
+header .intro-text .intro-lead-in {
+  /*font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+  font-size: 25px;
+  line-height: 30px;
+  margin-bottom: 25px;
+  color: #9cd3dd;
+}
+header .intro-heading {
+  /*font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+  text-transform: uppercase;
+  font-weight: 200;
+  font-size: 40px;
+  line-height: 50px;
+  margin-bottom: 10px;
+}
+
+/*FEATURES*/
+#features {
+  color: #555;
+}
+
+#features .feature-info p{
+  font-size: 18px;
+}
+
+#features .feature-title {
+  margin-bottom: 50px;
+}
+
+#features .section-heading {
+  color: #61b7c6;
+}
+
+.section-subheading {
+  font-size: 18px;
+}

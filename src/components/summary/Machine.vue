@@ -1,20 +1,22 @@
 <template>
-  <div class="panel panel-default">
+  <div class="panel panel-default panel-container">
     <div class="panel-body">
       <h4 class="summary-item-header">
-        Virtual Machine
+        <label>Virtual Machine</label>
         <router-link tag="a" class="pull-right" to="/settings/machine"
                      @click.native="setActive(name)">
-          <i class="fa fa-pencil-square-o fa-fw"></i><span class="summary-item-edit">Edit</span>
+          <i class="fa fa-pencil-square-o fa-fw"></i>
         </router-link>
+        <br/>
+        <br/>
       </h4>
 
       <div class="form-horizontal summary-item-content">
         <p class="form-group" v-for="(value, label) in summary">
-          <span class="col-md-3 form-static-control">
+          <label class="col-md-3 form-static-control static-label">
             {{ label }}:
-          </span>
-          <span class="form-static-control">
+          </label>
+          <span class="form-static-control form-value">
             {{ value }}
           </span>
         </p>

@@ -11,3 +11,7 @@
     </footer>
   </div>
 </template>
+
+<style scoped>
+  @import url("/static/styles/footer.css");
+</style>

@@ -1,5 +1,5 @@
 <template>
-  <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+  <nav id="mainNav" class="navbar navbar-default navbar-fixed-top" v-bind:class="{ 'header-scrolled' : isScrolled }">
       <div class="container">
           <div class="navbar-header">
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -27,6 +27,28 @@
       </div>
   </nav>
 </template>
+
+<script>
+  import { mapActions } from 'vuex';
+
+  export default {
+    data() {
+      return {
+        isScrolled: false,
+      };
+    },
+    methods: {
+      ...mapActions([
+        'initialize',
+      ]),
+    },
+    created() {
+      window.addEventListener('scroll', () => {
+        this.isScrolled = (window.scrollY > 5);
+      });
+    },
+  };
+</script>
 
 <style scoped>
   @import url("/static/styles/header.css");

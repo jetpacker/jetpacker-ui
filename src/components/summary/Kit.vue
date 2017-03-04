@@ -1,14 +1,14 @@
 <template>
-  <div class="panel panel-default">
+  <div class="panel panel-default panel-container">
     <div class="panel-body">
       <h4 class="summary-item-header">
-        Development Kits
+        <label>Development Kits</label>
         <router-link tag="a" class="pull-right" to="/settings/kits"
                      @click.native="setActive(name)">
-          <i class="fa fa-pencil-square-o fa-fw"></i><span class="summary-item-edit">Edit</span>
+          <i class="fa fa-pencil-square-o fa-fw"></i>
         </router-link>
       </h4>
-      <table class="table table-bordered summary-item-content" v-if="Object.keys(summary).length">
+      <table class="table summary-item-content" v-if="Object.keys(summary).length">
         <thead>
           <tr>
             <th class="col-md-3">Name</th>
@@ -17,7 +17,7 @@
         </thead>
         <tbody>
           <tr v-for="(extensions, kit) in summary">
-            <td>{{ kit }}</td>
+            <td><label>{{ kit }}</label></td>
             <td v-if="extensions">
               {{ extensions }}
             </td>

@@ -1,14 +1,13 @@
 <template>
   <div class="row">
     <div class="col-sm-6">
-      <button type="button" class="btn btn-danger btn-lg btn-block"
+      <button type="button" class="btn btn-default btn-lg btn-block"
               @click="resetSettings">
-        <i class="fa fa-undo fa-lg"></i>
         Reset Settings
       </button>
     </div>
     <div class="col-sm-6">
-      <button type="button" class="btn btn-success btn-lg btn-block"
+      <button type="button" class="btn btn-primary btn-lg btn-block"
               @click="buildJetpack">
         <i class="fa fa-cloud-download fa-lg"></i>
         Build Jetpack

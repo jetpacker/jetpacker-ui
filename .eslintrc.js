@@ -34,5 +34,9 @@ module.exports = {
     'new-cap': [ 0, {
       "capIsNewExceptions": [ "Intl" ]
     }],
+  },
+  "env": {
+    "browser": true,
+    "node": true
   }
 }

@@ -2,7 +2,7 @@
   <div class="main-container">
     <div class="row main-wrapper">
       <div class="page-info full-height">
-        <h2>What is <span class="color-theme">jetpacker.io</span></h2>
+        <h1>What is <span class="color-theme">jetpacker.io</span></h1>
         <h4>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit,
           sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.

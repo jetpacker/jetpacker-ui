@@ -164,7 +164,7 @@ const getters = {
 
       body.containers[key] = {
         version: container.version ? container.version : null,
-        parameters: container.parameters ? container.parameters : null,
+        env: container.parameters ? container.parameters : null,
       };
     });
 

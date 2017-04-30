@@ -4,7 +4,7 @@
       <h4 class="summary-item-header">
         <label>{{ description }}</label>
         <router-link tag="a" class="pull-right"
-                     :to="'/settings/containers/' + name"
+                     :to="'builder/settings/containers/' + name"
                      @click.native="setActive(name)">
           <i class="fa fa-pencil-square-o fa-fw"></i>
         </router-link>

@@ -3,7 +3,7 @@
     <div class="panel-body">
       <h4 class="summary-item-header">
         <label>Virtual Machine</label>
-        <router-link tag="a" class="pull-right" to="/settings/machine"
+        <router-link tag="a" class="pull-right" to="builder/settings/machine"
                      @click.native="setActive(name)">
           <i class="fa fa-pencil-square-o fa-fw"></i>
         </router-link>

@@ -45,9 +45,14 @@ const store = new Vuex.Store({
     },
     buildJetpack: ({ getters }) => {
       http
-        .post('generator', getters.payload)
+        .post('generator', getters.payload, { responseType: 'arraybuffer' })
         .then((response) => {
           console.log('Response', response);
+          const blob = new Blob([response.data], { type: response.headers['content-type'] });
+          const link = document.createElement('a');
+          link.href = window.URL.createObjectURL(blob);
+          link.download = 'jetpack';
+          link.click();
         })
         .catch((error) => {
           console.log('Error', error);

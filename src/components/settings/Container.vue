@@ -95,6 +95,7 @@
                 </fieldset>
               </template>
             </div>
+          </div>
         </div>
       </div>
     </div>

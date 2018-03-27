@@ -1,7 +1,7 @@
 <template>
   <div>
     <footer>
-        <div
+        <div>
             <div class="row">
                 <div class="col-md-12">
                     <span class="copyright">Copyright &copy; jetpacker.io 2017</span>

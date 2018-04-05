@@ -4,11 +4,11 @@ import Router from 'vue-router';
 import Home from '../components/Home';
 import About from '../components/About';
 import Help from '../components/Help';
-import Machine from '../components/settings/Machine';
-import Kit from '../components/settings/Kit';
-import Container from '../components/settings/Container';
-import Summary from '../components/summary/Summary';
-import Builder from '../components/Builder';
+import Machine from '../components/setting/Machine';
+import Kit from '../components/setting/Kit';
+import Container from '../components/setting/Container';
+import Builder from '../components/builder/Builder';
+import Configuration from '../components/Configuration';
 
 Vue.use(Router);
 
@@ -19,13 +19,13 @@ const router = new Router({
     { path: '/', component: Home },
     { path: '/about', component: About },
     {
-      path: '/builder',
-      component: Builder,
+      path: '/configuration/builder',
+      component: Configuration,
       children: [
-        { path: '', component: Summary },
-        { path: '/builder/settings/machine', component: Machine },
-        { path: '/builder/settings/kits', component: Kit },
-        { path: '/builder/settings/containers/:type', component: Container },
+        { path: '/configuration/builder', component: Builder },
+        { path: '/configuration/setting/machine', component: Machine },
+        { path: '/configuration/setting/kits', component: Kit },
+        { path: '/configuration/setting/containers/:type', component: Container },
       ],
     },
     { path: '/help', component: Help },

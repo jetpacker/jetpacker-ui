@@ -10,8 +10,8 @@
 
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav navbar-right">
-                <router-link to="/builder" activeClass="active" tag="li">
-                  <a>Builder</a>
+                <router-link to="/configuration/builder" activeClass="active" tag="li">
+                  <a>Configuration</a>
                 </router-link>
                 <router-link to="/about" activeClass="active" tag="li">
                   <a>About</a>

@@ -18,12 +18,8 @@
 
 <script>
   import { mapActions } from 'vuex';
-  import Summary from './Content';
 
   export default {
-    components: {
-      appSummary: Summary,
-    },
     methods: {
       ...mapActions([
         'resetSettings',

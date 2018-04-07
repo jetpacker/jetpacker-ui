@@ -36,7 +36,7 @@ const state = {
         Builder: {
           active: false,
           label: 'Builder',
-          url: '/configuration/builder',
+          url: '/',
           icon: 'fa-industry',
         },
       },

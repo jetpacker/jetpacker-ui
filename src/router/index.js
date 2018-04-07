@@ -14,7 +14,6 @@ const router = new Router({
   mode: 'history',
   scrollBehavior: () => ({ y: 0 }),
   routes: [
-    // { path: '/', component: Home },
     {
       path: '/configuration/builder',
       component: Configuration,

@@ -10,7 +10,7 @@
 
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav navbar-right">
-                <router-link to="/configuration/builder" tag="li"
+                <router-link to="/" tag="li"
                              @click.native="setActive('Builder')"
                              :class="{ 'active': this.builder }">
                   <a>Builder</a>

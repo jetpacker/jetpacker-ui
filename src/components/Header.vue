@@ -25,6 +25,7 @@
                 </router-link>
               </ul>
           </div>
+          <github-corners repo="jetpacker" bgColor="#d84565"></github-corners>
       </div>
   </nav>
 </template>

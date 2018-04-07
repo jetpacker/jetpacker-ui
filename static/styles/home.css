@@ -1,6 +1,6 @@
 /* HEADER */
 header {
-  background: #61b7c6;
+  background: #539eaa;
   background-image: url('../../static/img/bg.png');
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -55,7 +55,7 @@ header .intro-heading {
 }
 
 #features .section-heading {
-  color: #61b7c6;
+  color: #539eaa;
 }
 
 .section-subheading {

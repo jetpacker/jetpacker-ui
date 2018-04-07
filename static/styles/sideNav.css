@@ -15,8 +15,8 @@
 
 .side-nav .active a, .side-nav a:active, .side-nav a:focus {
   background-color: #fafafa !important;
-  border-left: 2px solid #61b7c6;
-  color: #61b7c6 !important;
+  border-left: 2px solid #539eaa;
+  color: #539eaa !important;
 }
 
 .side-nav a:hover {

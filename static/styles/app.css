@@ -21,11 +21,11 @@ body {
 
 .panel-container .summary-item-header {
   border-bottom: 1px solid #eee;
-  color: #61b7c6;
+  color: #539eaa;
 }
 
 .panel-container i {
-  color: #61b7c6;
+  color: #539eaa;
 }
 
 .panel-container i:hover {
@@ -45,8 +45,8 @@ body {
 }
 
 .panel-primary>.panel-heading {
-  background-color:#61b7c6;
-  border-color: #61b7c6;
+  background-color:#539eaa;
+  border-color: #539eaa;
 }
 
 .static-label {
@@ -55,7 +55,7 @@ body {
 }
 
 .color-theme {
-  color: #61b7c6;
+  color: #539eaa;
 }
 
 /* MAIN_CONTAINER */
@@ -100,7 +100,7 @@ hr {
 }
 
 .banner {
-  background-color: #61b7c6;
+  background-color: #539eaa;
   height: 150px;
 }
 
@@ -222,7 +222,7 @@ fieldset[disabled] .btn-xl.active {
 }
 
 .text-primary {
-  color: #61b7c6;
+  color: #539eaa;
 }
 
 /*TABLE*/
@@ -257,7 +257,7 @@ fieldset[disabled] .btn-xl.active {
 .nav-tabs>li.active>a,
 .nav-tabs>li.active>a:focus,
 .nav-tabs>li.active>a:hover {
-  color: #61b7c6;
+  color: #539eaa;
   border: none;
 }
 
@@ -267,5 +267,5 @@ fieldset[disabled] .btn-xl.active {
 }
 
 .form-control:focus {
-  border-color: #61b7c6;
+  border-color: #539eaa;
 }

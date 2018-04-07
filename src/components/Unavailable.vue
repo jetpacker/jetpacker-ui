@@ -7,7 +7,7 @@
           Ooops, Our Server is Down :(
         </h2>
         <h4>
-          We're really sorry that our server is down. Please come again later.
+          Sorry, our server is down. Please come again later.
           Thanks!
         </h4>
       </div>

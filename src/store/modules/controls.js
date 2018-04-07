@@ -1,4 +1,5 @@
 const state = {
+  builder: false,
   menus: {
     side: [
       {
@@ -75,6 +76,7 @@ const mutations = {
         menu[payload.item].active = !menu[payload.item].active;
       }
     });
+    state.builder = true;
   },
   RESET_MENUS(state) {
     const locations = Object.keys(state.menus);
@@ -86,6 +88,7 @@ const mutations = {
         });
       });
     });
+    state.builder = false;
   },
 };
 
@@ -100,9 +103,15 @@ const actions = {
     commit('RESET_MENUS');
     commit('SET_ACTIVE_MENU', payload);
   },
+  resetActiveMenus: ({ commit }) => {
+    commit('RESET_MENUS');
+  },
 };
 
 const getters = {
+  builder(state) {
+    return state.builder;
+  },
   tabs(state) {
     return state.tabs;
   },

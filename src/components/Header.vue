@@ -10,13 +10,17 @@
 
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav navbar-right">
-                <router-link to="/configuration/builder" activeClass="active" tag="li">
-                  <a>Configuration</a>
+                <router-link to="/configuration/builder" tag="li"
+                             @click.native="setActive('Builder')"
+                             :class="{ 'active': this.builder }">
+                  <a>Builder</a>
                 </router-link>
-                <router-link to="/about" activeClass="active" tag="li">
+                <router-link to="/about" activeClass="active" tag="li"
+                             @click.native="resetActives()">
                   <a>About</a>
                 </router-link>
-                  <router-link to="/help" activeClass="active" tag="li">
+                  <router-link to="/help" activeClass="active" tag="li"
+                               @click.native="resetActives()">
                     <a>Help</a>
                   </router-link>
                   <li>
@@ -29,23 +33,28 @@
 </template>
 
 <script>
-  import { mapActions } from 'vuex';
+  import { mapGetters } from 'vuex';
+  import controls from '../mixins/controls';
 
   export default {
+    mixins: [
+      controls,
+    ],
     data() {
       return {
         isScrolled: false,
       };
     },
-    methods: {
-      ...mapActions([
-        'initialize',
+    computed: {
+      ...mapGetters([
+        'builder',
       ]),
     },
     created() {
       window.addEventListener('scroll', () => {
         this.isScrolled = (window.scrollY > 5);
       });
+      this.setActive('Builder');
     },
   };
 </script>

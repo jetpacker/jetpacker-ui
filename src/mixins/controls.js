@@ -4,6 +4,7 @@ export default {
   methods: {
     ...mapActions([
       'setActiveMenu',
+      'resetActiveMenus',
     ]),
     setActive(item) {
       const payload = {
@@ -12,6 +13,9 @@ export default {
       };
 
       this.setActiveMenu(payload);
+    },
+    resetActives() {
+      this.resetActiveMenus();
     },
   },
 };

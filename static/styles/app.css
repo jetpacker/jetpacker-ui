@@ -20,12 +20,12 @@ body {
 }
 
 .panel-container .summary-item-header {
-    border-bottom: 1px solid #eee;
-    color: #61b7c6;
+  border-bottom: 1px solid #eee;
+  color: #61b7c6;
 }
 
 .panel-container i {
-    color: #61b7c6;
+  color: #61b7c6;
 }
 
 .panel-container i:hover {
@@ -243,15 +243,15 @@ fieldset[disabled] .btn-xl.active {
 
 /*TAB*/
 .nav-tabs>li>a {
-    color: white;
-    border: none;
-    margin-top: 2px;
-    transition: background-color 0.4s ease;
+  color: white;
+  border: none;
+  margin-top: 2px;
+  transition: background-color 0.4s ease;
 }
 
 .nav-tabs>li>a:hover {
-    color: white;
-    background-color: #5dafbd;
+  color: white;
+  background-color: #5dafbd;
 }
 
 .nav-tabs>li.active>a,

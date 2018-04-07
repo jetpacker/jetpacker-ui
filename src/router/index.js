@@ -1,7 +1,5 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-
-import Home from '../components/Home';
 import About from '../components/About';
 import Help from '../components/Help';
 import Machine from '../components/setting/Machine';
@@ -16,11 +14,11 @@ const router = new Router({
   mode: 'history',
   scrollBehavior: () => ({ y: 0 }),
   routes: [
-    { path: '/', component: Home },
-    { path: '/about', component: About },
+    // { path: '/', component: Home },
     {
       path: '/configuration/builder',
       component: Configuration,
+      alias: '/',
       children: [
         { path: '/configuration/builder', component: Builder },
         { path: '/configuration/setting/machine', component: Machine },
@@ -28,6 +26,7 @@ const router = new Router({
         { path: '/configuration/setting/containers/:type', component: Container },
       ],
     },
+    { path: '/about', component: About },
     { path: '/help', component: Help },
 
     { path: '*', redirect: '/' },

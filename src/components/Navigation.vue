@@ -39,5 +39,5 @@
 </script>
 
 <style scoped>
-  @import url("/static/styles/sideNav.css");
+  @import url("/static/styles/navigation.css");
 </style>

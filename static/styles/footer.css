@@ -1,19 +1,35 @@
 /* FOOTER */
 footer {
-  padding: 10px 0;
+  padding: 3px 0;
   text-align: center;
   background-color: #539eaa;
 }
+
 footer span.copyright {
   line-height: 40px;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-transform: uppercase;
   text-transform: none;
+  text-decoration: none;
 }
+
+a.creator {
+  color: #def013;
+  text-decoration: none;
+}
+
+a.creator:hover {
+  color: #def013;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.heart {
+  color: #d64e9b;
+}
+
 footer ul.quicklinks {
   margin-bottom: 0;
   line-height: 40px;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-transform: uppercase;
   text-transform: none;
 }

@@ -3,6 +3,7 @@
     <div class="col-sm-6">
       <button type="button" class="btn btn-default btn-lg btn-block"
               @click="resetSettings">
+        <i class="fa fa-undo fa-lg"></i>
         Reset Settings
       </button>
     </div>

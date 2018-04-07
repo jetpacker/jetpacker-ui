@@ -15,11 +15,10 @@ const router = new Router({
   scrollBehavior: () => ({ y: 0 }),
   routes: [
     {
-      path: '/configuration/builder',
+      path: '/',
       component: Configuration,
-      alias: '/',
       children: [
-        { path: '/configuration/builder', component: Builder },
+        { path: '/', component: Builder },
         { path: '/configuration/setting/machine', component: Machine },
         { path: '/configuration/setting/kits', component: Kit },
         { path: '/configuration/setting/containers/:type', component: Container },

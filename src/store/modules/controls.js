@@ -1,5 +1,5 @@
 const state = {
-  builder: false,
+  home: false,
   menus: {
     side: [
       {
@@ -76,7 +76,7 @@ const mutations = {
         menu[payload.item].active = !menu[payload.item].active;
       }
     });
-    state.builder = true;
+    state.home = true;
   },
   RESET_MENUS(state) {
     const locations = Object.keys(state.menus);
@@ -88,7 +88,7 @@ const mutations = {
         });
       });
     });
-    state.builder = false;
+    state.home = false;
   },
 };
 
@@ -109,8 +109,8 @@ const actions = {
 };
 
 const getters = {
-  builder(state) {
-    return state.builder;
+  home(state) {
+    return state.home;
   },
   tabs(state) {
     return state.tabs;

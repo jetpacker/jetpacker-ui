@@ -5,27 +5,24 @@
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                   <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
               </button>
-              <a class="navbar-brand" href="/">jetpacker.io</a>
+              <a class="navbar-brand" href="/">jetpackr.com</a>
           </div>
 
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav navbar-right">
                 <router-link to="/" tag="li"
                              @click.native="setActive('Builder')"
-                             :class="{ 'active': this.builder }">
-                  <a>Builder</a>
+                             :class="{ 'active': this.home }">
+                  <a>Home</a>
                 </router-link>
                 <router-link to="/about" activeClass="active" tag="li"
                              @click.native="resetActives()">
                   <a>About</a>
                 </router-link>
-                  <router-link to="/help" activeClass="active" tag="li"
-                               @click.native="resetActives()">
-                    <a>Help</a>
-                  </router-link>
-                  <li>
-                      <a href="https://github.com/jetpacker" target="_blank">GitHub</a>
-                  </li>
+                <router-link to="/help" activeClass="active" tag="li"
+                             @click.native="resetActives()">
+                  <a>Help</a>
+                </router-link>
               </ul>
           </div>
       </div>
@@ -47,7 +44,7 @@
     },
     computed: {
       ...mapGetters([
-        'builder',
+        'home',
       ]),
     },
     created() {

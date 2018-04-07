@@ -2,8 +2,10 @@
   <div class="main-wrapper">
     <div class="panel panel-primary">
       <div class="panel-heading">
-        <i class="fa fa-linux fa-lg"></i>
-        {{ machine.label }}
+        <h3 class="panel-title">
+          <i class="fa fa-linux fa-lg"></i>
+          {{ machine.label }}
+        </h3>
       </div>
       <div class="panel-body">
         <p class="text-muted">

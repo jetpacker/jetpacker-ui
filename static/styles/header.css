@@ -36,17 +36,20 @@
   color: white;
   transition: color 0.4s ease;
   cursor: pointer;
+  font-weight: 600;
 }
 
 .navbar-default .navbar-brand:hover, .navbar-default .navbar-nav > li > a:hover  {
   color: #fed136 !important;
   border-bottom: 1px solid #fed136;
+  font-weight: 600;
 }
 
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
-    background-color: transparent !important;
-    color: #fed136 !important;
-    border-bottom: 1px solid #fed136;
+  background-color: transparent !important;
+  color: #fed136 !important;
+  border-bottom: 1px solid #fed136;
+  font-weight: 600;
 }
 
 /*.nav-label {

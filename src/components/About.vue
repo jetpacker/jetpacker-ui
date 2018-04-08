@@ -15,48 +15,81 @@
           <div class="main-wrapper">
             <div class="panel panel-primary">
               <div class="panel-body">
-                <h3>What is <span class="color-theme">jetpackr</span></h3>
-                <p>
-                  This is a code generator that creates
-                  a <span class="color-theme">jetpack</span>,
-                  a portable development environment for Java programmers.
-                  <span class="color-theme">jetpacker</span> is inspired
-                  by PuPHPet, Phansible, Rove, and Spring Initializr.
-                </p>
+                <div class="media">
+                  <div class="media-body">
+                    <h2 class="media-heading">
+                      What is <span class="color-theme">jetpackr</span>
+                    </h2>
+                    This is a code generator that creates
+                    a <span class="color-theme">jetpack</span>,
+                    a portable development environment for Java programmers.
+                    <span class="color-theme">jetpacker</span> is inspired
+                    by PuPHPet, Phansible, Rove, and Spring Initializr.
+                  </div>
+                </div>
 
-                <h3>What exactly is a <span class="color-theme">jetpack</span></h3>
-                <p>
-                  A <span class="color-theme">jetpack</span> is a development environment
-                  that is powered by Vagrant, Ansible, and Docker. Armed with these tools,
-                  any Java developers can confidently share their projects with anyone without
-                  having to struggle with installation and setup.
-                </p>
+                <div class="media">
+                  <div class="media-body">
+                    <h2 class="media-heading">
+                      What exactly is a <span class="color-theme">jetpack</span>
+                    </h2>
+                    A <span class="color-theme">jetpack</span> is a Java
+                    development environment that is powered by Vagrant, Ansible, and Docker.
+                    Armed with these tools, any Java developers can confidently:
+                    <ul>
+                      <li>
+                        Work on several projects that have different application architecture.
+                      </li>
+                      <li>
+                        Share their projects with anyone without having to struggle with initial
+                        installation and setup.
+                      </li>
+                      <li>
+                        Keep their PCs organized and clean from most of the development tools.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
 
-                <h3>Do I need to know Vagrant, Ansible, and Docker?</h3>
-                <p>
-                  No. All you need is to follow the instructions in the documentation, generate
-                  a <span class="color-theme">jetpack</span>,
-                  ignite it, and start coding. However, having knowledge in these technologies
-                  will give you more options in customizations. So it's always good to learn them.
-                </p>
+                <div class="media">
+                  <div class="media-body">
+                    <h2 class="media-heading">
+                      So I need to know Vagrant, Ansible, and Docker?
+                    </h2>
+                    Not necessarily. All you need to do is follow the instructions from the documentation, generate
+                    a <span class="color-theme">jetpack</span>, ignite it, and start coding.
+                    However, having knowledge in these technologies will give you more options in customizations.
+                    So it's always good to learn them.
+                  </div>
+                </div>
 
-                <h3>Who is your target audience?</h3>
-                <p>
-                  Programmers, hobbyists, teachers, students, etc can benefit from this project, regardless
-                  of their experience levels.
-                </p>
+                <div class="media">
+                  <div class="media-body">
+                    <h2 class="media-heading">
+                      Who is your target audience?
+                    </h2>
+                    Programmers. This includes freelancers, hobbyists, teachers, students, etc. They can
+                    benefit from this project, regardless of their experience levels.
+                  </div>
+                </div>
 
-                <h3>Can I contribute to this project?</h3>
-                <p>
-                  Of course. We will always welcome any contributions and suggestions.
-                </p>
+                <div class="media">
+                  <div class="media-body">
+                    <h2 class="media-heading">
+                      Can I contribute to this project?
+                    </h2>
+                    Of course. We will always welcome any contributions and suggestions.
+                  </div>
+                </div>
 
-                <h3>Anything else I need to know?</h3>
-                <p>
-                  This project was also created by us to showcase Spring Boot and Vue.js integration.
-                  Anyone who is learning these stacks, can benefit from
-                  <span class="color-theme">jetpackr</span>'s source codes.
-                </p>
+                <div class="media">
+                  <div class="media-body">
+                    <h2 class="media-heading">
+                      Credits
+                    </h2>
+                    To all developers of the open source libraries and services used by this project.
+                  </div>
+                </div>
               </div>
             </div>
           </div>

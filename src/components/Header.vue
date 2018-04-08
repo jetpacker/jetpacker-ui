@@ -52,7 +52,6 @@
       window.addEventListener('scroll', () => {
         this.isScrolled = (window.scrollY > 5);
       });
-      this.setActive('Builder');
     },
   };
 </script>

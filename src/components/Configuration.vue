@@ -23,11 +23,18 @@
 </template>
 
 <script>
+  import controls from '../mixins/controls';
   import Navigation from './Navigation';
 
   export default {
     components: {
       appNavigation: Navigation,
+    },
+    mixins: [
+      controls,
+    ],
+    created() {
+      this.setActive('Builder');
     },
   };
 </script>

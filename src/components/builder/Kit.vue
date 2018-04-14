@@ -16,7 +16,8 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(extensions, kit) in summary">
+          <tr v-for="(extensions, kit) in summary"
+              :key="kit">
             <td><label>{{ kit }}</label></td>
             <td v-if="extensions">
               {{ extensions }}
@@ -35,57 +36,58 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex';
-  import controls from '../../mixins/controls';
+import { mapGetters } from 'vuex';
+import controls from '../../mixins/controls';
 
-  export default {
-    data() {
-      return {
-        name: 'DevelopmentKit',
-      };
+export default {
+  data() {
+    return {
+      name: 'DevelopmentKit',
+    };
+  },
+  mixins: [
+    controls,
+  ],
+  computed: {
+    ...mapGetters([
+      'chosenKits',
+      'presets',
+    ]),
+    summary() {
+      const summary = {};
+      const kits = this.chosenKits;
+      const presets = this.presets.kits;
+
+      Object.keys(kits).forEach((key) => {
+        const kit = kits[key];
+        const preset = presets[key];
+        let version = 'Latest';
+
+        if (preset.version) {
+          const option = preset.version.options.find(option => option.value === kit.version);
+          version = option.label ? option.label : option.value;
+        }
+
+        const label = `${preset.label} (${version})`;
+        summary[label] = 'None';
+
+        if (kit.extensions) {
+          const convertResultToLabel = function call(result) {
+            return `${result.label} (${kit.extensions[result.name]})`;
+          };
+
+          summary[label] =
+            preset.extensions
+              .filter(extension => extension.name in kit.extensions)
+              .map(convertResultToLabel)
+              .join(', ');
+        }
+      });
+
+      return summary;
     },
-    mixins: [
-      controls,
-    ],
-    computed: {
-      ...mapGetters([
-        'chosenKits',
-        'presets',
-      ]),
-      summary() {
-        const summary = {};
-        const kits = this.chosenKits;
-        const presets = this.presets.kits;
-
-        Object.keys(kits).forEach((key) => {
-          const kit = kits[key];
-          const preset = presets[key];
-          let version = 'Latest';
-
-          if (preset.version) {
-            const option = preset.version.options.find(option => option.value === kit.version);
-            version = option.label ? option.label : option.value;
-          }
-
-          const label = `${preset.label} (${version})`;
-          summary[label] = 'None';
-
-          if (kit.extensions) {
-            const convertResultToLabel = function call(result) {
-              return `${result.label} (${kit.extensions[result.name]})`;
-            };
-
-            summary[label] = preset.extensions
-                                   .filter(extension => extension.name in kit.extensions)
-                                   .map(convertResultToLabel)
-                                   .join(', ');
-          }
-        });
-
-        return summary;
-      },
-    },
-  };
+  },
+};
 </script>
 
 <style scoped>

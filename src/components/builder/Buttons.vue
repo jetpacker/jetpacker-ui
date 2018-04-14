@@ -18,14 +18,14 @@
 </template>
 
 <script>
-  import { mapActions } from 'vuex';
+import { mapActions } from 'vuex';
 
-  export default {
-    methods: {
-      ...mapActions([
-        'resetSettings',
-        'buildJetpack',
-      ]),
-    },
-  };
+export default {
+  methods: {
+    ...mapActions([
+      'resetSettings',
+      'buildJetpack',
+    ]),
+  },
+};
 </script>

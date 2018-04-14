@@ -3,7 +3,8 @@
     <div class="panel with-nav-tabs panel-primary">
       <div class="panel-heading">
         <ul class="nav nav-tabs">
-          <li v-for="container in containers"
+          <li v-for="(container, index) in containers"
+              :key="index"
               :class="{ active: container.name == activeContainer.name }">
             <a data-toggle="tab" href=""
                @click.prevent="setActive(container.name)">{{ container.label }}</a>
@@ -49,7 +50,8 @@
                           name="version"
                           :disabled="!install"
                           @input="update">
-                    <option v-for="option in activeContainer.version.options"
+                    <option v-for="(option, index) in activeContainer.version.options"
+                            :key="index"
                             :value="option.value"
                             :selected="version == option.value">
                       {{ option.label ? option.label : option.value }}
@@ -80,7 +82,9 @@
                     Parameters
                   </legend>
                   <div class="form-group">
-                    <div class="col-md-6 parameters" v-for="parameter in activeContainer.parameters">
+                    <div class="col-md-6 parameters"
+                         v-for="(parameter, index) in activeContainer.parameters"
+                         :key="index">
                       <h4>
                         <label for="rootPassword">{{ parameter.label }}</label>
                       </h4>
@@ -103,88 +107,88 @@
 </template>
 
 <script>
-  import { mapActions, mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
-  export default {
-    data() {
-      return {
-        openOthers: false,
+export default {
+  data() {
+    return {
+      openOthers: false,
+    };
+  },
+  computed: {
+    ...mapGetters([
+      'presets',
+      'values',
+      'tabs',
+    ]),
+    containers() {
+      const containers = this.presets.containers;
+      return Object.values(containers)
+        .filter(container => container.type === this.$route.params.type);
+    },
+    activeContainer() {
+      const container = this.tabs.container[this.$route.params.type];
+      return this.presets.containers[container];
+    },
+    version() {
+      const container = this.tabs.container[this.$route.params.type];
+      return this.values.containers[container].version;
+    },
+    install() {
+      const container = this.tabs.container[this.$route.params.type];
+      return this.values.containers[container].install;
+    },
+    parameters() {
+      const container = this.tabs.container[this.$route.params.type];
+      return this.values.containers[container].parameters;
+    },
+  },
+  methods: {
+    ...mapActions([
+      'setActiveContainer',
+      'updateContainer',
+      'updateContainerParameter',
+    ]),
+    toggleOthers() {
+      console.log('openOthers', this.openOthers);
+      this.openOthers = !this.openOthers;
+    },
+    setActive(container) {
+      const payload = {
+        container,
+        type: this.$route.params.type,
       };
+
+      this.setActiveContainer(payload);
     },
-    computed: {
-      ...mapGetters([
-        'presets',
-        'values',
-        'tabs',
-      ]),
-      containers() {
-        const containers = this.presets.containers;
-        return Object.values(containers)
-                     .filter(container => container.type === this.$route.params.type);
-      },
-      activeContainer() {
-        const container = this.tabs.container[this.$route.params.type];
-        return this.presets.containers[container];
-      },
-      version() {
-        const container = this.tabs.container[this.$route.params.type];
-        return this.values.containers[container].version;
-      },
-      install() {
-        const container = this.tabs.container[this.$route.params.type];
-        return this.values.containers[container].install;
-      },
-      parameters() {
-        const container = this.tabs.container[this.$route.params.type];
-        return this.values.containers[container].parameters;
-      },
+    update(input) {
+      const payload = {
+        name: this.activeContainer.name,
+        attribute: input.target.name,
+      };
+
+      if (payload.attribute === 'install') {
+        payload.value = input.target.checked;
+      } else {
+        payload.value = input.target.value;
+      }
+
+      this.updateContainer(payload);
     },
-    methods: {
-      ...mapActions([
-        'setActiveContainer',
-        'updateContainer',
-        'updateContainerParameter',
-      ]),
-      toggleOthers() {
-        console.log('openOthers', this.openOthers);
-        this.openOthers = !this.openOthers;
-      },
-      setActive(container) {
-        const payload = {
-          container,
-          type: this.$route.params.type,
-        };
+    updateParameter(input) {
+      // TODO: Add binding logic
+      const payload = {
+        name: this.activeContainer.name,
+        parameter: {
+          name: input.target.name,
+          value: input.target.value,
+        },
+      };
 
-        this.setActiveContainer(payload);
-      },
-      update(input) {
-        const payload = {
-          name: this.activeContainer.name,
-          attribute: input.target.name,
-        };
-
-        if (payload.attribute === 'install') {
-          payload.value = input.target.checked;
-        } else {
-          payload.value = input.target.value;
-        }
-
-        this.updateContainer(payload);
-      },
-      updateParameter(input) {
-        // TODO: Add binding logic
-        const payload = {
-          name: this.activeContainer.name,
-          parameter: {
-            name: input.target.name,
-            value: input.target.value,
-          },
-        };
-
-        this.updateContainerParameter(payload);
-      },
+      this.updateContainerParameter(payload);
     },
-  };
+  },
+};
 </script>
 
 <style scoped>

@@ -1,8 +1,13 @@
 <template>
-  <nav id="mainNav" class="navbar navbar-default navbar-fixed-top" v-bind:class="{ 'header-scrolled' : isScrolled }">
+  <nav id="mainNav"
+       class="navbar navbar-default navbar-fixed-top"
+       v-bind:class="{ 'header-scrolled' : isScrolled }">
       <div class="container">
           <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <button type="button"
+                      class="navbar-toggle collapsed"
+                      data-toggle="collapse"
+                      data-target="#bs-example-navbar-collapse-1">
                   <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
               </button>
               <a class="navbar-brand" href="/">jetpackr.com</a>
@@ -31,29 +36,29 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex';
-  import controls from '../mixins/controls';
+import { mapGetters } from 'vuex';
+import controls from '../mixins/controls';
 
-  export default {
-    mixins: [
-      controls,
-    ],
-    data() {
-      return {
-        isScrolled: false,
-      };
-    },
-    computed: {
-      ...mapGetters([
-        'home',
-      ]),
-    },
-    created() {
-      window.addEventListener('scroll', () => {
-        this.isScrolled = (window.scrollY > 5);
-      });
-    },
-  };
+export default {
+  mixins: [
+    controls,
+  ],
+  data() {
+    return {
+      isScrolled: false,
+    };
+  },
+  computed: {
+    ...mapGetters([
+      'home',
+    ]),
+  },
+  created() {
+    window.addEventListener('scroll', () => {
+      this.isScrolled = (window.scrollY > 5);
+    });
+  },
+};
 </script>
 
 <style scoped>

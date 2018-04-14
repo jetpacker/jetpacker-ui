@@ -16,15 +16,15 @@
 </template>
 
 <script>
-  import Content from './Content';
-  import Buttons from './Buttons';
+import Content from './Content';
+import Buttons from './Buttons';
 
-  export default {
-    components: {
-      appContent: Content,
-      appButtons: Buttons,
-    },
-  };
+export default {
+  components: {
+    appContent: Content,
+    appButtons: Buttons,
+  },
+};
 </script>
 
 <style scoped>

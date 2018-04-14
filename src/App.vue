@@ -14,32 +14,32 @@
 </template>
 
 <script>
-  import { mapActions, mapGetters } from 'vuex';
-  import Header from './components/Header';
-  import Footer from './components/Footer';
-  import Unavailable from './components/Unavailable';
+import { mapActions, mapGetters } from 'vuex';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Unavailable from './components/Unavailable';
 
-  export default {
-    name: 'app',
-    components: {
-      appHeader: Header,
-      appFooter: Footer,
-      appUnavailable: Unavailable,
-    },
-    computed: {
-      ...mapGetters([
-        'initialized',
-      ]),
-    },
-    methods: {
-      ...mapActions([
-        'initialize',
-      ]),
-    },
-    created() {
-      this.initialize();
-    },
-  };
+export default {
+  name: 'app',
+  components: {
+    appHeader: Header,
+    appFooter: Footer,
+    appUnavailable: Unavailable,
+  },
+  computed: {
+    ...mapGetters([
+      'initialized',
+    ]),
+  },
+  methods: {
+    ...mapActions([
+      'initialize',
+    ]),
+  },
+  created() {
+    this.initialize();
+  },
+};
 </script>
 
 <style scoped>

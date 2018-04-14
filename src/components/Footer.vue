@@ -22,14 +22,14 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        wastefactory_url: false,
-        forseti_url: false,
-      };
-    },
-  };
+export default {
+  data() {
+    return {
+      wastefactory_url: false,
+      forseti_url: false,
+    };
+  },
+};
 </script>
 
 <style scoped>

@@ -21,7 +21,8 @@
               <select class="form-control" id="box"
                       :name="machine.box.name"
                       @input="update">
-                <option v-for="option in machine.box.options"
+                <option v-for="(option, index) in machine.box.options"
+                        :key="index"
                         :value="option.value"
                         :selected="properties.box == option.value">
                   {{ option.label ? option.label : option.value }}
@@ -52,7 +53,8 @@
               <select class="form-control" id="timezone"
                       :name="machine.timezone.name"
                       @input="update">
-                <option v-for="option in machine.timezone.options"
+                <option v-for="(option, index) in machine.timezone.options"
+                        :key="index"
                         :value="option.value"
                         :selected="properties.timezone == option.value">
                   {{ option.label ? option.label : option.value }}
@@ -66,35 +68,35 @@
 </template>
 
 <script>
-  import { mapActions, mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
-  export default {
-    computed: {
-      ...mapGetters([
-        'presets',
-        'values',
-      ]),
-      machine() {
-        return this.presets.machine;
-      },
-      properties() {
-        return this.values.machine;
-      },
+export default {
+  computed: {
+    ...mapGetters([
+      'presets',
+      'values',
+    ]),
+    machine() {
+      return this.presets.machine;
     },
-    methods: {
-      ...mapActions([
-        'updateMachine',
-      ]),
-      update(input) {
-        const payload = {
-          attribute: input.target.name,
-          value: input.target.value,
-        };
+    properties() {
+      return this.values.machine;
+    },
+  },
+  methods: {
+    ...mapActions([
+      'updateMachine',
+    ]),
+    update(input) {
+      const payload = {
+        attribute: input.target.name,
+        value: input.target.value,
+      };
 
-        this.updateMachine(payload);
-      },
+      this.updateMachine(payload);
     },
-  };
+  },
+};
 </script>
 
 <style scoped>

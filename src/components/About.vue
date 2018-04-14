@@ -34,8 +34,10 @@
                       What exactly is a <span class="color-theme">jetpack</span>
                     </h2>
                     A <span class="color-theme">jetpack</span> is a Java
-                    development environment that is powered by Vagrant, Ansible, and Docker.
-                    Armed with these tools, any Java developers can confidently:
+                    development environment that is powered by Vagrant,
+                    Ansible, and Docker.
+                    Armed with these tools, any Java developers
+                    can confidently:
                     <ul>
                       <li>
                         Work on several projects that have different application architecture.
@@ -56,9 +58,11 @@
                     <h2 class="media-heading">
                       So I need to know Vagrant, Ansible, and Docker?
                     </h2>
-                    Not necessarily. All you need to do is follow the instructions from the documentation, generate
+                    Not necessarily. All you need to do is follow the instructions
+                    from the documentation, generate
                     a <span class="color-theme">jetpack</span>, ignite it, and start coding.
-                    However, having knowledge in these technologies will give you more options in customizations.
+                    However, having knowledge in these technologies will give
+                    you more options in customizations.
                     So it's always good to learn them.
                   </div>
                 </div>
@@ -68,7 +72,8 @@
                     <h2 class="media-heading">
                       Who is your target audience?
                     </h2>
-                    Programmers. This includes freelancers, hobbyists, teachers, students, etc. They can
+                    Programmers. This includes freelancers, hobbyists, teachers,
+                    students, etc. They can
                     benefit from this project, regardless of their experience levels.
                   </div>
                 </div>
@@ -87,7 +92,8 @@
                     <h2 class="media-heading">
                       Credits
                     </h2>
-                    To all developers of the open source libraries and services used by this project.
+                    To all developers of the open source libraries and services
+                    used by this project.
                   </div>
                 </div>
               </div>

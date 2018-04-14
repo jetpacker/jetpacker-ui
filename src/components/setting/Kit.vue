@@ -3,7 +3,8 @@
     <div class="panel with-nav-tabs panel-primary">
       <div class="panel-heading">
         <ul class="nav nav-tabs">
-          <li v-for="kit in kits"
+          <li v-for="(kit, index) in kits"
+              :key="index"
               :class="{ active: kit.name == activeKit.name }">
             <a data-toggle="tab" href=""
                @click.prevent="setActive(kit.name)">{{ kit.label }}</a>
@@ -31,7 +32,8 @@
                             name="version"
                             :disabled="!install"
                             @input="update">
-                      <option v-for="option in activeKit.version.options"
+                      <option v-for="(option, index) in activeKit.version.options"
+                              :key="index"
                               :value="option.value"
                               :selected="version == option.value">
                         {{ option.label ? option.label : option.value }}
@@ -63,7 +65,9 @@
                     Extensions
                   </legend>
                   <div class="form-group">
-                    <div class="col-md-6 extensions" v-for="extension in activeKit.extensions">
+                    <div class="col-md-6 extensions"
+                         v-for="(extension, index) in activeKit.extensions"
+                         :key="index">
                       <div class="checkbox col-md-6">
                         <label :title="extension.description">
                           <input type="checkbox"
@@ -80,7 +84,8 @@
                                 :name="extension.name + '.version' "
                                 :disabled="!install || !extensions[extension.name].install"
                                 @input="updateExtension">
-                          <option v-for="option in extension.version.options"
+                          <option v-for="(option, index) in extension.version.options"
+                                  :key="index"
                                   :value="option.value"
                                   :selected="extensions[extension.name].version == option.value">
                             {{ option.label ? option.label : option.value }}
@@ -100,75 +105,75 @@
 </template>
 
 <script>
-  import { mapActions, mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
-  export default {
-    computed: {
-      ...mapGetters([
-        'presets',
-        'values',
-        'tabs',
-      ]),
-      kits() {
-        return this.presets.kits;
-      },
-      activeKit() {
-        return this.presets.kits[this.tabs.kit];
-      },
-      version() {
-        return this.values.kits[this.tabs.kit].version;
-      },
-      install() {
-        return this.values.kits[this.tabs.kit].install;
-      },
-      extensions() {
-        return this.values.kits[this.tabs.kit].extensions;
-      },
+export default {
+  computed: {
+    ...mapGetters([
+      'presets',
+      'values',
+      'tabs',
+    ]),
+    kits() {
+      return this.presets.kits;
     },
-    methods: {
-      ...mapActions({
-        setActive: 'setActiveKit',
-      }),
-      ...mapActions([
-        'updateKit',
-        'updateKitExtension',
-      ]),
-      update(input) {
-        // TODO: Add binding logic
-        const payload = {
-          name: this.activeKit.name,
-          attribute: input.target.name,
-        };
-
-        if (payload.attribute === 'install') {
-          payload.value = input.target.checked;
-        } else {
-          payload.value = input.target.value;
-        }
-
-        this.updateKit(payload);
-      },
-      updateExtension(input) {
-        const [name, attribute] = input.target.name.split('.');
-
-        const payload = {
-          name: this.activeKit.name,
-          extension: {
-            name,
-            attribute,
-          },
-        };
-
-        if (attribute === 'install') {
-          payload.extension.value = input.target.checked;
-        } else {
-          payload.extension.value = input.target.value;
-        }
-
-        this.updateKitExtension(payload);
-      },
+    activeKit() {
+      return this.presets.kits[this.tabs.kit];
     },
-  };
+    version() {
+      return this.values.kits[this.tabs.kit].version;
+    },
+    install() {
+      return this.values.kits[this.tabs.kit].install;
+    },
+    extensions() {
+      return this.values.kits[this.tabs.kit].extensions;
+    },
+  },
+  methods: {
+    ...mapActions({
+      setActive: 'setActiveKit',
+    }),
+    ...mapActions([
+      'updateKit',
+      'updateKitExtension',
+    ]),
+    update(input) {
+      // TODO: Add binding logic
+      const payload = {
+        name: this.activeKit.name,
+        attribute: input.target.name,
+      };
+
+      if (payload.attribute === 'install') {
+        payload.value = input.target.checked;
+      } else {
+        payload.value = input.target.value;
+      }
+
+      this.updateKit(payload);
+    },
+    updateExtension(input) {
+      const [name, attribute] = input.target.name.split('.');
+
+      const payload = {
+        name: this.activeKit.name,
+        extension: {
+          name,
+          attribute,
+        },
+      };
+
+      if (attribute === 'install') {
+        payload.extension.value = input.target.checked;
+      } else {
+        payload.extension.value = input.target.value;
+      }
+
+      this.updateKitExtension(payload);
+    },
+  },
+};
 </script>
 
 <style scoped>

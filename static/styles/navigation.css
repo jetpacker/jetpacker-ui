@@ -1,9 +1,6 @@
-/*.side-nav {
-    background: #fff;
-    border-radius: 4px;
-    box-shadow: 0 1px 1px rgba(0,0,0,.05);
-}*/
-
+.side-nav {
+  width: 75%;
+}
 .side-nav a:link, .side-nav a:visited {
   color: #333;
   transition: background-color 1s ease;
@@ -40,6 +37,7 @@
 }
 
 .nav-label {
+  font-size: 16px;
   padding-left: 5px;
 }
 

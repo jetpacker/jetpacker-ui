@@ -95,8 +95,10 @@ const getters = {
   chosenKits(state) {
     const results = {};
     const kits = state.kits;
-    const chosenKits = Object.keys(kits)
-                             .filter(key => kits[key].install === true);
+    const chosenKits =
+      Object
+        .keys(kits)
+        .filter(key => kits[key].install === true);
 
     chosenKits.forEach((chosenKit) => {
       const kit = kits[chosenKit];
@@ -109,8 +111,10 @@ const getters = {
       if (kit.extensions) {
         results[chosenKit].extensions = {};
 
-        const chosenExtensions = Object.keys(kit.extensions)
-                                       .filter(key => kit.extensions[key].install === true);
+        const chosenExtensions =
+          Object
+            .keys(kit.extensions)
+            .filter(key => kit.extensions[key].install === true);
 
         chosenExtensions.forEach((chosenExtension) => {
           results[chosenKit].extensions[chosenExtension] = kit.extensions[chosenExtension].version;
@@ -123,8 +127,10 @@ const getters = {
   chosenContainers(state) {
     const results = {};
     const containers = state.containers;
-    const chosenContainers = Object.keys(containers)
-                                   .filter(key => containers[key].install === true);
+    const chosenContainers =
+      Object
+        .keys(containers)
+        .filter(key => containers[key].install === true);
 
     chosenContainers.forEach((chosenContainer) => {
       const container = containers[chosenContainer];

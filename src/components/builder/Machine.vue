@@ -12,7 +12,8 @@
       </h4>
 
       <div class="form-horizontal summary-item-content">
-        <p class="form-group" v-for="(value, label) in summary">
+        <p class="form-group" v-for="(value, label) in summary"
+           :key="label">
           <label class="col-md-3 form-static-control static-label">
             {{ label }}:
           </label>
@@ -26,39 +27,39 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex';
-  import controls from '../../mixins/controls';
+import { mapGetters } from 'vuex';
+import controls from '../../mixins/controls';
 
-  export default {
-    data() {
-      return {
-        name: 'VirtualMachine',
+export default {
+  data() {
+    return {
+      name: 'VirtualMachine',
+    };
+  },
+  mixins: [
+    controls,
+  ],
+  computed: {
+    ...mapGetters([
+      'presets',
+      'values',
+    ]),
+    summary() {
+      const presets = this.presets.machine;
+      const values = this.values.machine;
+
+      const option = presets.box.options.find(option => option.value === values.box);
+
+      const summary = {
+        [presets.box.label]: option.label,
+        [presets.memory.label]: values.memory,
+        [presets.timezone.label]: values.timezone,
       };
+
+      return summary;
     },
-    mixins: [
-      controls,
-    ],
-    computed: {
-      ...mapGetters([
-        'presets',
-        'values',
-      ]),
-      summary() {
-        const presets = this.presets.machine;
-        const values = this.values.machine;
-
-        const option = presets.box.options.find(option => option.value === values.box);
-
-        const summary = {
-          [presets.box.label]: option.label,
-          [presets.memory.label]: values.memory,
-          [presets.timezone.label]: values.timezone,
-        };
-
-        return summary;
-      },
-    },
-  };
+  },
+};
 </script>
 
 <style scoped>

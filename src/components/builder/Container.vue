@@ -17,7 +17,8 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(parameters, container) in summary">
+          <tr v-for="(parameters, container) in summary"
+              :key="container">
             <td><label>{{ container }}</label></td>
             <td v-if="Object.keys(parameters).length">
               {{ parameters }}
@@ -36,46 +37,46 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex';
-  import controls from '../../mixins/controls';
+import { mapGetters } from 'vuex';
+import controls from '../../mixins/controls';
 
-  export default {
-    mixins: [
-      controls,
-    ],
-    props: {
-      name: String,
-      description: String,
+export default {
+  mixins: [
+    controls,
+  ],
+  props: {
+    name: String,
+    description: String,
+  },
+  computed: {
+    ...mapGetters([
+      'chosenContainers',
+      'presets',
+    ]),
+    summary() {
+      const summary = {};
+      const containers = this.chosenContainers;
+      const presets = Object.values(this.presets.containers)
+        .filter(container => container.type === this.name
+                && container.name in containers);
+
+      presets.forEach((preset) => {
+        const label = `${preset.label} (${containers[preset.name].version})`;
+        const parameters = containers[preset.name].parameters;
+
+        summary[label] = {};
+
+        if (parameters) {
+          preset.parameters.forEach((parameter) => {
+            summary[label][parameter.label] = parameters[parameter.name];
+          });
+        }
+      });
+
+      return summary;
     },
-    computed: {
-      ...mapGetters([
-        'chosenContainers',
-        'presets',
-      ]),
-      summary() {
-        const summary = {};
-        const containers = this.chosenContainers;
-        const presets = Object.values(this.presets.containers)
-                              .filter(container => container.type === this.name
-                                      && container.name in containers);
-
-        presets.forEach((preset) => {
-          const label = `${preset.label} (${containers[preset.name].version})`;
-          const parameters = containers[preset.name].parameters;
-
-          summary[label] = {};
-
-          if (parameters) {
-            preset.parameters.forEach((parameter) => {
-              summary[label][parameter.label] = parameters[parameter.name];
-            });
-          }
-        });
-
-        return summary;
-      },
-    },
-  };
+  },
+};
 </script>
 
 <style scoped>

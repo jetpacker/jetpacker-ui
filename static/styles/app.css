@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Work+Sans:200');
 
+body, div#app {
+  height: 100%;
+}
+
 body {
   background: #f1f1f1;
   color: white;

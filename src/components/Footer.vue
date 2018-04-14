@@ -1,24 +1,22 @@
 <template>
-  <div>
-    <footer>
-        <div>
-            <div class="row">
-                <div class="col-md-12">
-                    <span class="copyright">
-                      From
-                      <a class="creator" :href="wastefactory_url">wastefactory</a>
-                      and
-                      <a class="creator" :href="forseti_url">forseti</a>
-                      with
-                      <i class="fa fa-heart fa-sm heart"></i>
-                      <i class="fa fa-heart fa-sm heart"></i>
-                      <i class="fa fa-heart fa-sm heart"></i>
-                    </span>
-                </div>
-            </div>
-        </div>
-    </footer>
-  </div>
+  <footer>
+      <div>
+          <div class="row">
+              <div class="col-md-12">
+                  <span class="copyright">
+                    From
+                    <a class="creator" :href="wastefactory_url">wastefactory</a>
+                    and
+                    <a class="creator" :href="forseti_url">forseti</a>
+                    with
+                    <i class="fa fa-heart fa-sm heart"></i>
+                    <i class="fa fa-heart fa-sm heart"></i>
+                    <i class="fa fa-heart fa-sm heart"></i>
+                  </span>
+              </div>
+          </div>
+      </div>
+  </footer>
 </template>
 
 <script>

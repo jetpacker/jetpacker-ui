@@ -1,6 +1,8 @@
 /* FOOTER */
 footer {
-  padding: 3px 0;
+  position: relative;
+  clear:both;
+  padding: 5px 0;
   text-align: center;
   background-color: #539eaa;
 }

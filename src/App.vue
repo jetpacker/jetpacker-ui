@@ -1,23 +1,21 @@
 <template>
-  <div>
-    <div id="app">
-      <app-header></app-header>
-      <div class="main-container">
-        <div class="row main-wrapper">
-          <div v-if="initialized">
-            <div class="page-info">
-              <h1 v-html="title"></h1>
-              <h4 v-html="subTitle"></h4>
-            </div>
-            <router-view></router-view>
+  <div id="app">
+    <app-header></app-header>
+    <div class="main-container">
+      <div class="row main-wrapper">
+        <div v-if="initialized">
+          <div class="page-info">
+            <h1 v-html="title"></h1>
+            <h4 v-html="subTitle"></h4>
           </div>
-          <div v-else>
-            <app-unavailable></app-unavailable>
-          </div>
+          <router-view></router-view>
+        </div>
+        <div v-else>
+          <app-unavailable></app-unavailable>
         </div>
       </div>
-      <app-footer></app-footer>
     </div>
+    <app-footer></app-footer>
   </div>
 </template>
 
@@ -58,8 +56,4 @@ export default {
 
 <style scoped>
   @import url("/static/styles/app.css");
-
-  .content {
-    padding-left: 0px;
-  }
 </style>

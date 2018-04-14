@@ -170,7 +170,7 @@ const getters = {
 
       body.containers[key] = {
         version: container.version ? container.version : null,
-        env: container.parameters ? container.parameters : null,
+        environment: container.parameters ? container.parameters : null,
       };
     });
 

@@ -31,14 +31,14 @@ import { mapGetters } from 'vuex';
 import controls from '../../mixins/controls';
 
 export default {
+  mixins: [
+    controls,
+  ],
   data() {
     return {
       name: 'VirtualMachine',
     };
   },
-  mixins: [
-    controls,
-  ],
   computed: {
     ...mapGetters([
       'presets',

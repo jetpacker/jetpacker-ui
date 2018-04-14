@@ -9,7 +9,7 @@ export default {
     setActive(item) {
       const payload = {
         item,
-        location: 'side',
+        location: 'builder',
       };
 
       this.setActiveMenu(payload);

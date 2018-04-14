@@ -1,36 +1,36 @@
 const state = {
   home: false,
   menus: {
-    side: [
+    builder: [
       {
         VirtualMachine: {
           active: false,
           label: 'Virtual Machine',
-          url: '/configuration/setting/machine',
+          url: '/configuration/machine',
           icon: 'fa-desktop',
         },
         DevelopmentKit: {
           active: false,
           label: 'Development Kits',
-          url: '/configuration/setting/kits',
+          url: '/configuration/kits',
           icon: 'fa-code',
         },
         DataStore: {
           active: false,
           label: 'Data Stores',
-          url: '/configuration/setting/containers/DataStore',
+          url: '/configuration/containers/DataStore',
           icon: 'fa-database',
         },
         MessageBroker: {
           active: false,
           label: 'Message Brokers',
-          url: '/configuration/setting/containers/MessageBroker',
+          url: '/configuration/containers/MessageBroker',
           icon: 'fa-exchange',
         },
         SearchEngine: {
           active: false,
           label: 'Search Engines',
-          url: '/configuration/setting/containers/SearchEngine',
+          url: '/configuration/containers/SearchEngine',
           icon: 'fa-search',
         },
         Builder: {
@@ -38,6 +38,40 @@ const state = {
           label: 'Builder',
           url: '/',
           icon: 'fa-industry',
+        },
+      },
+    ],
+    guide: [
+      {
+        Introduction: {
+          active: false,
+          label: 'What is jetpackr',
+          url: '/guide/Introduction',
+          icon: 'fa-question',
+        },
+        QuickStart: {
+          active: false,
+          label: 'Quick Start',
+          url: '/guide/QuickStart',
+          icon: 'fa-fighter-jet',
+        },
+        Linux: {
+          active: false,
+          label: 'Linux',
+          url: '/guide/Linux',
+          icon: 'fa-linux',
+        },
+        MacOS: {
+          active: false,
+          label: 'macOS',
+          url: '/guide/MacOS',
+          icon: 'fa-apple',
+        },
+        Windows: {
+          active: false,
+          label: 'Windows',
+          url: '/guide/Windows',
+          icon: 'fa-windows',
         },
       },
     ],

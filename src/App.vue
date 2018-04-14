@@ -2,11 +2,19 @@
   <div>
     <div id="app">
       <app-header></app-header>
-      <div v-if="initialized">
-        <router-view></router-view>
-      </div>
-      <div v-else>
-        <app-unavailable></app-unavailable>
+      <div class="main-container">
+        <div class="row main-wrapper">
+          <div v-if="initialized">
+            <div class="page-info">
+              <h1 v-html="title"></h1>
+              <h4 v-html="subTitle"></h4>
+            </div>
+            <router-view></router-view>
+          </div>
+          <div v-else>
+            <app-unavailable></app-unavailable>
+          </div>
+        </div>
       </div>
       <app-footer></app-footer>
     </div>
@@ -26,14 +34,20 @@ export default {
     appFooter: Footer,
     appUnavailable: Unavailable,
   },
-  computed: {
-    ...mapGetters([
-      'initialized',
-    ]),
-  },
   methods: {
     ...mapActions([
       'initialize',
+    ]),
+  },
+  data() {
+    return {
+      title: '<span class="color-theme">jetpackr</span>',
+      subTitle: 'Completely free isolated development environments generator',
+    };
+  },
+  computed: {
+    ...mapGetters([
+      'initialized',
     ]),
   },
   created() {

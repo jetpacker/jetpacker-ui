@@ -40,14 +40,14 @@ import { mapGetters } from 'vuex';
 import controls from '../../mixins/controls';
 
 export default {
+  mixins: [
+    controls,
+  ],
   data() {
     return {
       name: 'DevelopmentKit',
     };
   },
-  mixins: [
-    controls,
-  ],
   computed: {
     ...mapGetters([
       'chosenKits',

@@ -105,8 +105,8 @@
 </template>
 
 <script>
-import controls from '../../mixins/controls';
 import { mapActions, mapGetters } from 'vuex';
+import controls from '../../mixins/controls';
 
 export default {
   computed: {

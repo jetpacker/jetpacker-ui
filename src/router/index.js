@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import About from '../components/About';
-import Help from '../components/Help';
+import Guide from '../components/Guide';
 import Machine from '../components/setting/Machine';
 import Kit from '../components/setting/Kit';
 import Container from '../components/setting/Container';
@@ -25,7 +25,7 @@ const router = new Router({
       ],
     },
     { path: '/about', component: About },
-    { path: '/help', component: Help },
+    { path: '/guide', component: Guide },
 
     { path: '*', redirect: '/' },
   ],

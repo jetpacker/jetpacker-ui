@@ -24,9 +24,9 @@
                              @click.native="resetActives()">
                   <a>About</a>
                 </router-link>
-                <router-link to="/help" activeClass="active" tag="li"
+                <router-link to="/guide" activeClass="active" tag="li"
                              @click.native="resetActives()">
-                  <a>Help</a>
+                  <a>Guide</a>
                 </router-link>
               </ul>
           </div>

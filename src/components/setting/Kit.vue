@@ -7,7 +7,7 @@
               :key="index"
               :class="{ active: kit.name == activeKit.name }">
             <a data-toggle="tab" href=""
-               @click.prevent="setActive(kit.name)">{{ kit.label }}</a>
+               @click.prevent="setActiveTab(kit.name)">{{ kit.label }}</a>
           </li>
         </ul>
       </div>
@@ -105,6 +105,7 @@
 </template>
 
 <script>
+import controls from '../../mixins/controls';
 import { mapActions, mapGetters } from 'vuex';
 
 export default {
@@ -130,9 +131,12 @@ export default {
       return this.values.kits[this.tabs.kit].extensions;
     },
   },
+  mixins: [
+    controls,
+  ],
   methods: {
     ...mapActions({
-      setActive: 'setActiveKit',
+      setActiveTab: 'setActiveKit',
     }),
     ...mapActions([
       'updateKit',
@@ -172,6 +176,9 @@ export default {
 
       this.updateKitExtension(payload);
     },
+  },
+  created() {
+    this.setActive('DevelopmentKit');
   },
 };
 </script>

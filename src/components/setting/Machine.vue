@@ -68,6 +68,7 @@
 </template>
 
 <script>
+import controls from '../../mixins/controls';
 import { mapActions, mapGetters } from 'vuex';
 
 export default {
@@ -83,6 +84,9 @@ export default {
       return this.values.machine;
     },
   },
+  mixins: [
+    controls,
+  ],
   methods: {
     ...mapActions([
       'updateMachine',
@@ -95,6 +99,9 @@ export default {
 
       this.updateMachine(payload);
     },
+  },
+  created() {
+    this.setActive('VirtualMachine');
   },
 };
 </script>

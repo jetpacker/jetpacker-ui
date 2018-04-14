@@ -40,5 +40,5 @@ export default {
 </script>
 
 <style scoped>
-@import url("/static/styles/navigation.css");
+  @import url("/static/styles/navigation.css");
 </style>

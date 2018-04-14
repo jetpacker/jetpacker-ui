@@ -7,7 +7,7 @@
               :key="index"
               :class="{ active: container.name == activeContainer.name }">
             <a data-toggle="tab" href=""
-               @click.prevent="setActive(container.name)">{{ container.label }}</a>
+               @click.prevent="setActiveTab(container.name)">{{ container.label }}</a>
           </li>
         </ul>
         <!--
@@ -107,6 +107,7 @@
 </template>
 
 <script>
+import controls from '../../mixins/controls';
 import { mapActions, mapGetters } from 'vuex';
 
 export default {
@@ -143,6 +144,9 @@ export default {
       return this.values.containers[container].parameters;
     },
   },
+  mixins: [
+    controls,
+  ],
   methods: {
     ...mapActions([
       'setActiveContainer',
@@ -153,7 +157,7 @@ export default {
       console.log('openOthers', this.openOthers);
       this.openOthers = !this.openOthers;
     },
-    setActive(container) {
+    setActiveTab(container) {
       const payload = {
         container,
         type: this.$route.params.type,
@@ -187,6 +191,9 @@ export default {
 
       this.updateContainerParameter(payload);
     },
+  },
+  created() {
+    this.setActive(this.$route.params.type);
   },
 };
 </script>

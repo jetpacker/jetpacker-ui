@@ -4,7 +4,7 @@
       <div class="page-info">
         <h1 v-html="title"></h1>
         <h4 v-html="subTitle"></h4>
-        <h4 v-html="compiledTitle"></h4>
+<!--        <h4 v-html="compiledTitle"></h4>-->
       </div>
       <div class="row">
         <div class="col-sm-offset-2 col-sm-7">

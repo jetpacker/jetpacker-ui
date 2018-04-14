@@ -1,10 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-// Import GitHub Corners stylesheet.
-import VueGitHubCorners from 'vue-gh-corners';
-import 'vue-gh-corners/dist/vue-github-corners.css';
-
 import http from './http';
 
 import presets from './modules/presets';
@@ -12,7 +8,6 @@ import controls from './modules/controls';
 import values from './modules/values';
 
 Vue.use(Vuex);
-Vue.use(VueGitHubCorners);
 
 const store = new Vuex.Store({
   modules: {

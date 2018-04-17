@@ -3,7 +3,7 @@
     <div class="panel-body">
       <h4 class="summary-item-header">
         <label>Virtual Machine</label>
-        <router-link tag="a" class="pull-right" to="configuration/setting/machine"
+        <router-link tag="a" class="pull-right" to="configuration/machine"
                      @click.native="setActive(name)">
           <i class="fa fa-pencil-square-o fa-fw"></i>
         </router-link>
@@ -48,12 +48,15 @@ export default {
       const presets = this.presets.machine;
       const values = this.values.machine;
 
-      const option = presets.box.options.find(option => option.value === values.box);
+      const boxOption = presets.box.options.find(option => option.value === values.box);
+      const synchronizationOption =
+        presets.synchronization.options.find(option => option.value === values.synchronization);
 
       const summary = {
-        [presets.box.label]: option.label,
+        [presets.box.label]: boxOption.label,
         [presets.memory.label]: values.memory,
         [presets.timezone.label]: values.timezone,
+        [presets.synchronization.label]: synchronizationOption.label,
       };
 
       return summary;

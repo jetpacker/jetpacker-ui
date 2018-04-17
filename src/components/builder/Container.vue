@@ -4,7 +4,7 @@
       <h4 class="summary-item-header">
         <label>{{ description }}</label>
         <router-link tag="a" class="pull-right"
-                     :to="'configuration/setting/containers/' + name"
+                     :to="'configuration/containers/' + name"
                      @click.native="setActive(name)">
           <i class="fa fa-pencil-square-o fa-fw"></i>
         </router-link>
@@ -68,7 +68,7 @@ export default {
 
         if (parameters) {
           preset.parameters.forEach((parameter) => {
-            summary[label][parameter.label] = parameters[parameter.name];
+            summary[label][parameter.name] = parameters[parameter.name];
           });
         }
       });

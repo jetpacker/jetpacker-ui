@@ -15,6 +15,7 @@ const mutations = {
     // Use Vue.set(map, key, value) will make nested maps reactive
     Vue.set(machine, 'box', presets.machine.box.options[0].value);
     Vue.set(machine, 'memory', presets.machine.memory.value);
+    Vue.set(machine, 'synchronization', presets.machine.synchronization.options[0].value);
     Vue.set(machine, 'timezone', Intl.DateTimeFormat().resolvedOptions().timeZone);
 
     Object.values(presets.kits).forEach((kit) => {

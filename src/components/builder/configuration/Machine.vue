@@ -44,6 +44,26 @@
 
         <div class="form-group col-md-6 clear-left">
           <h4>
+            <label class="control-label" for="box">
+              {{ machine.synchronization.label }}
+            </label>
+          </h4>
+          <div class="controls">
+            <select class="form-control" id="synchronization"
+                    :name="machine.synchronization.name"
+                    @input="update">
+              <option v-for="(option, index) in machine.synchronization.options"
+                      :key="index"
+                      :value="option.value"
+                      :selected="properties.synchronization == option.value">
+                {{ option.label ? option.label : option.value }}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group col-md-6 clear-right">
+          <h4>
             <label class="control-label" for="timezone">
               {{ machine.timezone.label }}
             </label>

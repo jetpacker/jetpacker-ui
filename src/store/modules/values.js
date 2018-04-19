@@ -118,9 +118,11 @@ const getters = {
           Object
             .keys(kit.extensions)
             .filter(key => kit.extensions[key].install === true);
-
         chosenExtensions.forEach((chosenExtension) => {
-          results[chosenKit].extensions[chosenExtension] = kit.extensions[chosenExtension].version;
+          results[chosenKit].extensions[chosenExtension] = {
+            alias: kit.extensions[chosenExtension].alias,
+            version: kit.extensions[chosenExtension].version,
+          };
         });
       }
     });

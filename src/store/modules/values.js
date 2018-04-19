@@ -20,6 +20,7 @@ const mutations = {
 
     Object.values(presets.kits).forEach((kit) => {
       Vue.set(kits, kit.name, {});
+      Vue.set(kits[kit.name], 'alias', kit.alias ? kit.alias : null);
       Vue.set(kits[kit.name], 'version', kit.version ? kit.version.options[0].value : '');
       Vue.set(kits[kit.name], 'install', kit.install.value ? Boolean(kit.install.value) : false);
 
@@ -161,6 +162,7 @@ const getters = {
       const kit = kits[key];
 
       body.kits[key] = {
+        alias: kit.alias ? kit.alias : null,
         version: kit.version ? kit.version : null,
         extensions: kit.extensions ? kit.extensions : null,
       };

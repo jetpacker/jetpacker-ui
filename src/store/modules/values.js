@@ -30,6 +30,7 @@ const mutations = {
 
         kit.extensions.forEach((extension) => {
           Vue.set(extensions, extension.name, {});
+          Vue.set(extensions[extension.name], 'alias', extension.alias ? extension.alias : null);
           Vue.set(extensions[extension.name], 'install', false);
           Vue.set(extensions[extension.name], 'version', extension.version.options[0].value);
         });

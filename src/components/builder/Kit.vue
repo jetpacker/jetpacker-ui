@@ -73,7 +73,7 @@ export default {
 
         if (kit.extensions) {
           const convertResultToLabel = function call(result) {
-            return `${result.label} (${kit.extensions[result.name]})`;
+            return `${result.label} (${kit.extensions[result.name].version})`;
           };
 
           summary[label] =

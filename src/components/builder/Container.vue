@@ -57,8 +57,9 @@ export default {
       const summary = {};
       const containers = this.chosenContainers;
       const presets = Object.values(this.presets.containers)
-        .filter(container => container.type === this.name
-                && container.name in containers);
+        .filter(container =>
+          container.type === this.name
+          && container.name in containers);
 
       presets.forEach((preset) => {
         const label = `${preset.label} (${containers[preset.name].version})`;

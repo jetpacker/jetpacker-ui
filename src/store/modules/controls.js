@@ -88,8 +88,10 @@ const state = {
 
 const mutations = {
   SET_CONTROLS: (state, presets) => {
+    // Set initial tab for Kits (SDKs)
     state.tabs.kit = Object.keys(presets.kits)[0];
 
+    // Set initial tab for Containers
     const containers = Object.values(presets.containers);
     state.tabs.container = {
       DataStore: containers.filter(container => container.type === 'DataStore')[0].name,

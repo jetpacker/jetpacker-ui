@@ -8,7 +8,7 @@
                     <i class="fa fa-heart fa-sm heart"></i>
                     <i class="fa fa-heart fa-sm heart"></i>
                     <i class="fa fa-heart fa-sm heart"></i>
-                    by geeks for geeks
+                    by Earthlings for another Earthlings
                   </span>
               </div>
           </div>

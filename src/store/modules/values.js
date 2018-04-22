@@ -158,11 +158,13 @@ const getters = {
 
     const body = {
       machine: state.machine,
-      kits: {},
-      containers: {},
     };
 
     Object.keys(kits).forEach((key) => {
+      if (body.kits == null) {
+        body.kits = {};
+      }
+
       const kit = kits[key];
 
       body.kits[key] = {
@@ -173,6 +175,10 @@ const getters = {
     });
 
     Object.keys(containers).forEach((key) => {
+      if (body.containers == null) {
+        body.containers = {};
+      }
+
       const container = containers[key];
 
       body.containers[key] = {

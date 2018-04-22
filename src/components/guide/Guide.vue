@@ -1,17 +1,13 @@
 <template>
   <div class="row">
+    <app-navigation></app-navigation>
     <div class="col-sm-offset-1 col-sm-8">
-      <div class="main-wrapper">
-        <div class="panel panel-primary">
-          <div class="panel-body">
-            fafadsfsa fafsdasfdafsd
-            fasffsdsdcafa<br/>
-          </div>
+      <div class="panel panel-primary">
+        <div class="panel-body">
+          fafadsfsa fafsdasfdafsd
+          fasffsdsdcafa<br/>
         </div>
       </div>
-    </div>
-    <div class="col-sm-3">
-      <app-navigation></app-navigation>
     </div>
   </div>
 </template>

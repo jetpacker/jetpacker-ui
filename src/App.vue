@@ -4,10 +4,10 @@
     <div class="main-container">
       <div class="row main-wrapper">
         <div v-if="initialized">
-          <div class="page-info">
+<!--          <div class="page-info">
             <h1 v-html="title"></h1>
             <h4 v-html="subTitle"></h4>
-          </div>
+          </div>-->
           <router-view></router-view>
         </div>
         <div v-else>
@@ -15,7 +15,7 @@
         </div>
       </div>
     </div>
-    <app-footer></app-footer>
+<!--    <app-footer></app-footer>-->
   </div>
 </template>
 

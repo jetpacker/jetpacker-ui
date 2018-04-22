@@ -1,5 +1,8 @@
 .side-nav {
-  width: 75%;
+  width: 18%;
+  margin-top: 0%;
+  margin-left: 75%;
+  position: fixed;
 }
 .side-nav a:link, .side-nav a:visited {
   color: #333;

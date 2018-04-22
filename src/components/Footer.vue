@@ -1,18 +1,14 @@
 <template>
-  <footer>
-      <div>
-          <div class="row">
-              <div class="col-md-12">
-                  <span class="copyright">
-                    Made with
-                    <i class="fa fa-heart fa-sm heart"></i>
-                    <i class="fa fa-heart fa-sm heart"></i>
-                    <i class="fa fa-heart fa-sm heart"></i>
-                    by Earthlings for another Earthlings
-                  </span>
-              </div>
-          </div>
-      </div>
+  <footer class="row">
+    <nav>
+        <span class="copyright">
+          Made with
+          <i class="fa fa-heart fa-sm heart"></i>
+          <i class="fa fa-heart fa-sm heart"></i>
+          <i class="fa fa-heart fa-sm heart"></i>
+          by Earthlings for another Earthlings
+        </span>
+    </nav>
   </footer>
 </template>
 

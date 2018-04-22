@@ -1,12 +1,8 @@
 <template>
   <div class="row">
+    <app-navigation></app-navigation>
     <div class="col-sm-offset-2 col-sm-7">
-      <div class="main-wrapper">
-        <router-view></router-view>
-      </div>
-    </div>
-    <div class="col-sm-3">
-      <app-navigation></app-navigation>
+      <router-view></router-view>
     </div>
   </div>
 </template>
@@ -27,3 +23,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+  .topz {
+    margin-top: 0%;
+  }
+</style>

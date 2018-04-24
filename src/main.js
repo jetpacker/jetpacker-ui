@@ -2,6 +2,8 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
 
+import Vuetify from 'vuetify';
+
 import VueGitHubCorners from 'vue-gh-corners';
 import 'vue-gh-corners/dist/vue-github-corners.css';
 
@@ -10,6 +12,7 @@ import router from './router';
 import store from './store';
 
 
+Vue.use(Vuetify);
 Vue.use(VueGitHubCorners);
 
 /* eslint-disable no-new */

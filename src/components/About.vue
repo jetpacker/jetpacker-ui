@@ -5,40 +5,41 @@
         <div class="panel-body info">
           <h2>About <span class="color-theme">jetpackr</span></h2>
           <p>
-            <span class="color-theme">jetpackr</span> is a code generator that produces
-            a <span class="color-theme">jetpack</span>, a semi automated isolated
-            development environment that is powered by Vagrant, Ansible,
-            and optionally Docker.
-
-            Armed with these tools, any developers can confidently:
+            <span class="color-theme">jetpackr</span> is a free application that
+            generates a <span class="color-theme">jetpack</span>, a highly
+            disposable development environment that is powered by Vagrant, Ansible,
+            and optionally Docker. Disposable development environment can greatly
+            improve developers' productivity. It solves many common issues like:
           </p>
           <ul>
             <li>
-              Work on several projects that have different application architecture.
+              Managing several projects that have different application architectures.
             </li>
             <li>
-              Share their projects with anyone without having to struggle with
-              common compatibility issues.
+              Difficulty to share projects with anyone because of compatibility issues.
             </li>
             <li>
-              Skip the manual installations of most applications, services,
-              and tools in their project.
+              Manual installations and setups of most applications, services,
+              and tools in any software projects.
             </li>
             <li>
-              Keep their PCs organized and clean from most of the development tools.
+              PCs/Macs become disorganized and littered by most of the development tools.
             </li>
             <li>
-              Experiment with new technologies without worrying of making mistakes.
+              Worrying of making mistakes when experimenting with new technologies
+            </li>
+            <li>
+              And so on.
             </li>
           </ul>
           <p>You don't necessarily need to know Vagrant, Ansible, and Docker to use
             a <span class="color-theme">jetpack</span>. All you need to do:</p>
           <ol>
             <li>
-              Download and install VirtualBox
+              Download and install VirtualBox (5.2+)
             </li>
             <li>
-              Download and install Vagrant
+              Download and install Vagrant (2.0+)
             </li>
             <li>
               Generate a <span class="color-theme">jetpack</span> from this website.
